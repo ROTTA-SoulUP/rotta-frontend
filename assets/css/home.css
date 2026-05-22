@@ -1,0 +1,504 @@
+/* =============================================================
+   STYLE.CSS — Estilos da página inicial (index.html)
+   ============================================================= */
+
+/* ---------- Importações ---------- */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import url('./variables.css');
+
+
+/* =============================================================
+   RESET & BASE
+   ============================================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Evita scroll horizontal em qualquer resolução */
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--fundo);
+    color: var(--texto);
+    font-family: var(--fonte-corpo);
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+
+/* =============================================================
+   TIPOGRAFIA GLOBAL
+   ============================================================= */
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transicao);
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--fonte-titulo);
+    line-height: 1.2;
+    color: var(--creme);
+}
+
+/* Título principal da home */
+h1 {
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    letter-spacing: -0.02em;
+    color: var(--verde-claro);
+    line-height: 1;
+    margin: 0.15em 0;
+}
+
+/* Subtítulo de seção */
+h2 {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    margin-bottom: 1rem;
+}
+
+/* Rótulo de seção (ex: "O projeto") */
+h3 {
+    font-size: 1.1rem;
+    font-family: var(--fonte-corpo);
+    font-weight: 500;
+    color: var(--verde-claro);
+}
+
+/* "from SoulUp" abaixo do h1 */
+h4 {
+    font-family: var(--fonte-titulo);
+    font-style: italic;
+    font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+    font-weight: 400;
+    color: var(--texto-muted);
+    letter-spacing: 0.02em;
+    margin-top: -0.15em;
+    margin-bottom: 1.25rem;
+}
+
+p {
+    color: var(--texto-muted);
+    font-size: 1rem;
+    max-width: 65ch;
+    line-height: 1.75;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--borda);
+    margin: 2.5rem 0;
+}
+
+
+/* =============================================================
+   HEADER — fixo no topo, efeito glass
+   ============================================================= */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 5%;
+    background-color: rgba(15, 26, 23, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--borda);
+}
+
+/* Logo */
+.logo {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+    border-radius: var(--raio-sm);
+    display: block;
+}
+
+/* Lista de links de navegação */
+.header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 0.25rem;
+}
+
+.header nav ul li.cabecalho a,
+.header nav ul li a.cabecalho {
+    display: block;
+    padding: 0.45rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--texto-muted);
+    border-radius: var(--raio-sm);
+    transition: background var(--transicao), color var(--transicao);
+    letter-spacing: 0.02em;
+}
+
+.header nav ul li.cabecalho a:hover,
+.header nav ul li a.cabecalho:hover,
+.header nav ul li a.cabecalho.active {
+    background-color: rgba(42, 140, 110, 0.12);
+    color: var(--creme);
+}
+
+
+/* =============================================================
+   MENU HAMBÚRGUER — visível só em mobile
+   ============================================================= */
+.menu-btn {
+    display: none; /* oculto no desktop */
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 38px;
+    height: 38px;
+    background: none;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-sm);
+    cursor: pointer;
+    padding: 8px;
+    transition: border-color var(--transicao), background var(--transicao);
+    flex-shrink: 0;
+}
+
+.menu-btn:hover {
+    border-color: rgba(42, 140, 110, 0.4);
+    background: rgba(42, 140, 110, 0.08);
+}
+
+/* As 3 linhas do hambúrguer */
+.menu-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--creme);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animação para X ao abrir */
+.menu-btn.ativo span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-btn.ativo span:nth-child(2) { opacity: 0; }
+.menu-btn.ativo span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+
+/* =============================================================
+   MAIN — container central
+   ============================================================= */
+.main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+
+/* =============================================================
+   SECTIONS
+   ============================================================= */
+.main section {
+    padding: 5rem 0;
+}
+
+/* Primeira section — hero com mais espaço no topo */
+.main section:first-child {
+    padding-top: 7rem;
+    border-bottom: 1px solid var(--borda);
+}
+
+/* Separador entre sections (exceto a última) */
+.main section:not(:last-child) {
+    border-bottom: 1px solid var(--borda);
+}
+
+/* Rótulo de categoria no topo das sections */
+.main section > h3:first-child {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--verde);
+    margin-bottom: 0.5rem;
+    font-family: var(--fonte-corpo);
+}
+
+
+/* =============================================================
+   HERO — badge + título + slogan
+   ============================================================= */
+
+/* Badge "Sustentabilidade & Mobilidade Urbana" */
+.subtitulo {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    background: rgba(42, 140, 110, 0.1);
+    border: 1px solid rgba(42, 140, 110, 0.25);
+    padding: 0.35rem 0.85rem;
+    border-radius: 99px;
+    margin-bottom: 1.5rem;
+}
+
+/* Slogan em itálico sob o h4 */
+.slogan {
+    font-family: var(--fonte-titulo);
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    color: var(--creme);
+    max-width: 50ch;
+    margin-bottom: 1.5rem;
+}
+
+
+/* =============================================================
+   CARDS — grid de funcionalidades
+   ============================================================= */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+}
+
+/* Cada card é um <article> */
+.card {
+    background-color: var(--fundo-card);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: transform var(--transicao), border-color var(--transicao), background var(--transicao);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(42, 140, 110, 0.45);
+    background-color: var(--fundo-alt);
+}
+
+/* Ícone Font Awesome dentro do card */
+.card i {
+    font-size: 1.6rem;
+    color: var(--verde-claro);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(42, 140, 110, 0.1);
+    border-radius: var(--raio-sm);
+    flex-shrink: 0;
+}
+
+/* Material Symbols dentro do card */
+.card .material-symbols-outlined {
+    font-size: 1.6rem;
+    color: var(--verde-claro);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(42, 140, 110, 0.1);
+    border-radius: var(--raio-sm);
+    flex-shrink: 0;
+}
+
+/* Título do card */
+.card h3 {
+    font-size: 1rem;
+    font-family: var(--fonte-corpo);
+    font-weight: 600;
+    color: var(--creme);
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+/* Texto do card */
+.card p {
+    font-size: 0.9rem;
+    color: var(--texto-muted);
+    max-width: 100%;
+    margin: 0;
+}
+
+
+/* =============================================================
+   PILLBOX — tags de parceiros
+   ============================================================= */
+.pillbox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 2rem;
+}
+
+.pill {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--verde-claro);
+    background: rgba(42, 140, 110, 0.1);
+    border: 1px solid rgba(42, 140, 110, 0.3);
+    padding: 0.4rem 1rem;
+    border-radius: 99px;
+    transition: background var(--transicao), border-color var(--transicao), color var(--transicao);
+    cursor: default;
+}
+
+.pill:hover {
+    background: rgba(42, 140, 110, 0.2);
+    border-color: var(--verde);
+    color: var(--creme);
+}
+
+
+/* =============================================================
+   FOOTER
+   ============================================================= */
+footer {
+    border-top: 1px solid var(--borda);
+    text-align: center;
+    padding: 2rem 5%;
+    font-size: 0.85rem;
+    color: var(--texto-muted);
+}
+
+
+/* =============================================================
+   RESPONSIVO — TABLET (≥ 768px e ≤ 991px)
+   ============================================================= */
+@media (max-width: 991px) {
+    /* Cards em 2 colunas no tablet */
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .main section {
+        padding: 4rem 0;
+    }
+
+    .main section:first-child {
+        padding-top: 5rem;
+    }
+}
+
+
+/* =============================================================
+   RESPONSIVO — MOBILE (≤ 768px)
+   ============================================================= */
+@media (max-width: 768px) {
+
+    /* Header: logo + hambúrguer em linha */
+    .header {
+        flex-wrap: nowrap;
+        align-items: center;
+        padding: 1rem 5%;
+        position: relative; /* necessário para o menu dropdown */
+    }
+
+    /* Exibe o botão hambúrguer */
+    .menu-btn {
+        display: flex;
+    }
+
+    /* Menu dropdown escondido por padrão */
+    #menu-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: rgba(15, 26, 23, 0.98);
+        border-bottom: 1px solid var(--borda);
+        padding: 1rem 5%;
+        z-index: 99;
+    }
+
+    /* Menu aberto via JS */
+    #menu-nav.menu-aberto {
+        display: block;
+    }
+
+    /* Links empilhados verticalmente */
+    #menu-nav ul {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    #menu-nav ul li a.cabecalho,
+    #menu-nav ul li.cabecalho a {
+        display: block;
+        padding: 0.65rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    /* Cards em coluna única */
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .main section {
+        padding: 3.5rem 0;
+    }
+
+    .main section:first-child {
+        padding-top: 4.5rem;
+    }
+
+    /* Slogan menor */
+    .slogan {
+        font-size: 1.15rem;
+    }
+}
+
+
+/* =============================================================
+   RESPONSIVO — MOBILE PEQUENO (≤ 480px)
+   ============================================================= */
+@media (max-width: 480px) {
+
+    /* h1 menor para não cortar */
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    h4 {
+        font-size: 0.9rem;
+    }
+
+    /* Links do menu menores */
+    .header nav ul li.cabecalho a,
+    .header nav ul li a.cabecalho {
+        font-size: 0.82rem;
+        padding: 0.4rem 0.75rem;
+    }
+
+    /* Pills empilhadas */
+    .pillbox {
+        gap: 0.5rem;
+    }
+
+    .pill {
+        font-size: 0.8rem;
+        padding: 0.35rem 0.8rem;
+    }
+
+    /* Padding lateral da main reduzido */
+    .main {
+        padding: 0 4%;
+    }
+}

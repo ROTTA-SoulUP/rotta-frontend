@@ -1,0 +1,594 @@
+/* =============================================================
+   SOBRE.CSS — Estilos da página sobre.html
+   ============================================================= */
+
+/* ---------- Importações ---------- */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import url('./variables.css');
+
+
+/* =============================================================
+   RESET & BASE
+   ============================================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--fundo);
+    color: var(--texto);
+    font-family: var(--fonte-corpo);
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transicao);
+}
+
+
+/* =============================================================
+   TIPOGRAFIA
+   ============================================================= */
+h1, h2, h3, h4 {
+    font-family: var(--fonte-titulo);
+    line-height: 1.2;
+    color: var(--creme);
+}
+
+h2 {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1.05rem;
+    font-family: var(--fonte-corpo);
+    font-weight: 600;
+    color: var(--creme);
+}
+
+p {
+    color: var(--texto-muted);
+    font-size: 1rem;
+    max-width: 65ch;
+    line-height: 1.75;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--borda);
+    margin: 2.5rem 0;
+}
+
+
+/* =============================================================
+   HEADER
+   ============================================================= */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 5%;
+    background-color: rgba(15, 26, 23, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--borda);
+}
+
+.header .logo {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 0.25rem;
+}
+
+.header nav ul li a.cabecalho {
+    display: block;
+    padding: 0.45rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--texto-muted);
+    border-radius: var(--raio-sm);
+    transition: background var(--transicao), color var(--transicao);
+    letter-spacing: 0.02em;
+}
+
+.header nav ul li a.cabecalho:hover,
+.header nav ul li a.cabecalho.active {
+    background-color: rgba(42, 140, 110, 0.12);
+    color: var(--creme);
+}
+
+
+/* =============================================================
+   MENU HAMBÚRGUER
+   ============================================================= */
+.menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 38px;
+    height: 38px;
+    background: none;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-sm);
+    cursor: pointer;
+    padding: 8px;
+    transition: border-color var(--transicao), background var(--transicao);
+    flex-shrink: 0;
+}
+
+.menu-btn:hover {
+    border-color: rgba(42, 140, 110, 0.4);
+    background: rgba(42, 140, 110, 0.08);
+}
+
+.menu-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--creme);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-btn.ativo span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-btn.ativo span:nth-child(2) { opacity: 0; }
+.menu-btn.ativo span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+
+/* =============================================================
+   MAIN & SECTIONS
+   ============================================================= */
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+main section {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--borda);
+}
+
+main section:last-child {
+    border-bottom: none;
+    padding-bottom: 6rem;
+}
+
+main section:first-child {
+    padding-top: 6rem;
+}
+
+
+/* =============================================================
+   HERO DA PÁGINA
+   ============================================================= */
+main section:first-child h1 {
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    letter-spacing: -0.02em;
+    color: var(--verde-claro);
+    line-height: 1;
+    margin: 0.2em 0;
+}
+
+/* Badge de categoria */
+.subtitulo {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    background: rgba(42, 140, 110, 0.1);
+    border: 1px solid rgba(42, 140, 110, 0.25);
+    padding: 0.35rem 0.85rem;
+    border-radius: 99px;
+    margin-bottom: 1.5rem;
+}
+
+.slogan {
+    font-family: var(--fonte-titulo);
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+    color: var(--creme);
+    max-width: 55ch;
+    margin-bottom: 1.5rem;
+}
+
+/* Rótulo pequeno de seção (primeiro h3 da section) */
+main section > h3:first-child {
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--verde);
+    margin-bottom: 0.5rem;
+    font-family: var(--fonte-corpo);
+}
+
+/* Espaço entre parágrafos consecutivos */
+main section > p + p {
+    margin-top: 1rem;
+}
+
+
+/* =============================================================
+   CARDS — artigos de problema / tecnologia
+   ============================================================= */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+}
+
+/* Cada card é um <article> no HTML */
+.card {
+    background-color: var(--fundo-card);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 1.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: transform var(--transicao), border-color var(--transicao), background var(--transicao);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(42, 140, 110, 0.45);
+    background-color: var(--fundo-alt);
+}
+
+/* Ícone Font Awesome */
+.card > i {
+    font-size: 1.4rem;
+    color: var(--verde-claro);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(42, 140, 110, 0.1);
+    border-radius: var(--raio-sm);
+    flex-shrink: 0;
+}
+
+/* Material Symbols */
+.card > .material-symbols-outlined {
+    font-size: 1.5rem;
+    color: var(--verde-claro);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(42, 140, 110, 0.1);
+    border-radius: var(--raio-sm);
+    flex-shrink: 0;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.card h3 {
+    font-size: 0.98rem;
+    font-family: var(--fonte-corpo);
+    font-weight: 600;
+    color: var(--creme);
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: var(--texto-muted);
+    max-width: 100%;
+}
+
+
+/* =============================================================
+   LISTA DE SOLUÇÃO — passos numerados
+   ============================================================= */
+.lista-solucao {
+    list-style: none;
+    counter-reset: solucao;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2.5rem 0;
+    padding-left: 0;
+}
+
+/* Cada item é um <article> no HTML  */
+.lista-solucao li {
+    counter-increment: solucao;
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 1.25rem;
+    align-items: start;
+}
+
+/* Número do passo */
+.lista-solucao li::before {
+    content: counter(solucao);
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+    color: var(--verde-claro);
+    background: rgba(42, 140, 110, 0.1);
+    border: 1px solid rgba(42, 140, 110, 0.25);
+    border-radius: var(--raio-sm);
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.lista-solucao li h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--creme);
+    margin-bottom: 0.4rem;
+    font-family: var(--fonte-corpo);
+}
+
+.lista-solucao li p {
+    font-size: 0.92rem;
+    color: var(--texto-muted);
+    max-width: 100%;
+}
+
+/* Rótulo secundário dentro da section */
+main section > h3:not(:first-child) {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--verde);
+    margin-top: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--fonte-corpo);
+}
+
+
+/* =============================================================
+   ROADMAP — linha do tempo com ícones
+   ============================================================= */
+.lista-roadmap {
+    list-style: none;
+    padding: 0;
+    margin: 2.5rem 0 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Linha vertical conectora */
+.lista-roadmap::before {
+    content: '';
+    position: absolute;
+    left: 25px;
+    top: 26px;
+    bottom: 26px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--verde), rgba(42, 140, 110, 0.1));
+}
+
+/* Cada item do roadmap é um <article> no HTML */
+.lista-roadmap li {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 1.25rem;
+    align-items: start;
+    padding-bottom: 2.5rem;
+    position: relative;
+}
+
+.lista-roadmap li:last-child {
+    padding-bottom: 0;
+}
+
+/* Ícone circular */
+.dot {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--fundo-card);
+    border: 1px solid rgba(42, 140, 110, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.dot i {
+    font-size: 1.15rem;
+    color: var(--verde-claro);
+}
+
+/* Fase em andamento — destaque */
+.lista-roadmap li:nth-child(2) .dot {
+    border-color: var(--verde-claro);
+    background: rgba(42, 140, 110, 0.15);
+    box-shadow: 0 0 0 5px rgba(42, 140, 110, 0.08);
+}
+
+.lista-roadmap li > div h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--creme);
+    margin-bottom: 0.4rem;
+    font-family: var(--fonte-corpo);
+}
+
+.lista-roadmap li > div p {
+    font-size: 0.92rem;
+    color: var(--texto-muted);
+    max-width: 100%;
+}
+
+/* Rótulo da fase */
+.fase {
+    font-size: 0.73rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--verde);
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+
+/* =============================================================
+   PILLBOX
+   ============================================================= */
+.pillbox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.25rem;
+}
+
+.pill {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--verde-claro);
+    background: rgba(42, 140, 110, 0.1);
+    border: 1px solid rgba(42, 140, 110, 0.28);
+    padding: 0.35rem 0.9rem;
+    border-radius: 99px;
+    transition: background var(--transicao), border-color var(--transicao), color var(--transicao);
+    cursor: default;
+}
+
+.pill:hover {
+    background: rgba(42, 140, 110, 0.2);
+    border-color: var(--verde);
+    color: var(--creme);
+}
+
+
+/* =============================================================
+   FOOTER
+   ============================================================= */
+footer {
+    border-top: 1px solid var(--borda);
+    text-align: center;
+    padding: 2rem 5%;
+    font-size: 0.85rem;
+    color: var(--texto-muted);
+}
+
+
+/* =============================================================
+   RESPONSIVO — TABLET (≤ 991px)
+   ============================================================= */
+@media (max-width: 991px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    main section {
+        padding: 4rem 0;
+    }
+}
+
+
+/* =============================================================
+   RESPONSIVO — MOBILE (≤ 768px)
+   ============================================================= */
+@media (max-width: 768px) {
+
+    .header {
+        flex-wrap: nowrap;
+        align-items: center;
+        padding: 1rem 5%;
+        position: relative;
+    }
+
+    .menu-btn { display: flex; }
+
+    #menu-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: rgba(15, 26, 23, 0.98);
+        border-bottom: 1px solid var(--borda);
+        padding: 1rem 5%;
+        z-index: 99;
+    }
+
+    #menu-nav.menu-aberto { display: block; }
+
+    #menu-nav ul {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    #menu-nav ul li a.cabecalho {
+        display: block;
+        padding: 0.65rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    main section { padding: 3.5rem 0; }
+    main section:first-child { padding-top: 4rem; }
+
+    .cards { grid-template-columns: 1fr; }
+
+    /* Ajusta itens da lista de solução */
+    .lista-solucao li,
+    .lista-roadmap li {
+        grid-template-columns: 44px 1fr;
+        gap: 1rem;
+    }
+
+    .lista-solucao li::before,
+    .dot {
+        width: 44px;
+        height: 44px;
+    }
+
+    .lista-roadmap::before { left: 21px; }
+}
+
+
+/* =============================================================
+   RESPONSIVO — MOBILE PEQUENO (≤ 480px)
+   ============================================================= */
+@media (max-width: 480px) {
+
+    main section:first-child h1 { font-size: 3rem; }
+
+    .slogan { font-size: 1.1rem; }
+
+    main { padding: 0 4%; }
+}

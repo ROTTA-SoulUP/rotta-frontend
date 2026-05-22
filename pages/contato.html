@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Meta obrigatório -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato &mdash; Rotta</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tabler Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/contato.css">
+
+    <!-- JS do formulário e do menu hambúrguer -->
+    <script src="../js/contato.js" defer></script>
+    <script src="../js/menu.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ==================== CABEÇALHO ==================== -->
+    <header class="header">
+        <a href="../../index.html">
+            <img src="../images/Logo.jpeg" alt="Logo da Rotta" class="logo">
+        </a>
+
+        <button class="menu-btn" id="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="menu-nav">
+            <ul>
+                <li><a href="../../index.html" class="cabecalho">Home</a></li>
+                <li><a href="./integrantes.html" class="cabecalho">Integrantes</a></li>
+                <li><a href="./sobre.html" class="cabecalho">Sobre</a></li>
+                <li><a href="./faq.html" class="cabecalho">FAQ</a></li>
+                <li><a href="./contato.html" class="cabecalho active">Contato</a></li>
+                <li><a href="./solucao.html" class="cabecalho">Solução</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ==================== FIM DO CABEÇALHO ==================== -->
+
+
+    <main>
+
+        <!-- Hero da página -->
+        <section class="contato-hero">
+            <span class="subtitulo">Fale Conosco</span>
+            <h1>Entre em Contato</h1>
+            <p class="slogan">Preencha o formulário abaixo para nos enviar sua dúvida ou sugestão.</p>
+        </section>
+
+        <!-- Formulário — article envolve o conteúdo autossuficiente do formulário -->
+        <section class="contato-form-section">
+
+            <article>
+                <!-- Formulário principal -->
+                <form id="contatoForm" novalidate>
+
+                    <h3>Seus Dados</h3>
+
+                    <!-- Linha: nome + email -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo <span class="obrigatorio">*</span></label>
+                            <input type="text" id="nome" name="nome"
+                                placeholder="Seu nome completo" required>
+                            <span class="error-msg" id="erro-nome"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">E-mail <span class="obrigatorio">*</span></label>
+                            <input type="email" id="email" name="email"
+                                placeholder="seu@email.com" required>
+                            <span class="error-msg" id="erro-email"></span>
+                        </div>
+                    </div>
+
+                    <!-- Linha: telefone + assunto -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone"
+                                placeholder="(11) 99999-9999">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="assunto">Assunto <span class="obrigatorio">*</span></label>
+                            <select id="assunto" name="assunto" required>
+                                <option value="" disabled selected>Selecione um assunto</option>
+                                <option value="duvida">Dúvida Geral</option>
+                                <option value="suporte">Suporte Técnico</option>
+                                <option value="parceria">Parceria</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                            <span class="error-msg" id="erro-assunto"></span>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <h3>Sua Mensagem</h3>
+
+                    <!-- Campo de mensagem -->
+                    <div class="form-group">
+                        <label for="mensagem">Dúvida ou Mensagem <span class="obrigatorio">*</span></label>
+                        <textarea id="mensagem" name="mensagem" rows="5"
+                            placeholder="Escreva sua dúvida ou mensagem aqui..." required></textarea>
+                        <span class="error-msg" id="erro-mensagem"></span>
+                    </div>
+
+                    <!-- Aceite dos termos -->
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="termos" name="termos" required>
+                            <span>Concordo com os <a href="#">termos de uso</a> e
+                                <a href="#">política de privacidade</a>.</span>
+                        </label>
+                        <span class="error-msg" id="erro-termos"></span>
+                    </div>
+
+                    <!-- Botões de ação -->
+                    <div class="form-actions">
+                        <button type="reset" class="btn-reset">Limpar</button>
+                        <button type="submit" class="btn-enviar">
+                            <span>Enviar Mensagem</span>
+                            <i class="ti ti-send"></i>
+                        </button>
+                    </div>
+
+                </form>
+
+                <!-- Mensagem de sucesso (exibida pelo JS após envio) -->
+                <div id="sucesso-msg" class="sucesso-msg hidden">
+                    <i class="ti ti-circle-check"></i>
+                    <h2>Mensagem enviada!</h2>
+                    <p>Obrigado pelo contato. Retornaremos em breve.</p>
+                    <button class="btn-enviar" onclick="resetForm()">Nova Mensagem</button>
+                </div>
+
+            </article>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================== RODAPÉ ==================== -->
+    <footer>
+        <p>&copy; 2025 Rotta &mdash; Sustentabilidade &amp; Mobilidade Urbana. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+
+</html>
