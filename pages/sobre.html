@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Meta obrigatório -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre &mdash; Rotta</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tabler Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+
+    <!-- Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=no_transfer" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/sobre.css">
+
+    <!-- JS do menu hambúrguer -->
+    <script src="../js/menu.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ==================== CABEÇALHO ==================== -->
+    <header class="header">
+        <a href="../../index.html">
+            <img src="../images/logo.svg" alt="Logo da Rotta" class="logo">
+        </a>
+
+        <button class="menu-btn" id="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="menu-nav">
+            <ul>
+                <li><a href="../../index.html" class="cabecalho">Home</a></li>
+                <li><a href="./sobre.html" class="cabecalho active">Sobre</a></li>
+                <li><a href="./solucao.html" class="cabecalho">Solução</a></li>
+                <li><a href="./faq.html" class="cabecalho">FAQ</a></li>
+                <li><a href="./integrantes.html" class="cabecalho">Integrantes</a></li>
+                <li><a href="./contato.html" class="cabecalho">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ==================== FIM DO CABEÇALHO ==================== -->
+
+
+    <main>
+
+        <!-- Hero da página -->
+        <section>
+            <p class="subtitulo">Sobre</p>
+            <h1>SoulUp</h1>
+            <p class="slogan">Contexto do projeto, solução proposta, tecnologias utilizadas e roadmap.</p>
+        </section>
+
+        <!-- Contexto — cards de problema -->
+        <section>
+            <h3>Contexto</h3>
+            <h2>O problema que queremos resolver</h2>
+            <p>
+                Cidades brasileiras enfrentam dois desafios urgentes e interligados: a necessidade
+                de mudança de hábitos para reduzir o impacto ambiental e a dificuldade de tornar
+                o transporte público mais acessível e atraente.
+            </p>
+            <p>
+                Comportamentos sustentáveis raramente recebem qualquer tipo de recompensa tangível.
+                Ao mesmo tempo, o custo do transporte representa uma barreira real para boa parte
+                da população. O SoulUp resolve esses dois problemas juntos.
+            </p>
+
+            <!-- article: cada problema é um conteúdo independente -->
+            <div class="cards">
+
+                <article class="card">
+                    <i class="fa-solid fa-face-frown"></i>
+                    <h3>Falta de incentivo real</h3>
+                    <p>A conscientização existe, mas sem recompensas concretas a adesão a hábitos
+                        sustentáveis permanece baixa e inconsistente.</p>
+                </article>
+
+                <article class="card">
+                    <span class="material-symbols-outlined">no_transfer</span>
+                    <h3>Transporte como barreira</h3>
+                    <p>O custo do transporte público é um obstáculo diário para milhões de
+                        brasileiros que dependem dele para trabalhar e estudar.</p>
+                </article>
+
+                <article class="card">
+                    <i class="fa-solid fa-link-slash"></i>
+                    <h3>Sistemas desconectados</h3>
+                    <p>Iniciativas sustentáveis raramente dialogam com outros sistemas urbanos.
+                        O impacto positivo fica isolado, sem gerar benefícios que motivem a continuidade.</p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Solução proposta — lista numerada com article -->
+        <section>
+            <h3>Solução Proposta</h3>
+            <h2>Como o SoulUp funciona</h2>
+            <p>
+                O SoulUp cria uma ponte direta entre ações sustentáveis e benefícios no transporte
+                público. O usuário age, registra, é validado e recompensado com créditos reais.
+            </p>
+
+            <!-- ol semântico: cada passo é um li contendo um article -->
+            <ol class="lista-solucao">
+
+                <li>
+                    <!-- article: cada passo é um conteúdo autossuficiente -->
+                    <article>
+                        <h3>Registro da ação sustentável</h3>
+                        <p>
+                            O usuário documenta uma ação cotidiana — separar recicláveis, usar transporte
+                            alternativo, evitar descarte incorreto — por foto ou vídeo diretamente pelo app.
+                        </p>
+                    </article>
+                </li>
+
+                <li>
+                    <article>
+                        <h3>Validação por inteligência artificial</h3>
+                        <p>
+                            Um sistema de IA analisa o conteúdo enviado, confirma a autenticidade da ação
+                            e aprova a pontuação. Essa etapa é fundamental para evitar fraudes e manter
+                            a credibilidade junto aos parceiros.
+                        </p>
+                    </article>
+                </li>
+
+                <li>
+                    <article>
+                        <h3>Acúmulo de pontos e engajamento</h3>
+                        <p>
+                            Após validação, os pontos são somados ao perfil. O app conta com ranking,
+                            níveis de progressão e streak diário para estimular a consistência dos hábitos.
+                        </p>
+                    </article>
+                </li>
+
+                <li>
+                    <article>
+                        <h3>Conversão em crédito de transporte</h3>
+                        <p>
+                            Os pontos acumulados são convertidos em créditos para o transporte público,
+                            integrados diretamente com as operadoras parceiras via APIs de mobilidade.
+                        </p>
+                    </article>
+                </li>
+
+            </ol>
+
+            <h3>Regra central do sistema</h3>
+            <p>
+                Nenhuma ação gera pontos sem passar pela validação da IA. Isso garante que apenas
+                ações reais sejam recompensadas, mantendo a credibilidade para todos os envolvidos.
+            </p>
+        </section>
+
+        <!-- Tecnologias — cards com article -->
+        <section>
+            <h3>Tecnologias</h3>
+            <h2>O que sustenta o projeto</h2>
+            <p>
+                O SoulUp é construído sobre tecnologias modernas que garantem performance, segurança
+                e experiência de uso fluida. A IA ocupa o centro da arquitetura como peça estrutural.
+            </p>
+
+            <div class="cards">
+
+                <article class="card">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <h3>Aplicativo mobile</h3>
+                    <p>Interface para registrar ações, acompanhar pontuação e usar os créditos de
+                        transporte — tudo em um único app.</p>
+                </article>
+
+                <article class="card">
+                    <span class="material-symbols-outlined">no_transfer</span>
+                    <h3>Inteligência artificial</h3>
+                    <p>Validação automática de fotos e vídeos e chatbot integrado para suporte
+                        ao usuário em tempo real.</p>
+                </article>
+
+                <article class="card">
+                    <i class="fa-solid fa-plug-circle-bolt"></i>
+                    <h3>APIs de mobilidade</h3>
+                    <p>Integração com sistemas de transporte público para exibição de ônibus em
+                        tempo real e conversão de pontos em créditos de bilhetagem.</p>
+                </article>
+
+                <article class="card">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h3>Segurança e autenticação</h3>
+                    <p>Autenticação de usuários, controle de acesso e registro de atividades
+                        garantem proteção dos dados e rastreabilidade das ações.</p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Roadmap — cada fase é um article -->
+        <section>
+            <h3>Roadmap</h3>
+            <h2>Etapas do desenvolvimento</h2>
+            <p>
+                O desenvolvimento é dividido em fases progressivas, partindo da validação do
+                conceito até a expansão para novas cidades.
+            </p>
+
+            <ol class="lista-roadmap">
+
+                <li>
+                    <div class="dot"><i class="ti ti-check"></i></div>
+                    <!-- article: cada fase é autossuficiente -->
+                    <article>
+                        <p class="fase">Fase 1 — Concluída</p>
+                        <h3>Conceito e planejamento</h3>
+                        <p>Definição da ideia central, levantamento de requisitos, mapeamento de
+                            parcerias e estruturação do modelo de negócio.</p>
+                        <div class="pillbox">
+                            <span class="pill">Requisitos</span>
+                            <span class="pill">Modelo de negócio</span>
+                            <span class="pill">Parcerias</span>
+                        </div>
+                    </article>
+                </li>
+
+                <li>
+                    <div class="dot"><i class="ti ti-settings"></i></div>
+                    <article>
+                        <p class="fase">Fase 2 — Em andamento</p>
+                        <h3>Prototipação e design</h3>
+                        <p>Criação dos fluxos do app, design das telas principais, identidade visual
+                            e protótipos navegáveis para validação com usuários reais.</p>
+                        <div class="pillbox">
+                            <span class="pill">UI/UX</span>
+                            <span class="pill">Protótipo</span>
+                            <span class="pill">Identidade visual</span>
+                        </div>
+                    </article>
+                </li>
+
+                <li>
+                    <div class="dot"><i class="ti ti-code"></i></div>
+                    <article>
+                        <p class="fase">Fase 3 — Próxima</p>
+                        <h3>Desenvolvimento do MVP</h3>
+                        <p>Implementação das funcionalidades core: cadastro, envio de mídia,
+                            sistema de pontuação, validação por IA e conversão de créditos.</p>
+                        <div class="pillbox">
+                            <span class="pill">Mobile</span>
+                            <span class="pill">IA</span>
+                            <span class="pill">Backend</span>
+                        </div>
+                    </article>
+                </li>
+
+                <li>
+                    <div class="dot"><i class="ti ti-rocket"></i></div>
+                    <article>
+                        <p class="fase">Fase 4 — Futura</p>
+                        <h3>Lançamento e expansão</h3>
+                        <p>Piloto com operadoras e prefeitura, coleta de dados, refinamento do
+                            sistema e expansão para novas cidades e categorias de ações.</p>
+                        <div class="pillbox">
+                            <span class="pill">Piloto</span>
+                            <span class="pill">Parcerias</span>
+                            <span class="pill">Escala</span>
+                        </div>
+                    </article>
+                </li>
+
+            </ol>
+        </section>
+
+    </main>
+
+
+    <!-- ==================== RODAPÉ ==================== -->
+    <footer>
+        <p>&copy; 2025 Rotta &mdash; Sustentabilidade &amp; Mobilidade Urbana. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+
+</html>

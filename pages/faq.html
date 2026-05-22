@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Meta obrigatório -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ &mdash; Rotta</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tabler Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/faq.css">
+
+    <!-- JS do accordion e do menu hambúrguer -->
+    <script src="../js/faq.js" defer></script>
+    <script src="../js/menu.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ==================== CABEÇALHO ==================== -->
+    <header class="header">
+        <a href="../../index.html">
+            <img src="../images/logo.svg" alt="Logo da Rotta" class="logo">
+        </a>
+
+        <button class="menu-btn" id="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="menu-nav">
+            <ul>
+                <li><a href="../../index.html" class="cabecalho">Home</a></li>
+                <li><a href="./sobre.html" class="cabecalho">Sobre</a></li>
+                <li><a href="./solucao.html" class="cabecalho">Solução</a></li>
+                <li><a href="./faq.html" class="cabecalho active">FAQ</a></li>
+                <li><a href="./integrantes.html" class="cabecalho">Integrantes</a></li>
+                <li><a href="./contato.html" class="cabecalho">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ==================== FIM DO CABEÇALHO ==================== -->
+
+
+    <main>
+
+        <!-- Hero da página -->
+        <section>
+            <p class="subtitulo">FAQ</p>
+            <h1>Perguntas Frequentes</h1>
+            <p class="slogan">Tire suas dúvidas sobre a Rotta e a SoulUp — como funciona,
+                como participar e como as recompensas são distribuídas.</p>
+        </section>
+
+        <!-- Accordion de perguntas — cada item é um article -->
+        <section>
+            <h3>Sobre o projeto</h3>
+
+            <!-- article: cada par pergunta/resposta é conteúdo independente -->
+            <article class="item">
+                <button onclick="toggle(this)">O que é a SoulUp?</button>
+                <div class="resposta">
+                    O SoulUp é um aplicativo mobile que recompensa ações sustentáveis do dia a dia com
+                    créditos para o transporte público. O usuário registra suas ações por foto ou vídeo,
+                    acumula pontos validados por inteligência artificial e converte esses pontos em
+                    créditos para usar no ônibus.
+                </div>
+            </article>
+
+            <article class="item">
+                <button onclick="toggle(this)">O app é gratuito?</button>
+                <div class="resposta">
+                    Sim. O SoulUp é gratuito para o usuário final. O modelo de negócio é baseado em
+                    parcerias com empresas privadas que patrocinam categorias de ações sustentáveis e
+                    com o poder público que incentiva a integração com a mobilidade urbana.
+                </div>
+            </article>
+
+            <h3>Pontos e recompensas</h3>
+
+            <article class="item">
+                <button onclick="toggle(this)">Que tipo de ação gera ponto?</button>
+                <div class="resposta">
+                    Ações sustentáveis cotidianas como separar o lixo reciclável, usar garrafas ou sacolas
+                    reutilizáveis, andar a pé ou de bicicleta, entre outras. Cada categoria tem uma
+                    pontuação definida e pode ser patrocinada por empresas parceiras.
+                </div>
+            </article>
+
+            <article class="item">
+                <button onclick="toggle(this)">Como sei se minha ação foi aprovada?</button>
+                <div class="resposta">
+                    Após enviar a foto ou vídeo, a inteligência artificial analisa o conteúdo e retorna
+                    a validação diretamente no app. Nenhuma ação gera pontos sem passar por essa etapa —
+                    isso garante que apenas ações reais sejam recompensadas.
+                </div>
+            </article>
+
+            <article class="item">
+                <button onclick="toggle(this)">Os pontos expiram?</button>
+                <div class="resposta">
+                    As regras de expiração de pontos ainda estão sendo definidas. O objetivo é garantir
+                    que os créditos sejam utilizados dentro de um prazo razoável para manter o ciclo
+                    de engajamento ativo.
+                </div>
+            </article>
+
+            <article class="item">
+                <button onclick="toggle(this)">Como os pontos viram créditos de transporte?</button>
+                <div class="resposta">
+                    Dentro do app, o usuário pode solicitar a conversão dos pontos em créditos de
+                    transporte. Esses créditos são integrados diretamente ao sistema de bilhetagem das
+                    operadoras parceiras por meio de APIs de mobilidade urbana.
+                </div>
+            </article>
+
+            <h3>Segurança e privacidade</h3>
+
+            <article class="item">
+                <button onclick="toggle(this)">Como a SoulUp evita fraudes?</button>
+                <div class="resposta">
+                    A validação por inteligência artificial é a principal barreira contra fraudes. O
+                    sistema analisa o conteúdo para confirmar que a ação é real e condizente com o que
+                    foi declarado. Além disso, todas as atividades são registradas em logs para
+                    rastreabilidade.
+                </div>
+            </article>
+
+            <article class="item">
+                <button onclick="toggle(this)">Meus dados estão seguros?</button>
+                <div class="resposta">
+                    Sim. A SoulUp foi projetada com requisitos de segurança desde o início: autenticação
+                    de usuários, controle de acesso e registro de atividades. A proteção dos dados é
+                    uma prioridade do projeto, em conformidade com as diretrizes de privacidade vigentes.
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================== RODAPÉ ==================== -->
+    <footer>
+        <p>&copy; 2025 Rotta &mdash; Sustentabilidade &amp; Mobilidade Urbana. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+
+</html>

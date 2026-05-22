@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Meta obrigatório -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotta — Sustentabilidade &amp; Mobilidade Urbana</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome (ícones) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- JS do menu hambúrguer -->
+    <script src="./assets/js/menu.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ==================== CABEÇALHO ==================== -->
+    <header class="header">
+        <!-- Logo clicável -->
+        <a href="./index.html">
+            <img src="./assets/images/logo.svg" alt="Logo da Rotta" class="logo">
+        </a>
+
+        <!-- Botão hambúrguer (visível só no mobile) -->
+        <button class="menu-btn" id="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Navegação principal -->
+        <nav id="menu-nav">
+            <ul>
+                <li class="cabecalho"><a href="./index.html">Home</a></li>
+                <li class="cabecalho"><a href="./assets/pages/sobre.html">Sobre</a></li>
+                <li class="cabecalho"><a href="./assets/pages/solucao.html">Solução</a></li>
+                <li class="cabecalho"><a href="./assets/pages/faq.html">FAQ</a></li>
+                <li class="cabecalho"><a href="./assets/pages/integrantes.html">Integrantes</a></li>
+                <li class="cabecalho"><a href="./assets/pages/contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ==================== FIM DO CABEÇALHO ==================== -->
+
+
+    <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
+    <main class="main">
+
+        <!-- Hero — apresentação do projeto -->
+        <section>
+            <p class="subtitulo">Sustentabilidade &amp; Mobilidade Urbana</p>
+            <div class="titulo-hero">
+            <h1>Rotta</h1>
+            <!-- "from SoulUp" combinado visualmente com o h1 -->
+           <h4>from SoulUp</h4>
+        </div>  
+            <p class="slogan">Ações sustentáveis que movem a cidade.</p>
+            <p>
+                Uma empresa da SoulUp que, por meio de um aplicativo mobile, incentiva hábitos sustentáveis ao oferecer créditos reais para utilização no transporte público.
+            </p>
+        </section>
+
+        <!-- Sobre o projeto -->
+        <section>
+            <h3>O projeto</h3>
+            <h2>Qual é o projeto da Rotta?</h2>
+            <p>
+                A Rotta quer conectar duas coisas que normalmente não se falam: sustentabilidade
+                e transporte público. O usuário registra ações do dia a dia pelo app da SoulUp,
+                acumula pontos e converte em créditos reais para andar de ônibus.
+            </p>
+        </section>
+
+        <!-- Funcionalidades — cada card é um article -->
+        <section>
+            <h3>Funcionalidades</h3>
+            <h2>O que o app da SoulUp oferece</h2>
+
+            <div class="cards">
+
+                <!-- article: cada funcionalidade é um conteúdo independente -->
+                <article class="card">
+                    <i class="fa-solid fa-camera"></i>
+                    <h3>Registro por foto ou vídeo</h3>
+                    <p>Documente suas ações sustentáveis diretamente pelo app.</p>
+                </article>
+
+                <article class="card">
+                    <i class="fa-solid fa-bus"></i>
+                    <h3>Créditos de transporte</h3>
+                    <p>Converta seus pontos em créditos para o transporte público.</p>
+                </article>
+
+                <article class="card">
+                    <i class="fa-solid fa-brain"></i>
+                    <h3>Validação por IA</h3>
+                    <p>Inteligência artificial garante que só ações reais sejam pontuadas.</p>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Parcerias -->
+        <section>
+            <h3>Parcerias</h3>
+            <h2>Quem faz isso acontecer?</h2>
+            <p>
+                A SoulUp e a Rotta funcionam em colaboração com o setor público, empresas privadas
+                e operadoras de transporte — cada um com um papel diferente para viabilizar as
+                recompensas aos usuários através de ações sustentáveis.
+            </p>
+            <div class="pillbox">
+                <span class="pill">Empresas de transporte público</span>
+                <span class="pill">Prefeitura</span>
+                <span class="pill">Patrocinadores privados</span>
+                <span class="pill">APIs de mobilidade</span>
+            </div>
+        </section>
+
+    </main>
+    <!-- ==================== FIM DO CONTEÚDO PRINCIPAL ==================== -->
+
+
+    <!-- ==================== RODAPÉ ==================== -->
+    <footer>
+        <p>&copy; 2025 Rotta &mdash; Sustentabilidade &amp; Mobilidade Urbana. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+
+</html>
