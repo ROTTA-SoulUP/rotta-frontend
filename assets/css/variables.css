@@ -1,0 +1,36 @@
+/* =============================================================
+   VARIABLES.CSS — Variáveis globais do projeto Rotta
+   Importado por todos os arquivos CSS
+   ============================================================= */
+
+:root {
+    /* ---------- Paleta de cores ---------- */
+    --verde:        #2A8C6E;
+    --verde-claro:  #3DB38D;
+    --verde-escuro: #1A5E49;
+    --creme:        #EDE8D5;
+    --creme-suave:  #F5F1E6;
+
+    /* ---------- Fundos ---------- */
+    --fundo:        #0F1A17;
+    --fundo-card:   #152420;
+    --fundo-alt:    #1A2E28;
+
+    /* ---------- Textos ---------- */
+    --texto:        #EDE8D5;
+    --texto-muted:  #8FA89F;
+
+    /* ---------- Bordas ---------- */
+    --borda:        rgba(42, 140, 110, 0.2);
+
+    /* ---------- Tipografia ---------- */
+    --fonte-titulo: 'DM Serif Display', Georgia, serif;
+    --fonte-corpo:  'DM Sans', system-ui, sans-serif;
+
+    /* ---------- Forma ---------- */
+    --raio:         12px;
+    --raio-sm:      8px;
+
+    /* ---------- Animação ---------- */
+    --transicao:    0.3s ease;
+}
