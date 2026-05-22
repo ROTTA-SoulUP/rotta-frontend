@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Meta obrigatório -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solução &mdash; Rotta</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/solucao.css">
+
+    <!-- JS do menu hambúrguer e do simulador -->
+    <script src="../js/menu.js" defer></script>
+    <script src="../js/solucao.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ==================== CABEÇALHO ==================== -->
+    <header class="header">
+        <a href="../../index.html">
+            <img src="../images/Logo.jpeg" alt="Logo da Rotta" class="logo">
+        </a>
+
+        <button class="menu-btn" id="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="menu-nav">
+            <ul>
+                <li><a href="../../index.html" class="cabecalho">Home</a></li>
+                <li><a href="./integrantes.html" class="cabecalho">Integrantes</a></li>
+                <li><a href="./sobre.html" class="cabecalho">Sobre</a></li>
+                <li><a href="./faq.html" class="cabecalho">FAQ</a></li>
+                <li><a href="./contato.html" class="cabecalho">Contato</a></li>
+                <li><a href="./solucao.html" class="cabecalho active">Solução</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ==================== FIM DO CABEÇALHO ==================== -->
+
+
+    <main>
+
+        <!-- Hero da página -->
+        <section class="hero-sol">
+            <span class="subtitulo">A Solução</span>
+            <h1>Como a Rotta funciona</h1>
+            <p class="slogan">Da ação sustentável ao crédito no ônibus — em 4 passos simples.</p>
+            <hr>
+        </section>
+
+
+        <!-- ==================== SIMULADOR INTERATIVO ==================== -->
+        <section class="simulador-section">
+            <h3>Simulador interativo</h3>
+            <h2>Calcule seus créditos de transporte</h2>
+            <p>Selecione as ações que você faz no dia a dia e veja quantos créditos acumularia por mês.</p>
+
+            <div class="simulador">
+
+                <!-- Lista de ações selecionáveis -->
+                <div class="acoes-lista">
+                    <p class="acoes-titulo">Selecione suas ações sustentáveis:</p>
+
+                    <!-- article: cada ação é um conteúdo independente -->
+                    <label class="acao-item">
+                        <input type="checkbox" data-pontos="15" data-label="Separar recicláveis">
+                        <span class="acao-info">
+                            <span class="acao-nome">Separar recicláveis</span>
+                            <span class="acao-pts">+15 pts / dia</span>
+                        </span>
+                    </label>
+
+                    <label class="acao-item">
+                        <input type="checkbox" data-pontos="20" data-label="Usar garrafa reutilizável">
+                        <span class="acao-info">
+                            <span class="acao-nome">Usar garrafa reutilizável</span>
+                            <span class="acao-pts">+20 pts / dia</span>
+                        </span>
+                    </label>
+
+                    <label class="acao-item">
+                        <input type="checkbox" data-pontos="30" data-label="Ir a pé ou de bicicleta">
+                        <span class="acao-info">
+                            <span class="acao-nome">Ir a pé ou de bicicleta</span>
+                            <span class="acao-pts">+30 pts / dia</span>
+                        </span>
+                    </label>
+
+                    <label class="acao-item">
+                        <input type="checkbox" data-pontos="10" data-label="Evitar descarte incorreto">
+                        <span class="acao-info">
+                            <span class="acao-nome">Evitar descarte incorreto</span>
+                            <span class="acao-pts">+10 pts / dia</span>
+                        </span>
+                    </label>
+
+                    <label class="acao-item">
+                        <input type="checkbox" data-pontos="25" data-label="Usar sacola reutilizável">
+                        <span class="acao-info">
+                            <span class="acao-nome">Usar sacola reutilizável</span>
+                            <span class="acao-pts">+25 pts / dia</span>
+                        </span>
+                    </label>
+
+                    <label class="acao-item">
+                        <input type="checkbox" data-pontos="12" data-label="Economizar energia em casa">
+                        <span class="acao-info">
+                            <span class="acao-nome">Economizar energia em casa</span>
+                            <span class="acao-pts">+12 pts / dia</span>
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Painel de resultado -->
+                <aside class="resultado-box">
+                    <p class="resultado-label">Pontos por dia</p>
+                    <p class="resultado-num" id="pts-dia">0</p>
+
+                    <p class="resultado-label">Pontos por mês (30 dias)</p>
+                    <p class="resultado-num" id="pts-mes">0</p>
+
+                    <hr class="resultado-sep">
+
+                    <p class="resultado-label">Créditos de transporte</p>
+                    <p class="resultado-credito" id="creditos">R$ 0,00</p>
+                    <p class="resultado-obs">100 pts = R$ 0,50 em crédito</p>
+
+                    <!-- Barra de progresso até a passagem mensal -->
+                    <div class="barra-progresso-wrap">
+                        <div class="barra-progresso" id="barra" style="width:0%"></div>
+                    </div>
+                    <p class="resultado-obs" id="barra-label">0% da passagem mensal (R$ 100)</p>
+                </aside>
+
+            </div>
+        </section>
+
+
+        <!-- ==================== FLUXO PASSO A PASSO ==================== -->
+        <section class="fluxo-section">
+            <h3>Passo a passo</h3>
+            <h2>O fluxo completo da Rotta</h2>
+            <p>Veja como cada etapa funciona, desde o registro da ação até o uso do crédito no transporte.</p>
+
+            <div class="fluxo">
+
+                <!-- article: cada etapa do fluxo é conteúdo autossuficiente -->
+                <article class="fluxo-step">
+                    <div class="step-num">1</div>
+                    <div class="step-corpo">
+                        <h3>Usuário registra a ação</h3>
+                        <p>Pelo app da SoulUp, o usuário tira foto ou grava vídeo documentando a ação
+                            sustentável — reciclar, usar bicicleta, levar sacola, entre outras.</p>
+                        <div class="step-tag">App SoulUp</div>
+                    </div>
+                </article>
+
+                <div class="fluxo-seta" aria-hidden="true">↓</div>
+
+                <article class="fluxo-step">
+                    <div class="step-num">2</div>
+                    <div class="step-corpo">
+                        <h3>IA valida a ação</h3>
+                        <p>O sistema de inteligência artificial analisa o conteúdo, verifica a
+                            autenticidade e aprova ou rejeita. Nenhum ponto é concedido sem validação.</p>
+                        <div class="step-tag">Validação automática</div>
+                    </div>
+                </article>
+
+                <div class="fluxo-seta" aria-hidden="true">↓</div>
+
+                <article class="fluxo-step">
+                    <div class="step-num">3</div>
+                    <div class="step-corpo">
+                        <h3>Pontos são creditados</h3>
+                        <p>Após aprovação, os pontos são somados ao saldo. O ranking é atualizado
+                            em tempo real com feedbacks visuais para o usuário.</p>
+                        <div class="step-tag">Sistema de pontos</div>
+                    </div>
+                </article>
+
+                <div class="fluxo-seta" aria-hidden="true">↓</div>
+
+                <article class="fluxo-step">
+                    <div class="step-num">4</div>
+                    <div class="step-corpo">
+                        <h3>Conversão em crédito de transporte</h3>
+                        <p>O usuário converte os pontos em créditos integrados diretamente ao sistema
+                            de bilhetagem das operadoras parceiras.</p>
+                        <div class="step-tag">Integração bilhetagem</div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- ==================== IMPACTO ==================== -->
+        <section class="impacto-section">
+            <h3>Impacto</h3>
+            <h2>O que a Rotta gera na prática</h2>
+            <p>Cada ação registrada gera impacto real — para o usuário, para a cidade e para o meio ambiente.</p>
+
+            <div class="impacto-grid">
+
+                <!-- article: cada métrica é conteúdo independente -->
+                <article class="impacto-card">
+                    <p class="impacto-num">3x</p>
+                    <p class="impacto-desc">mais engajamento com sustentabilidade quando há recompensa concreta</p>
+                </article>
+
+                <article class="impacto-card">
+                    <p class="impacto-num">R$100</p>
+                    <p class="impacto-desc">em créditos de transporte possíveis por mês com hábitos consistentes</p>
+                </article>
+
+                <article class="impacto-card">
+                    <p class="impacto-num">0</p>
+                    <p class="impacto-desc">fraudes graças à validação por IA em 100% das ações registradas</p>
+                </article>
+
+                <article class="impacto-card">
+                    <p class="impacto-num">CO₂</p>
+                    <p class="impacto-desc">redução de emissões incentivada pelo uso do transporte público</p>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ==================== RODAPÉ ==================== -->
+    <footer>
+        <p>&copy; 2025 Rotta &mdash; Sustentabilidade &amp; Mobilidade Urbana. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+
+</html>
