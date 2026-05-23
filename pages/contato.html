@@ -5,7 +5,7 @@
     <!-- Meta obrigatório -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato &mdash; Rotta</title>
+    <title>Contato</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,14 +87,15 @@
                         </div>
                     </div>
 
-                    <!-- Linha: telefone + assunto -->
+                    <!-- Telefone -->
                     <div class="form-row">
                         <div class="form-group">
                             <label for="telefone">Telefone</label>
                             <input type="tel" id="telefone" name="telefone"
                                 placeholder="(11) 99999-9999">
                         </div>
-
+                        
+                        <!-- Assunto -->
                         <div class="form-group">
                             <label for="assunto">Assunto <span class="obrigatorio">*</span></label>
                             <select id="assunto" name="assunto" required>
@@ -118,16 +119,6 @@
                         <textarea id="mensagem" name="mensagem" rows="5"
                             placeholder="Escreva sua dúvida ou mensagem aqui..." required></textarea>
                         <span class="error-msg" id="erro-mensagem"></span>
-                    </div>
-
-                    <!-- Aceite dos termos -->
-                    <div class="form-group checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="termos" name="termos" required>
-                            <span>Concordo com os <a href="#">termos de uso</a> e
-                                <a href="#">política de privacidade</a>.</span>
-                        </label>
-                        <span class="error-msg" id="erro-termos"></span>
                     </div>
 
                     <!-- Botões de ação -->
