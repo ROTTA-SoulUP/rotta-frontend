@@ -73,7 +73,16 @@ h3 {
     color: var(--verde-claro);
 }
 
-/* "from SoulUp" abaixo do h1 */
+/* Coloca h1 e h4 lado a lado */
+.titulo-hero {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+}
+
+/* Sobe levemente o "from SoulUp" */
 h4 {
     font-family: var(--fonte-titulo);
     font-style: italic;
@@ -81,8 +90,9 @@ h4 {
     font-weight: 400;
     color: var(--texto-muted);
     letter-spacing: 0.02em;
-    margin-top: -0.15em;
-    margin-bottom: 1.25rem;
+    margin: 0;
+    align-self: flex-end;
+    padding-bottom: 1.30em;
 }
 
 p {
@@ -371,7 +381,9 @@ hr {
    ============================================================= */
 footer {
     border-top: 1px solid var(--borda);
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 2rem 5%;
     font-size: 0.85rem;
     color: var(--texto-muted);

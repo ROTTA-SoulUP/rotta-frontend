@@ -499,7 +499,9 @@ main section > h3:not(:first-child) {
    ============================================================= */
 footer {
     border-top: 1px solid var(--borda);
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 2rem 5%;
     font-size: 0.85rem;
     color: var(--texto-muted);
