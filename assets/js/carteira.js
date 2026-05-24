@@ -18,9 +18,9 @@ function carregarEstado() {
         totalConvertido: 1.50,
         streak: 3,
         historico: [
-            { acao: 'Separar recicláveis',      pontos: 15, data: dataFormatada(-2) },
+            { acao: 'Separar recicláveis', pontos: 15, data: dataFormatada(-2) },
             { acao: 'Usar garrafa reutilizável', pontos: 20, data: dataFormatada(-1) },
-            { acao: 'Ir a pé ou de bicicleta',  pontos: 30, data: dataFormatada(0)  },
+            { acao: 'Ir a pé ou de bicicleta', pontos: 40, data: dataFormatada(0) },
         ]
     };
 }
@@ -36,9 +36,9 @@ function dataFormatada(offsetDias) {
     return d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
 }
 
-// Converte pontos em reais (100 pts = R$ 0,50)
+// Converte pontos em reais (150 pts = R$ 5,30)
 function pontosParaReais(pts) {
-    return (pts / 100 * 0.5).toFixed(2);
+  return (pts / 150 * 5.30).toFixed(2);
 }
 
 
@@ -48,24 +48,27 @@ function pontosParaReais(pts) {
 // =============================================================
 function atualizarInterface(estado) {
     // Saldo principal
-    document.getElementById('saldo-pontos').textContent =
-        estado.pontos.toLocaleString('pt-BR');
+    const saldoPontos = document.getElementById('saldo-pontos');
+    if (saldoPontos) saldoPontos.textContent = estado.pontos.toLocaleString('pt-BR');
 
-    document.getElementById('saldo-reais').textContent =
-        'R$ ' + pontosParaReais(estado.pontos).replace('.', ',');
+    const saldoReais = document.getElementById('saldo-reais');
+    if (saldoReais) saldoReais.textContent = 'R$ ' + pontosParaReais(estado.pontos).replace('.', ',');
 
     // Resumo rápido
-    document.getElementById('total-acoes').textContent =
-        estado.historico.length;
+    const totalAcoes = document.getElementById('total-acoes');
+    if (totalAcoes) totalAcoes.textContent = estado.historico.length;
 
-    document.getElementById('total-convertido').textContent =
-        'R$ ' + estado.totalConvertido.toFixed(2).replace('.', ',');
+    const totalConvertido = document.getElementById('total-convertido');
+    if (totalConvertido) totalConvertido.textContent = 'R$ ' + estado.totalConvertido.toFixed(2).replace('.', ',');
 
-    document.getElementById('streak').textContent =
-        estado.streak + ' dia' + (estado.streak !== 1 ? 's' : '');
+    const streak = document.getElementById('streak');
+    if (streak) streak.textContent = estado.streak + ' dia' + (estado.streak !== 1 ? 's' : '');
 
     // Histórico
     renderizarHistorico(estado.historico);
+
+    // Meta semanal
+    atualizarMetaSemanal();
 }
 
 
@@ -74,8 +77,8 @@ function atualizarInterface(estado) {
 //  Renderiza a lista de ações no DOM
 // =============================================================
 function renderizarHistorico(historico) {
-    const lista  = document.getElementById('historico-lista');
-    const vazio  = document.getElementById('historico-vazio');
+    const lista = document.getElementById('historico-lista');
+    const vazio = document.getElementById('historico-vazio');
 
     // Remove entradas antigas (mantém o div vazio)
     const antigas = lista.querySelectorAll('.historico-item');
@@ -116,27 +119,26 @@ function registrarAcao(nomeAcao, pontos) {
 
     // Adiciona ao histórico
     estado.historico.push({
-        acao:   nomeAcao,
+        acao: nomeAcao,
         pontos: pontos,
-        data:   dataFormatada(0)
+        data: dataFormatada(0)
     });
 
     // Soma pontos e incrementa streak
     estado.pontos += pontos;
+    adicionarPontos(pontos);  // ← ADICIONE ESTA LINHA
     estado.streak += 1;
-
     salvarEstado(estado);
     atualizarInterface(estado);
     mostrarToast(`+${pontos} pts — ${nomeAcao}`);
 }
-
 
 // =============================================================
 //  TOAST
 //  Notificação rápida no canto inferior da tela
 // =============================================================
 function mostrarToast(texto) {
-    const toast     = document.getElementById('toast');
+    const toast = document.getElementById('toast');
     const toastTexto = document.getElementById('toast-texto');
 
     toastTexto.textContent = texto;
@@ -149,19 +151,19 @@ function mostrarToast(texto) {
 // =============================================================
 //  MODAL DE CONVERSÃO
 // =============================================================
-const modalConverter    = document.getElementById('modal-converter');
-const fundoConverter    = document.getElementById('fundo-converter');
-const fecharConverter   = document.getElementById('fechar-converter');
-const btnConverter      = document.getElementById('btn-converter');
-const inputQtd          = document.getElementById('qtd-pontos');
-const converterErro     = document.getElementById('converter-erro');
-const converterValor    = document.getElementById('converter-valor');
-const saldoDisponivel   = document.getElementById('saldo-disponivel');
-const converterForm     = document.getElementById('converter-form');
-const converterSucesso  = document.getElementById('converter-sucesso');
-const btnConfirmar      = document.getElementById('btn-confirmar-converter');
-const btnCancelar       = document.getElementById('btn-cancelar-converter');
-const btnFecharSucesso  = document.getElementById('btn-fechar-sucesso');
+const modalConverter = document.getElementById('modal-converter');
+const fundoConverter = document.getElementById('fundo-converter');
+const fecharConverter = document.getElementById('fechar-converter');
+const btnConverter = document.getElementById('btn-converter');
+const inputQtd = document.getElementById('qtd-pontos');
+const converterErro = document.getElementById('converter-erro');
+const converterValor = document.getElementById('converter-valor');
+const saldoDisponivel = document.getElementById('saldo-disponivel');
+const converterForm = document.getElementById('converter-form');
+const converterSucesso = document.getElementById('converter-sucesso');
+const btnConfirmar = document.getElementById('btn-confirmar-converter');
+const btnCancelar = document.getElementById('btn-cancelar-converter');
+const btnFecharSucesso = document.getElementById('btn-fechar-sucesso');
 
 // Abre modal
 btnConverter.addEventListener('click', () => {
@@ -189,23 +191,23 @@ inputQtd.addEventListener('input', () => {
 // Confirma conversão
 btnConfirmar.addEventListener('click', () => {
     const estado = carregarEstado();
-    const qtd    = parseInt(inputQtd.value) || 0;
+    const qtd = parseInt(inputQtd.value) || 0;
 
     // Validações
     if (!qtd || qtd <= 0) {
         converterErro.textContent = 'Informe a quantidade de pontos.';
         return;
     }
-    if (qtd < 100) {
-        converterErro.textContent = 'Mínimo de 100 pontos para converter.';
+    if (qtd < 150) {
+        converterErro.textContent = 'Mínimo de 150 pontos para converter.';
         return;
     }
     if (qtd > estado.pontos) {
         converterErro.textContent = 'Saldo insuficiente.';
         return;
     }
-    if (qtd % 100 !== 0) {
-        converterErro.textContent = 'Use múltiplos de 100 (ex: 100, 200, 500).';
+    if (qtd % 150 !== 0) {
+        converterErro.textContent = 'Use múltiplos de 150 (ex: 150, 300, 450).';
         return;
     }
 
@@ -247,11 +249,17 @@ document.getElementById('btn-limpar').addEventListener('click', () => {
 
     const estado = carregarEstado();
     estado.historico = [];
-    estado.streak    = 0;
-
+    estado.streak = 0;
     salvarEstado(estado);
+
+    // Zera a meta semanal
+    const weekStart = getWeekStart();
+    const key = 'weeklyPoints';
+    localStorage.removeItem(key);
+
     atualizarInterface(estado);
-    mostrarToast('Histórico apagado.');
+    atualizarMetaSemanal();
+    mostrarToast('Histórico e meta semanal apagados.');
 });
 
 
@@ -261,7 +269,7 @@ document.getElementById('btn-limpar').addEventListener('click', () => {
 document.querySelectorAll('.acao-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const nomeAcao = btn.dataset.acao;
-        const pontos   = parseInt(btn.dataset.pontos);
+        const pontos = parseInt(btn.dataset.pontos);
 
         // Feedback visual no card
         btn.classList.add('registrado');
@@ -280,3 +288,55 @@ document.addEventListener('DOMContentLoaded', () => {
     const estado = carregarEstado();
     atualizarInterface(estado);
 });
+
+// ========== FUNÇÕES DA META SEMANAL ==========
+
+const META_SEMANAL = 750;
+const STORAGE_KEY = 'weeklyPoints';
+
+function getWeekStart() {
+    const now = new Date();
+    const day = now.getDay();
+    const diff = now.getDate() - day + (day === 0 ? -6 : 1);
+    const monday = new Date(now.setDate(diff));
+    monday.setHours(0, 0, 0, 0);
+    return monday.toISOString();
+}
+
+function loadWeeklyData() {
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    const currentWeekStart = getWeekStart();
+    if (!data || data.weekStart !== currentWeekStart) {
+        const newData = { weekStart: currentWeekStart, points: 0 };
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(newData));
+        return newData;
+    }
+    return data;
+}
+
+function saveWeeklyData(points) {
+    const data = { weekStart: getWeekStart(), points };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function calcularPontosSemana() {
+    const data = loadWeeklyData();
+    return data.points;
+}
+
+function atualizarMetaSemanal() {
+    const pontos = calcularPontosSemana();
+    const percentual = Math.min((pontos / META_SEMANAL) * 100, 100);
+    document.getElementById('meta-semanal').textContent = `${pontos}/${META_SEMANAL}`;
+    const barra = document.getElementById('meta-barra');
+    if (barra) {
+        barra.style.width = `${percentual}%`;
+    }
+}
+
+function adicionarPontos(pontos) {
+    const data = loadWeeklyData();
+    data.points += pontos;
+    saveWeeklyData(data.points);
+    atualizarMetaSemanal();
+}
