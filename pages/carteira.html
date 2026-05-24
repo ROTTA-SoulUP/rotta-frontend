@@ -10,7 +10,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -111,10 +113,13 @@
                 </div>
                 <hr class="resumo-sep">
                 <div class="resumo-item">
-                    <i class="fa-solid fa-fire"></i>
+                    <i class="fa-solid fa-target"></i>
                     <div>
-                        <p class="resumo-num" id="streak">0 dias</p>
-                        <p class="resumo-desc">sequência atual</p>
+                        <p class="resumo-num" id="meta-semanal">0/100</p>
+                        <p class="resumo-desc">meta semanal</p>
+                        <div class="meta-progresso">
+                            <div class="meta-barra" id="meta-barra"></div>
+                        </div>
                     </div>
                 </div>
             </article>
@@ -143,10 +148,10 @@
                     <span class="acao-pts">+20 pts</span>
                 </article>
 
-                <article class="acao-btn" data-acao="Ir a pé ou de bicicleta" data-pontos="30">
+                <article class="acao-btn" data-acao="Ir a pé ou de bicicleta" data-pontos="40">
                     <i class="fa-solid fa-person-walking"></i>
                     <span class="acao-nome">Ir a pé ou de bicicleta</span>
-                    <span class="acao-pts">+30 pts</span>
+                    <span class="acao-pts">+40 pts</span>
                 </article>
 
                 <article class="acao-btn" data-acao="Usar sacola reutilizável" data-pontos="25">
@@ -155,16 +160,16 @@
                     <span class="acao-pts">+25 pts</span>
                 </article>
 
-                <article class="acao-btn" data-acao="Economizar energia" data-pontos="12">
+                <article class="acao-btn" data-acao="Economizar energia" data-pontos="30">
                     <i class="fa-solid fa-lightbulb"></i>
                     <span class="acao-nome">Economizar energia</span>
-                    <span class="acao-pts">+12 pts</span>
+                    <span class="acao-pts">+30 pts</span>
                 </article>
 
-                <article class="acao-btn" data-acao="Evitar descarte incorreto" data-pontos="10">
+                <article class="acao-btn" data-acao="Evitar descarte incorreto" data-pontos="20">
                     <i class="fa-solid fa-trash-can"></i>
                     <span class="acao-nome">Evitar descarte incorreto</span>
-                    <span class="acao-pts">+10 pts</span>
+                    <span class="acao-pts">+20 pts</span>
                 </article>
 
             </div>
@@ -214,15 +219,14 @@
                 <p>Escolha quantos pontos deseja converter em créditos de transporte.</p>
 
                 <div class="converter-taxa">
-                    <span>100 pts</span>
+                    <span>150 pts</span>
                     <i class="ti ti-arrow-right"></i>
-                    <span>R$ 0,50</span>
+                    <span>R$ 5,30</span>
                 </div>
 
                 <div class="converter-campo">
                     <label for="qtd-pontos">Pontos a converter</label>
-                    <input type="number" id="qtd-pontos" min="100" step="100"
-                        placeholder="Ex: 500">
+                    <input type="number" id="qtd-pontos" min="100" step="100" placeholder="Ex: 500">
                     <span class="converter-erro" id="converter-erro"></span>
                 </div>
 
@@ -274,4 +278,5 @@
     </footer>
 
 </body>
+
 </html>
