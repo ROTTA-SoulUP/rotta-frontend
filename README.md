@@ -97,9 +97,27 @@ Challenge-SoulUp/
 
 ---
 
+## 📸 Páginas
+
+| Home | Sobre |
+|------|-------|
+| ![Home](./assets/images/home.png) | ![Sobre](./assets/images/sobre.png) |
+
+| Solução | Carteira |
+|---------|-----|
+| ![Solução](./assets/images/solucao.png) | ![Carteira](./assets/images/carteira.png) |
+
+| FAQ | Integrantes |
+|---------|-----|
+| ![FAQ](./assets/images/faq.png) | ![Integrantes](./assets/images/integrantes.png) |
+
+| Contato | 
+|---------|
+| ![Contato](./assets/images/contato.png) |
+
 ## 📦 Repositório
 
-🔗 [Challenge-SoulUp](https://github.com/LeonardoSilva1203/Challenge-SoulUp)
+🔗 [Challenge-SoulUp](https://github.com/ROTTA-SoulUP/rotta-frontend.git)
 
 ---
 
