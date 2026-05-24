@@ -2,7 +2,6 @@
 <html lang="pt-br">
 
 <head>
-    <!-- Meta obrigatório -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Integrantes</title>
@@ -12,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome (ícones sociais) -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -20,8 +19,9 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/integrantes.css">
 
-    <!-- JS do menu hambúrguer -->
+    <!-- JS -->
     <script src="../assets/js/menu.js" defer></script>
+    <script src="../assets/js/integrantes.js" defer></script>
 </head>
 
 <body>
@@ -33,9 +33,7 @@
         </a>
 
         <button class="menu-btn" id="menu-btn" aria-label="Abrir menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </button>
 
         <nav id="menu-nav">
@@ -45,7 +43,7 @@
                 <li><a href="./solucao.html" class="cabecalho">Solução</a></li>
                 <li><a href="./carteira.html" class="cabecalho">Carteira</a></li>
                 <li><a href="./faq.html" class="cabecalho">FAQ</a></li>
-                <li><a href="./integrantes.html" class="cabecalho">Integrantes</a></li>
+                <li><a href="./integrantes.html" class="cabecalho active">Integrantes</a></li>
                 <li><a href="./contato.html" class="cabecalho">Contato</a></li>
             </ul>
         </nav>
@@ -53,7 +51,7 @@
     <!-- ==================== FIM DO CABEÇALHO ==================== -->
 
 
-    <!-- Hero da página -->
+    <!-- ==================== HERO ==================== -->
     <div class="integrantes-hero">
         <span class="subtitulo">Equipe</span>
         <h2>Quem somos</h2>
@@ -61,102 +59,259 @@
     </div>
 
 
+    <!-- ==================== SEÇÃO 1 — NÚMEROS ==================== -->
+    <div class="numeros-section">
+        <div class="numeros-inner">
+
+            <article class="numero-item">
+                <span class="numero-valor">5</span>
+                <span class="numero-desc">integrantes</span>
+            </article>
+
+            <div class="numero-divider"></div>
+
+            <article class="numero-item">
+                <span class="numero-valor">1</span>
+                <span class="numero-desc">semestre</span>
+            </article>
+
+            <div class="numero-divider"></div>
+
+            <article class="numero-item">
+                <span class="numero-valor">6</span>
+                <span class="numero-desc">disciplinas</span>
+            </article>
+
+            <div class="numero-divider"></div>
+
+            <article class="numero-item">
+                <span class="numero-valor">1</span>
+                <span class="numero-desc">projeto</span>
+            </article>
+
+        </div>
+    </div>
+
+
+    <!-- ==================== SEÇÃO 2 — SOBRE O PROJETO ==================== -->
+    <div class="sobre-projeto-section">
+        <div class="sobre-projeto-inner">
+
+            <div class="sobre-projeto-texto">
+                <span class="subtitulo">O projeto</span>
+                <h2>O que desenvolvemos</h2>
+                <p>
+                    A Rotta é a solução desenvolvida pelo grupo para o Challenge FIAP 2026,
+                    em parceria com a plataforma SoulUp. O desafio escolhido foi o
+                    <strong>Desafio 2 — Utilização de Pontos para Transporte Público</strong>.
+                </p>
+                <p>
+                    O projeto conecta sustentabilidade e mobilidade urbana: o usuário registra
+                    ações sustentáveis pelo app, acumula pontos validados por inteligência
+                    artificial e converte esses pontos em créditos reais para usar no
+                    transporte público.
+                </p>
+            </div>
+
+            <div class="sobre-projeto-tags">
+                <span class="tag">Challenge FIAP 2026</span>
+                <span class="tag">SoulUp</span>
+                <span class="tag">Desafio 2</span>
+                <span class="tag">Sustentabilidade</span>
+                <span class="tag">Transporte Público</span>
+                <span class="tag">IA</span>
+                <span class="tag">1TDSPJ</span>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ==================== SEÇÃO 3 — COMO NOS DIVIDIMOS ==================== -->
+    <div class="divisao-section">
+        <div class="divisao-inner">
+
+            <span class="subtitulo">Organização</span>
+            <h2>Como nos dividimos</h2>
+            <p>Cada integrante ficou responsável por uma área técnica do projeto,
+                garantindo que todas as disciplinas fossem cobertas com dedicação.</p>
+
+            <div class="divisao-grid">
+
+                <article class="divisao-card">
+                    <div class="divisao-icone">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <div class="divisao-info">
+                        <p class="divisao-area">Front-End</p>
+                        <p class="divisao-nome">Leonardo Cerqueira</p>
+                        <p class="divisao-tech">HTML · CSS · JavaScript</p>
+                    </div>
+                </article>
+
+                <article class="divisao-card">
+                    <div class="divisao-icone">
+                        <i class="fa-brands fa-java"></i>
+                    </div>
+                    <div class="divisao-info">
+                        <p class="divisao-area">Java</p>
+                        <p class="divisao-nome">Guilherme Almeida</p>
+                        <p class="divisao-tech">Domain Driven Design</p>
+                    </div>
+                </article>
+
+                <article class="divisao-card">
+                    <div class="divisao-icone">
+                        <i class="fa-brands fa-python"></i>
+                    </div>
+                    <div class="divisao-info">
+                        <p class="divisao-area">Python</p>
+                        <p class="divisao-nome">Thiago Santa Rosa</p>
+                        <p class="divisao-tech">Computational Thinking</p>
+                    </div>
+                </article>
+
+                <article class="divisao-card">
+                    <div class="divisao-icone">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="divisao-info">
+                        <p class="divisao-area">AI &amp; Chatbot</p>
+                        <p class="divisao-nome">Beatriz Urbano</p>
+                        <p class="divisao-tech">Watson Assistant</p>
+                    </div>
+                </article>
+
+                <article class="divisao-card">
+                    <div class="divisao-icone">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <div class="divisao-info">
+                        <p class="divisao-area">Banco de Dados</p>
+                        <p class="divisao-nome">Geovanna Secchi</p>
+                        <p class="divisao-tech">Oracle · SQL · MER</p>
+                    </div>
+                </article>
+
+                <article class="divisao-card">
+                    <div class="divisao-icone">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <div class="divisao-info">
+                        <p class="divisao-area">Business Model</p>
+                        <p class="divisao-nome">Thiago &amp; Geovanna</p>
+                        <p class="divisao-tech">BMC · Pitch · Inovação</p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </div>
+
+
     <!-- ==================== GRID DE INTEGRANTES ==================== -->
-    <!-- Cada integrante é um article: conteúdo independente e reutilizável -->
     <div class="cards-grid">
 
         <!-- Integrante 1 -->
         <article class="card">
-            <img src="../assets/images/leonardo.jpeg" alt="Foto de Leonardo Cerqueira">
-            <h2>Leonardo Arnaldo Cerqueira Da Silva</h2>
-            <p>Front-End</p>
-            <p>RM: 573188 &mdash; 1TDSPJ</p>
-            <div class="card-links">
-                <a href="https://github.com/LeonardoSilva1203"
-                    target="_blank" rel="noopener" aria-label="GitHub de Leonardo">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/leonardo-cerqueira-12a400400/"
-                    target="_blank" rel="noopener" aria-label="LinkedIn de Leonardo">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-            </div>
+            <img src="../assets/images/leonardo.jpeg"
+                alt="Foto de Leonardo Cerqueira" class="foto-integrante">
+            <button class="btn-perfil"
+                data-nome="Leonardo Arnaldo Cerqueira Da Silva"
+                data-cargo="Front-End"
+                data-turma="1TDSPJ — RM: 573188"
+                data-foto="../assets/images/leonardo.jpeg"
+                data-github="https://github.com/LeonardoSilva1203"
+                data-linkedin="https://www.linkedin.com/in/leonardo-cerqueira-12a400400/">
+                Ver perfil
+            </button>
         </article>
 
         <!-- Integrante 2 -->
         <article class="card">
-            <img src="../assets/images/guilherme.jpeg" alt="Foto de Guilherme Almeida">
-            <h2>Guilherme Matheus Magalhães Almeida </h2>
-            <p>Java</p>
-            <p>RM: 571713 &mdash; 1TDSPJ</p>
-            <div class="card-links">
-                <a href="https://github.com/GuilhermeAlmeida0207"
-                    target="_blank" rel="noopener" aria-label="GitHub de Guilherme">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="http://www.linkedin.com/in/guimmalmeida"
-                    target="_blank" rel="noopener" aria-label="LinkedIn de Guilherme">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-            </div>
+            <img src="../assets/images/guilherme.jpeg"
+                alt="Foto de Guilherme Almeida">
+            <button class="btn-perfil"
+                data-nome="Guilherme Matheus Magalhães Almeida"
+                data-cargo="Java"
+                data-turma="1TDSPJ — RM: 571713"
+                data-foto="../assets/images/guilherme.jpeg"
+                data-github="https://github.com/GuilhermeAlmeida0207"
+                data-linkedin="http://www.linkedin.com/in/guimmalmeida">
+                Ver perfil
+            </button>
         </article>
 
         <!-- Integrante 3 -->
         <article class="card">
-            <img src="../assets/images/thiago.jpeg" alt="Foto de Thiago Santa Rosa">
-            <h2>Thiago Rodrigues Santa Rosa</h2>
-            <p>Python &amp; Business Model</p>
-            <p>RM: 572616 &mdash; 1TDSPJ</p>
-            <div class="card-links">
-                <a href="https://github.com/Thiagordsr"
-                    target="_blank" rel="noopener" aria-label="GitHub de Thiago">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/thiago-rodrigues-santa-rosa-39b3b3305/"
-                    target="_blank" rel="noopener" aria-label="LinkedIn de Thiago">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-            </div>
+            <img src="../assets/images/thiago.jpeg"
+                alt="Foto de Thiago Santa Rosa">
+            <button class="btn-perfil"
+                data-nome="Thiago Rodrigues Santa Rosa"
+                data-cargo="Python & Business Model"
+                data-turma="1TDSPJ — RM: 572616"
+                data-foto="../assets/images/thiago.jpeg"
+                data-github="https://github.com/Thiagordsr"
+                data-linkedin="https://www.linkedin.com/in/thiago-rodrigues-santa-rosa-39b3b3305/">
+                Ver perfil
+            </button>
         </article>
 
         <!-- Integrante 4 -->
         <article class="card">
-            <img src="../assets/images/beatriz.jpeg" alt="Foto de Beatriz Urbano">
-            <h2>Beatriz Urbano Marques de Oliveira</h2>
-            <p>AI &amp; Chatbot</p>
-            <p>RM: 569341 &mdash; 1TDSPJ</p>
-            <div class="card-links">
-                <a href="https://github.com/BeaUrbano"
-                    target="_blank" rel="noopener" aria-label="GitHub de Beatriz">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/beatriz-urbano-5a9bab254"
-                    target="_blank" rel="noopener" aria-label="LinkedIn de Beatriz">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-            </div>
+            <img src="../assets/images/beatriz.jpeg"
+                alt="Foto de Beatriz Urbano">
+            <button class="btn-perfil"
+                data-nome="Beatriz Urbano Marques de Oliveira"
+                data-cargo="AI & Chatbot"
+                data-turma="1TDSPJ — RM: 569341"
+                data-foto="../assets/images/beatriz.jpeg"
+                data-github="https://github.com/BeaUrbano"
+                data-linkedin="https://www.linkedin.com/in/beatriz-urbano-5a9bab254">
+                Ver perfil
+            </button>
         </article>
 
         <!-- Integrante 5 -->
         <article class="card">
-            <img src="../assets/images/geovanna.jpeg" alt="Foto de Geovanna Secchi">
-            <h2>Geovanna Secchi Egea</h2>
-            <p>Banco de Dados &amp; Business Model</p>
-            <p>RM: 573452 &mdash; 1TDSPJ</p>
-            <div class="card-links">
-                <a href="https://github.com/geovannasecchi"
-                    target="_blank" rel="noopener" aria-label="GitHub de Geovanna">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/geovanna-secchi-egea-3194553b5"
-                    target="_blank" rel="noopener" aria-label="LinkedIn de Geovanna">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-            </div>
+            <img src="../assets/images/geovanna.jpeg"
+                alt="Foto de Geovanna Secchi">
+            <button class="btn-perfil"
+                data-nome="Geovanna Secchi Egea"
+                data-cargo="Banco de Dados & Business Model"
+                data-turma="1TDSPJ — RM: 573452"
+                data-foto="../assets/images/geovanna.jpeg"
+                data-github="https://github.com/geovannasecchi"
+                data-linkedin="https://www.linkedin.com/in/geovanna-secchi-egea-3194553b5">
+                Ver perfil
+            </button>
         </article>
 
     </div>
     <!-- ==================== FIM DO GRID ==================== -->
+
+
+    <!-- ==================== MODAL DE PERFIL ==================== -->
+    <div class="modal" id="modal-perfil">
+        <div class="modal-fundo" id="modal-fundo"></div>
+        <div class="modal-caixa">
+            <button class="modal-fechar" id="modal-fechar">&times;</button>
+            <img src="" alt="" id="modal-foto" class="modal-foto">
+            <div class="modal-info">
+                <h2 id="modal-nome"></h2>
+                <span id="modal-cargo" class="modal-cargo"></span>
+                <p id="modal-turma" class="modal-turma"></p>
+                <div class="modal-links">
+                    <a id="modal-github" href="#" target="_blank" rel="noopener">
+                        <i class="fa-brands fa-github"></i> GitHub
+                    </a>
+                    <a id="modal-linkedin" href="#" target="_blank" rel="noopener">
+                        <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <!-- ==================== RODAPÉ ==================== -->
@@ -165,5 +320,4 @@
     </footer>
 
 </body>
-
 </html>
