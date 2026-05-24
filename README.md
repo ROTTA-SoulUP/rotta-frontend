@@ -53,34 +53,50 @@ Challenge-SoulUp/
 ├── index.html
 ├── README.md
 ├── pages/
-│    ├── integrantes.html
-│    ├── sobre.html
-│    ├── faq.html
+│    ├── carteira.html     
 │    ├── contato.html
+│    ├── faq.html
+│    ├── integrantes.html
+│    ├── login.html
+│    ├── sobre.html
 │    ├── solucao.html
 │   
 │        
 └── assets/
      ├── css/
-     │    ├── variables.css
-     │    ├── style.css
-     │    ├── sobre.css
-     │    ├── faq.css
+     │    ├── carteira.css
      │    ├── contato.css
+     │    ├── faq.css
+     │    ├── home.css
      │    ├── integrantes.css
-     │    └── solucao.css
+     │    ├── login.css
+     │    ├── sobre.css
+     │    ├── solucao.css
+     │    └── variables.css
      ├── js/
-     │    ├── menu.js
-     │    ├── faq.js
+     │    ├── carteira.js
      │    ├── contato.js
-     │    └── solucao.js
+     │    ├── faq.js
+     │    ├── integrantes.js
+     │    ├── login.js
+     │    ├── menu.js
+     │    ├── solucao.js
+     │    └── verificacao-login.js
      └── images/
-          ├── Logo.jpeg
-          ├── Leonardo.jpeg
-          ├── Guilherme.jpeg
-          ├── Thiago.jpeg
-          ├── Beatriz.jpeg
-          └── Geovanna.jpeg
+          ├── beatriz.jpeg
+          ├── carteira.jpeg
+          ├── contato.jpeg
+          ├── faq.jpeg
+          ├── geovanna.jpeg
+          ├── guilherme.jpeg
+          ├── home.jpeg
+          ├── integrantes.jpeg
+          ├── leonardo.jpeg
+          ├── Login.jpeg
+          ├── logo.svg
+          ├── sobre.jpeg
+          ├── solucao.jpeg
+          └── thiago.jpeg
 ```
 
 ---
