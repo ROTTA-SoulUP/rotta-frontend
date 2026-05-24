@@ -59,13 +59,7 @@ function validar() {
         mostrarErro('erro-mensagem', 'Escreva ao menos 10 caracteres.');
         setErro(mensagem, true); ok = false;
     } else { limparErro('erro-mensagem'); setErro(mensagem, false); }
-
-    const termos = document.getElementById('termos');
-    if (!termos.checked) {
-        mostrarErro('erro-termos', 'Aceite os termos para continuar.');
-        ok = false;
-    } else { limparErro('erro-termos'); }
-
+    
     return ok;
 }
 

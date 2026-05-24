@@ -1,24 +1,6 @@
 @import url('./variables.css');
 
 /* ===========================
-   VARIÁVEIS (mesmas do projeto)
-=========================== */
-:root {
-    --fundo: #0f1a17;
-    --verde: #2a8c6e;
-    --verde-claro: #4ecba0;
-    --creme: #f0ede6;
-    --texto: #c8c5bc;
-    --texto-muted: #8a9990;
-    --borda: rgba(255, 255, 255, 0.07);
-    --raio-sm: 6px;
-    --raio: 12px;
-    --transicao: 0.2s ease;
-    --fonte-titulo: 'Georgia', 'Times New Roman', serif;
-    --fonte-corpo: system-ui, -apple-system, 'Segoe UI', sans-serif;
-}
-
-/* ===========================
    RESET & BASE
 =========================== */
 *,
@@ -225,12 +207,6 @@ form {
     gap: 1.25rem;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.45rem;
-}
-
 label {
     font-size: 0.85rem;
     font-weight: 500;
@@ -298,39 +274,6 @@ textarea.input-error {
     font-size: 0.78rem;
     color: #e06060;
     min-height: 1rem;
-}
-
-/* ===========================
-   CHECKBOX
-=========================== */
-.checkbox-group {
-    margin-top: 0.25rem;
-}
-
-.checkbox-label {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.7rem;
-    cursor: pointer;
-    color: var(--texto-muted);
-    font-size: 0.875rem;
-}
-
-.checkbox-label input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    min-width: 16px;
-    accent-color: var(--verde-claro);
-    cursor: pointer;
-    margin-top: 3px;
-}
-
-.checkbox-label a {
-    color: var(--verde-claro);
-}
-
-.checkbox-label a:hover {
-    text-decoration: underline;
 }
 
 /* ===========================
@@ -432,12 +375,16 @@ textarea.input-error {
     }
 }
 
+
+
 /* ===========================
    FOOTER
 =========================== */
 footer {
     border-top: 1px solid var(--borda);
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 2rem 5%;
     font-size: 0.85rem;
     color: var(--texto-muted);

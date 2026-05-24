@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Meta obrigatório -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carteira Digital</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Tabler Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/carteira.css">
+
+    <!-- JS -->
+    <script src="../assets/js/menu.js" defer></script>
+    <script src="../assets/js/carteira.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ==================== CABEÇALHO ==================== -->
+    <header class="header">
+        <a href="../../index.html">
+            <img src="../assets/images/logo.svg" alt="Logo da Rotta" class="logo">
+        </a>
+
+        <button class="menu-btn" id="menu-btn" aria-label="Abrir menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav id="menu-nav">
+            <ul>
+                <li><a href="../index.html" class="cabecalho">Home</a></li>
+                <li><a href="./sobre.html" class="cabecalho">Sobre</a></li>
+                <li><a href="./solucao.html" class="cabecalho">Solução</a></li>
+                <li><a href="./carteira.html" class="cabecalho">Carteira</a></li>
+                <li><a href="./faq.html" class="cabecalho">FAQ</a></li>
+                <li><a href="./integrantes.html" class="cabecalho">Integrantes</a></li>
+                <li><a href="./contato.html" class="cabecalho">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ==================== FIM DO CABEÇALHO ==================== -->
+
+
+    <main>
+
+        <!-- ==================== HERO ==================== -->
+        <section class="hero-carteira">
+            <span class="subtitulo">Carteira Digital</span>
+            <h1>Minha Carteira</h1>
+            <p class="slogan">Acompanhe seus pontos, histórico e converta em créditos de transporte.</p>
+        </section>
+
+
+        <!-- ==================== PAINEL PRINCIPAL ==================== -->
+        <section class="painel">
+
+            <!-- Card de saldo de pontos -->
+            <article class="card-saldo">
+                <div class="saldo-topo">
+                    <span class="saldo-label">Saldo de Pontos</span>
+                    <i class="fa-solid fa-leaf saldo-icone"></i>
+                </div>
+                <p class="saldo-numero" id="saldo-pontos">0</p>
+                <p class="saldo-sub">pontos acumulados</p>
+
+                <div class="saldo-equivalente">
+                    <span>Equivale a</span>
+                    <strong id="saldo-reais">R$ 0,00</strong>
+                    <span>em créditos</span>
+                </div>
+
+                <!-- Botão converter -->
+                <button class="btn-converter" id="btn-converter">
+                    <i class="ti ti-arrows-exchange"></i>
+                    Converter Pontos
+                </button>
+            </article>
+
+            <!-- Card de resumo rápido -->
+            <article class="card-resumo">
+                <div class="resumo-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <p class="resumo-num" id="total-acoes">0</p>
+                        <p class="resumo-desc">ações registradas</p>
+                    </div>
+                </div>
+                <hr class="resumo-sep">
+                <div class="resumo-item">
+                    <i class="fa-solid fa-bus"></i>
+                    <div>
+                        <p class="resumo-num" id="total-convertido">R$ 0,00</p>
+                        <p class="resumo-desc">já convertidos</p>
+                    </div>
+                </div>
+                <hr class="resumo-sep">
+                <div class="resumo-item">
+                    <i class="fa-solid fa-fire"></i>
+                    <div>
+                        <p class="resumo-num" id="streak">0 dias</p>
+                        <p class="resumo-desc">sequência atual</p>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+
+        <!-- ==================== REGISTRAR NOVA AÇÃO ==================== -->
+        <section class="registrar-section">
+            <h3>Nova Ação</h3>
+            <h2>Registrar ação sustentável</h2>
+            <p>Selecione a ação que você realizou hoje para acumular pontos.</p>
+
+            <div class="acoes-grid">
+
+                <!-- Cada ação é um article clicável -->
+                <article class="acao-btn" data-acao="Separar recicláveis" data-pontos="15">
+                    <i class="fa-solid fa-recycle"></i>
+                    <span class="acao-nome">Separar recicláveis</span>
+                    <span class="acao-pts">+15 pts</span>
+                </article>
+
+                <article class="acao-btn" data-acao="Usar garrafa reutilizável" data-pontos="20">
+                    <i class="fa-solid fa-droplet"></i>
+                    <span class="acao-nome">Usar garrafa reutilizável</span>
+                    <span class="acao-pts">+20 pts</span>
+                </article>
+
+                <article class="acao-btn" data-acao="Ir a pé ou de bicicleta" data-pontos="30">
+                    <i class="fa-solid fa-person-walking"></i>
+                    <span class="acao-nome">Ir a pé ou de bicicleta</span>
+                    <span class="acao-pts">+30 pts</span>
+                </article>
+
+                <article class="acao-btn" data-acao="Usar sacola reutilizável" data-pontos="25">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="acao-nome">Usar sacola reutilizável</span>
+                    <span class="acao-pts">+25 pts</span>
+                </article>
+
+                <article class="acao-btn" data-acao="Economizar energia" data-pontos="12">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <span class="acao-nome">Economizar energia</span>
+                    <span class="acao-pts">+12 pts</span>
+                </article>
+
+                <article class="acao-btn" data-acao="Evitar descarte incorreto" data-pontos="10">
+                    <i class="fa-solid fa-trash-can"></i>
+                    <span class="acao-nome">Evitar descarte incorreto</span>
+                    <span class="acao-pts">+10 pts</span>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- ==================== HISTÓRICO ==================== -->
+        <section class="historico-section">
+            <div class="historico-topo">
+                <div>
+                    <h3>Histórico</h3>
+                    <h2>Suas ações sustentáveis</h2>
+                </div>
+                <button class="btn-limpar" id="btn-limpar">
+                    <i class="ti ti-trash"></i>
+                    Limpar histórico
+                </button>
+            </div>
+
+            <!-- Lista de ações — preenchida pelo JS -->
+            <div class="historico-lista" id="historico-lista">
+                <!-- Estado vazio (exibido quando não há registros) -->
+                <div class="historico-vazio" id="historico-vazio">
+                    <i class="fa-regular fa-clock-rotate-left"></i>
+                    <p>Nenhuma ação registrada ainda.</p>
+                    <p>Clique em uma ação acima para começar.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ==================== MODAL DE CONVERSÃO ==================== -->
+    <div class="modal" id="modal-converter">
+        <div class="modal-fundo" id="fundo-converter"></div>
+        <div class="modal-conteudo modal-converter-box">
+
+            <button class="modal-fechar" id="fechar-converter">&times;</button>
+
+            <!-- Estado: tem pontos para converter -->
+            <div id="converter-form">
+                <div class="converter-icone">
+                    <i class="ti ti-arrows-exchange"></i>
+                </div>
+                <h2>Converter Pontos</h2>
+                <p>Escolha quantos pontos deseja converter em créditos de transporte.</p>
+
+                <div class="converter-taxa">
+                    <span>100 pts</span>
+                    <i class="ti ti-arrow-right"></i>
+                    <span>R$ 0,50</span>
+                </div>
+
+                <div class="converter-campo">
+                    <label for="qtd-pontos">Pontos a converter</label>
+                    <input type="number" id="qtd-pontos" min="100" step="100"
+                        placeholder="Ex: 500">
+                    <span class="converter-erro" id="converter-erro"></span>
+                </div>
+
+                <div class="converter-resultado">
+                    <span>Você receberá:</span>
+                    <strong id="converter-valor">R$ 0,00</strong>
+                </div>
+
+                <div class="converter-saldo-atual">
+                    Saldo disponível: <strong id="saldo-disponivel">0 pts</strong>
+                </div>
+
+                <div class="converter-acoes">
+                    <button class="btn-cancelar" id="btn-cancelar-converter">Cancelar</button>
+                    <button class="btn-confirmar" id="btn-confirmar-converter">
+                        <i class="ti ti-check"></i>
+                        Confirmar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Estado: conversão realizada com sucesso -->
+            <div id="converter-sucesso" class="hidden">
+                <div class="sucesso-icone">
+                    <i class="ti ti-circle-check"></i>
+                </div>
+                <h2>Convertido!</h2>
+                <p id="sucesso-texto">Seus créditos foram adicionados.</p>
+                <button class="btn-confirmar" id="btn-fechar-sucesso">
+                    Fechar
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ==================== TOAST DE CONFIRMAÇÃO ==================== -->
+    <!-- Aparece no canto da tela ao registrar uma ação -->
+    <div class="toast" id="toast">
+        <i class="ti ti-check"></i>
+        <span id="toast-texto">Ação registrada!</span>
+    </div>
+
+
+    <!-- ==================== RODAPÉ ==================== -->
+    <footer>
+        <p>&copy; 2026 Rotta &mdash; Sustentabilidade &amp; Mobilidade Urbana. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

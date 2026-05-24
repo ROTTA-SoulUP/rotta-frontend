@@ -1,20 +1,4 @@
-/* ===========================
-   VARIÁVEIS (mesmas do projeto)
-=========================== */
-:root {
-    --fundo: #0f1a17;
-    --verde: #2a8c6e;
-    --verde-claro: #4ecba0;
-    --creme: #f0ede6;
-    --texto: #c8c5bc;
-    --texto-muted: #8a9990;
-    --borda: rgba(255, 255, 255, 0.07);
-    --raio-sm: 6px;
-    --raio: 12px;
-    --transicao: 0.2s ease;
-    --fonte-titulo: 'Georgia', 'Times New Roman', serif;
-    --fonte-corpo: system-ui, -apple-system, 'Segoe UI', sans-serif;
-}
+@import url('./variables.css');
 
 /* ===========================
    RESET & BASE
@@ -158,7 +142,7 @@ a {
     margin: 0 auto;
     padding: 4rem 5% 6rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
     gap: 1.5rem;
 }
 
@@ -274,12 +258,36 @@ a {
     transform: translateY(-2px);
 }
 
+.foto-integrante {
+    width: 220px;
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.foto-integrante:hover {
+    transform: scale(1.03);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.3);
+}
+
 /* ===========================
    FOOTER
 =========================== */
 footer {
     border-top: 1px solid var(--borda);
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 2rem 5%;
     font-size: 0.85rem;
     color: var(--texto-muted);
@@ -397,6 +405,430 @@ footer {
     }
 }
 
+/* ===========================
+   BOTÃO VER PERFIL
+=========================== */
+.btn-perfil {
+    margin-top: 0.25rem;
+    padding: 0.45rem 1.1rem;
+    background: none;
+    border: 1px solid rgba(42, 140, 110, 0.35);
+    border-radius: 99px;
+    color: var(--verde-claro);
+    font-family: var(--fonte-corpo);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background var(--transicao), border-color var(--transicao),
+        color var(--transicao), transform var(--transicao);
+}
+
+.btn-perfil:hover {
+    background: rgba(42, 140, 110, 0.12);
+    border-color: var(--verde-claro);
+    transform: translateY(-1px);
+}
+
+
+/* ===========================
+   MODAL DE PERFIL
+=========================== */
+
+/* Fundo escuro — cobre a página */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.aberto {
+    display: flex;
+}
+
+/* Camada escurecida clicável */
+.modal-fundo {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+/* Caixa do popup */
+.modal-caixa {
+    position: relative;
+    z-index: 1;
+    background: #152420;
+    border: 1px solid rgba(42, 140, 110, 0.25);
+    border-radius: var(--raio);
+    padding: 2.5rem 2rem;
+    width: 90%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    animation: entrar 0.25s ease;
+}
+
+@keyframes entrar {
+    from { opacity: 0; transform: translateY(16px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+/* Botão fechar (X) */
+.modal-fechar {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    width: 30px;
+    height: 30px;
+    background: rgba(255,255,255,0.06);
+    border: none;
+    border-radius: 50%;
+    color: var(--creme);
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transicao);
+}
+
+.modal-fechar:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+/* Foto do integrante */
+.modal-foto {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(42, 140, 110, 0.4);
+}
+
+/* Informações */
+.modal-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.modal-info h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 1.15rem;
+    color: var(--creme);
+    line-height: 1.3;
+}
+
+/* Badge de cargo */
+.modal-cargo {
+    font-size: 0.73rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    background: rgba(42, 140, 110, 0.1);
+    border: 1px solid rgba(42, 140, 110, 0.25);
+    padding: 0.25rem 0.8rem;
+    border-radius: 99px;
+}
+
+/* Turma / RM */
+.modal-turma {
+    font-size: 0.85rem;
+    color: var(--texto-muted);
+    max-width: 100%;
+}
+
+/* Links GitHub e LinkedIn */
+.modal-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.modal-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1.1rem;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-sm);
+    color: var(--texto-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background var(--transicao), color var(--transicao),
+        border-color var(--transicao), transform var(--transicao);
+}
+
+.modal-links a:hover {
+    background: rgba(42, 140, 110, 0.12);
+    color: var(--verde-claro);
+    border-color: rgba(42, 140, 110, 0.4);
+    transform: translateY(-2px);
+}
+
+
+/* ===========================
+   SEÇÃO 1 — NÚMEROS
+=========================== */
+.numeros-section {
+    border-top: 1px solid var(--borda);
+    border-bottom: 1px solid var(--borda);
+    background: rgba(42, 140, 110, 0.04);
+}
+
+.numeros-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+}
+
+/* Cada número */
+.numero-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0 3rem;
+    text-align: center;
+}
+
+.numero-valor {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--verde-claro);
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.numero-desc {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--texto-muted);
+}
+
+/* Linha divisória entre os números */
+.numero-divider {
+    width: 1px;
+    height: 48px;
+    background: var(--borda);
+    flex-shrink: 0;
+}
+
+
+/* ===========================
+   SEÇÃO 2 — SOBRE O PROJETO
+=========================== */
+.sobre-projeto-section {
+    border-bottom: 1px solid var(--borda);
+}
+
+.sobre-projeto-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.sobre-projeto-texto .subtitulo {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    background: rgba(42, 140, 110, 0.1);
+    border: 1px solid rgba(42, 140, 110, 0.25);
+    padding: 0.35rem 0.85rem;
+    border-radius: 99px;
+    margin-bottom: 1.25rem;
+}
+
+.sobre-projeto-texto h2 {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    color: var(--creme);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.sobre-projeto-texto p {
+    color: var(--texto-muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    max-width: 100%;
+}
+
+.sobre-projeto-texto p + p {
+    margin-top: 0.85rem;
+}
+
+.sobre-projeto-texto strong {
+    color: var(--verde-claro);
+    font-weight: 600;
+}
+
+/* Tags do projeto */
+.sobre-projeto-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    align-content: flex-start;
+}
+
+.tag {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--verde-claro);
+    background: rgba(42, 140, 110, 0.08);
+    border: 1px solid rgba(42, 140, 110, 0.25);
+    padding: 0.45rem 1rem;
+    border-radius: 99px;
+    transition: background var(--transicao), border-color var(--transicao),
+        color var(--transicao);
+    cursor: default;
+}
+
+.tag:hover {
+    background: rgba(42, 140, 110, 0.18);
+    border-color: var(--verde-claro);
+    color: var(--creme);
+}
+
+
+/* ===========================
+   SEÇÃO 3 — DIVISÃO
+=========================== */
+.divisao-section {
+    border-bottom: 1px solid var(--borda);
+}
+
+.divisao-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5rem 5%;
+}
+
+.divisao-inner > .subtitulo {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    background: rgba(42, 140, 110, 0.1);
+    border: 1px solid rgba(42, 140, 110, 0.25);
+    padding: 0.35rem 0.85rem;
+    border-radius: 99px;
+    margin-bottom: 1.25rem;
+}
+
+.divisao-inner h2 {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    color: var(--creme);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+}
+
+.divisao-inner > p {
+    color: var(--texto-muted);
+    font-size: 0.95rem;
+    max-width: 60ch;
+    margin-bottom: 2.5rem;
+    line-height: 1.75;
+}
+
+/* Grid das áreas */
+.divisao-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+/* Card de cada área */
+.divisao-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: transform var(--transicao), border-color var(--transicao),
+        background var(--transicao);
+}
+
+.divisao-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(42, 140, 110, 0.35);
+    background: rgba(42, 140, 110, 0.04);
+}
+
+/* Ícone da área */
+.divisao-icone {
+    width: 42px;
+    height: 42px;
+    background: rgba(42, 140, 110, 0.1);
+    border: 1px solid rgba(42, 140, 110, 0.2);
+    border-radius: var(--raio-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.divisao-icone i {
+    font-size: 1.1rem;
+    color: var(--verde-claro);
+}
+
+.divisao-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+/* Nome da área */
+.divisao-area {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+}
+
+/* Nome do integrante */
+.divisao-nome {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--creme);
+}
+
+/* Tecnologias */
+.divisao-tech {
+    font-size: 0.78rem;
+    color: var(--texto-muted);
+}
 
 /* =============================================================
    RESPONSIVO — TABLET médio (≤ 991px)
@@ -407,10 +839,64 @@ footer {
     }
 }
 
-/* =============================================================
-   LINKS SOCIAIS COM FONT AWESOME
-   Substitui os SVGs inline — usa ícones FA via classe
-   ============================================================= */
+
+/* ===========================
+   RESPONSIVO — TABLET (≤ 900px)
+=========================== */
+@media (max-width: 900px) {
+
+    /* Números: 2 por linha */
+    .numeros-inner {
+        gap: 0;
+    }
+
+    .numero-item {
+        padding: 1rem 2rem;
+    }
+
+    /* Sobre: empilha */
+    .sobre-projeto-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 4rem 5%;
+    }
+
+    /* Divisão: 2 colunas */
+    .divisao-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ===========================
+   RESPONSIVO — MOBILE (≤ 600px)
+=========================== */
+@media (max-width: 600px) {
+
+    /* Números empilhados */
+    .numero-divider { display: none; }
+
+    .numeros-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        padding: 2.5rem 5%;
+    }
+
+    .numero-item { padding: 0; }
+
+    /* Sobre */
+    .sobre-projeto-inner { padding: 3rem 5%; }
+
+    /* Divisão: 1 coluna */
+    .divisao-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .divisao-inner { padding: 3rem 5%; }
+}
+
+
 .card-links {
     display: flex;
     gap: 0.5rem;
@@ -437,3 +923,5 @@ footer {
     border-color: rgba(42, 140, 110, 0.4);
     transform: translateY(-2px);
 }
+
+

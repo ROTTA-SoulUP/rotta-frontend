@@ -1,7 +1,3 @@
-/* =============================================================
-   SOBRE.CSS — Estilos da página sobre.html
-   ============================================================= */
-
 /* ---------- Importações ---------- */
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
 @import url('./variables.css');
@@ -499,7 +495,9 @@ main section > h3:not(:first-child) {
    ============================================================= */
 footer {
     border-top: 1px solid var(--borda);
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 2rem 5%;
     font-size: 0.85rem;
     color: var(--texto-muted);

@@ -1,0 +1,990 @@
+/* ---------- Importações ---------- */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import url('./variables.css');
+
+
+/* ---------- RESET & BASE ----------*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--fundo);
+    color: var(--texto);
+    font-family: var(--fonte-corpo);
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transicao);
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--fonte-titulo);
+    line-height: 1.2;
+    color: var(--creme);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    margin-bottom: 0.75rem;
+}
+
+p {
+    color: var(--texto-muted);
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--borda);
+    margin: 2.5rem 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ---------- HEADER ---------- */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 5%;
+    background-color: rgba(15, 26, 23, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--borda);
+}
+
+.logo {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 0.25rem;
+}
+
+.header nav ul li a.cabecalho {
+    display: block;
+    padding: 0.45rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--texto-muted);
+    border-radius: var(--raio-sm);
+    transition: background var(--transicao), color var(--transicao);
+}
+
+.header nav ul li a.cabecalho:hover,
+.header nav ul li a.cabecalho.active {
+    background-color: rgba(42, 140, 110, 0.12);
+    color: var(--creme);
+}
+
+
+/*---------- MENU HAMBÚRGUER ----------*/
+.menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 38px;
+    height: 38px;
+    background: none;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-sm);
+    cursor: pointer;
+    padding: 8px;
+    transition: border-color var(--transicao), background var(--transicao);
+    flex-shrink: 0;
+}
+
+.menu-btn:hover {
+    border-color: rgba(42, 140, 110, 0.4);
+    background: rgba(42, 140, 110, 0.08);
+}
+
+.menu-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--creme);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-btn.ativo span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-btn.ativo span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-btn.ativo span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/*---------- MAIN & SECTIONS ----------*/
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+main section {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--borda);
+}
+
+main section:last-child {
+    border-bottom: none;
+    padding-bottom: 5rem;
+}
+
+/* Rótulo de categoria */
+main section>h3:first-child {
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--verde);
+    margin-bottom: 0.5rem;
+    font-family: var(--fonte-corpo);
+}
+
+
+/*---------- HERO ----------*/
+.hero-carteira {
+    padding-top: 6rem !important;
+}
+
+.hero-carteira h1 {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    letter-spacing: -0.02em;
+    color: var(--verde-claro);
+    line-height: 1;
+    margin: 0.2em 0 1rem;
+}
+
+/*---------- Badge de categoria  ----------*/
+.subtitulo {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    background: rgba(42, 140, 110, 0.1);
+    border: 1px solid rgba(42, 140, 110, 0.25);
+    padding: 0.35rem 0.85rem;
+    border-radius: 99px;
+    margin-bottom: 1.5rem;
+}
+
+.slogan {
+    font-family: var(--fonte-titulo);
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    color: var(--creme);
+    max-width: 55ch;
+}
+
+
+/*---------- PAINEL — saldo + resumo ----------*/
+.painel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 0;
+}
+
+/*---------- Card de saldo ----------*/
+.card-saldo {
+    background: var(--fundo-card);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.saldo-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.saldo-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--verde);
+}
+
+.saldo-icone {
+    font-size: 1.2rem;
+    color: var(--verde-claro);
+}
+
+/*---------- Número principal de pontos ----------*/
+.saldo-numero {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--verde-claro);
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.saldo-sub {
+    font-size: 0.85rem;
+    color: var(--texto-muted);
+    margin-bottom: 1rem;
+}
+
+/*---------- Equivalência em reais ----------*/
+.saldo-equivalente {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--texto-muted);
+    background: rgba(42, 140, 110, 0.08);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-sm);
+    padding: 0.65rem 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.saldo-equivalente strong {
+    color: var(--verde-claro);
+    font-size: 1rem;
+}
+
+/*---------- Botão converter ----------*/
+.btn-converter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--verde);
+    color: var(--creme);
+    border: none;
+    border-radius: var(--raio-sm);
+    font-family: var(--fonte-corpo);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transicao), transform var(--transicao);
+    margin-top: auto;
+}
+
+.btn-converter:hover {
+    background: var(--verde-claro);
+    transform: translateY(-2px);
+}
+
+.btn-converter i {
+    font-size: 1.1rem;
+}
+
+/*---------- Card de resumo rápido ----------*/
+.card-resumo {
+    background: var(--fundo-card);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.resumo-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+}
+
+.resumo-item>i {
+    font-size: 1.2rem;
+    color: var(--verde-claro);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(42, 140, 110, 0.1);
+    border-radius: var(--raio-sm);
+    flex-shrink: 0;
+}
+
+.resumo-num {
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+    color: var(--creme);
+    line-height: 1;
+}
+
+.resumo-desc {
+    font-size: 0.82rem;
+    color: var(--texto-muted);
+}
+
+.resumo-sep {
+    border: none;
+    border-top: 1px solid var(--borda);
+    margin: 0.25rem 0;
+}
+
+
+/*---------- REGISTRAR AÇÃO — grid de cards clicáveis ----------*/
+.acoes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/*---------- Card clicável de ação ----------*/
+.acao-btn {
+    background: var(--fundo-card);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: transform var(--transicao), border-color var(--transicao),
+        background var(--transicao);
+    user-select: none;
+}
+
+.acao-btn:hover {
+    transform: translateY(-3px);
+    border-color: rgba(42, 140, 110, 0.5);
+    background: var(--fundo-alt);
+}
+
+/*---------- Feedback ao registrar ----------*/
+.acao-btn.registrado {
+    border-color: var(--verde-claro);
+    background: rgba(42, 140, 110, 0.12);
+    transform: scale(0.97);
+}
+
+.acao-btn i {
+    font-size: 1.3rem;
+    color: var(--verde-claro);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(42, 140, 110, 0.1);
+    border-radius: var(--raio-sm);
+}
+
+.acao-nome {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--creme);
+    line-height: 1.3;
+}
+
+.acao-pts {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--verde-claro);
+    background: rgba(42, 140, 110, 0.1);
+    border: 1px solid rgba(42, 140, 110, 0.2);
+    padding: 0.2rem 0.6rem;
+    border-radius: 99px;
+}
+
+
+/*---------- HISTÓRICO ----------*/
+.historico-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 1.5rem;
+}
+
+/*---------- Botão limpar histórico ----------*/
+.btn-limpar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 1rem;
+    background: none;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-sm);
+    color: var(--texto-muted);
+    font-family: var(--fonte-corpo);
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: border-color var(--transicao), color var(--transicao), background var(--transicao);
+}
+
+.btn-limpar:hover {
+    border-color: rgba(220, 80, 80, 0.4);
+    color: #e07070;
+    background: rgba(220, 80, 80, 0.06);
+}
+
+/*---------- Lista de itens ----------*/
+.historico-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/*---------- Item do histórico — é um article no HTML ----------*/
+.historico-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--fundo-card);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 1rem 1.25rem;
+    animation: entrar 0.25s ease;
+}
+
+@keyframes entrar {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*---------- Ícone verde do item ----------*/
+.hist-icone {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(42, 140, 110, 0.12);
+    border: 1px solid rgba(42, 140, 110, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.hist-icone i {
+    font-size: 0.9rem;
+    color: var(--verde-claro);
+}
+
+.hist-info {
+    flex: 1;
+}
+
+.hist-acao {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--creme);
+}
+
+.hist-data {
+    font-size: 0.78rem;
+    color: var(--texto-muted);
+    margin-top: 0.1rem;
+}
+
+/*---------- Pontos do item ----------*/
+.hist-pts {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--verde-claro);
+    background: rgba(42, 140, 110, 0.1);
+    border: 1px solid rgba(42, 140, 110, 0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 99px;
+    white-space: nowrap;
+}
+
+/*---------- Estado vazio ----------*/
+.historico-vazio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 3rem 1rem;
+    text-align: center;
+    color: var(--texto-muted);
+}
+
+.historico-vazio i {
+    font-size: 2rem;
+    color: var(--borda);
+    margin-bottom: 0.5rem;
+}
+
+.historico-vazio p {
+    font-size: 0.9rem;
+    max-width: 100%;
+}
+
+
+/*---------- MODAL DE CONVERSÃO ----------*/
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.aberto {
+    display: flex;
+}
+
+/*---------- Fundo escurecido ----------*/
+.modal-fundo {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+}
+
+/*---------- Caixa do modal ----------*/
+.modal-converter-box {
+    position: relative;
+    z-index: 1;
+    background: var(--fundo-card);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 2.5rem 2rem;
+    width: 90%;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/*---------- Botão fechar ----------*/
+.modal-fechar {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--creme);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--transicao);
+}
+
+.modal-fechar:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/*---------- Ícone central ----------*/
+.converter-icone {
+    width: 56px;
+    height: 56px;
+    background: rgba(42, 140, 110, 0.12);
+    border: 1px solid rgba(42, 140, 110, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.converter-icone i {
+    font-size: 1.5rem;
+    color: var(--verde-claro);
+}
+
+.modal-converter-box h2 {
+    font-size: 1.6rem;
+    color: var(--creme);
+    margin: 0;
+}
+
+.modal-converter-box>p {
+    font-size: 0.9rem;
+    color: var(--texto-muted);
+}
+
+/*---------- Taxa de conversão ----------*/
+.converter-taxa {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--verde-claro);
+    background: rgba(42, 140, 110, 0.08);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-sm);
+    padding: 0.65rem 1rem;
+}
+
+/*---------- Campo de input ----------*/
+.converter-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.converter-campo label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--texto-muted);
+}
+
+.converter-campo input {
+    background: var(--fundo-alt);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-sm);
+    color: var(--creme);
+    font-family: var(--fonte-corpo);
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+    transition: border-color var(--transicao);
+    width: 100%;
+}
+
+.converter-campo input:focus {
+    outline: none;
+    border-color: rgba(42, 140, 110, 0.5);
+}
+
+/*---------- Mensagem de erro ----------*/
+.converter-erro {
+    font-size: 0.8rem;
+    color: #e07070;
+    min-height: 1em;
+}
+
+/*---------- Resultado da conversão ----------*/
+.converter-resultado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+    color: var(--texto-muted);
+    background: rgba(42, 140, 110, 0.06);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-sm);
+    padding: 0.75rem 1rem;
+}
+
+.converter-resultado strong {
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+    color: var(--verde-claro);
+}
+
+/*---------- Saldo disponível ----------*/
+.converter-saldo-atual {
+    font-size: 0.82rem;
+    color: var(--texto-muted);
+    text-align: right;
+}
+
+.converter-saldo-atual strong {
+    color: var(--creme);
+}
+
+/*---------- Botões de ação ----------*/
+.converter-acoes {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.btn-cancelar {
+    flex: 1;
+    padding: 0.7rem;
+    background: none;
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-sm);
+    color: var(--texto-muted);
+    font-family: var(--fonte-corpo);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: border-color var(--transicao), color var(--transicao);
+}
+
+.btn-cancelar:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--creme);
+}
+
+.btn-confirmar {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.7rem;
+    background: var(--verde);
+    border: none;
+    border-radius: var(--raio-sm);
+    color: var(--creme);
+    font-family: var(--fonte-corpo);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transicao), transform var(--transicao);
+}
+
+.btn-confirmar:hover {
+    background: var(--verde-claro);
+    transform: translateY(-1px);
+}
+
+/*---------- Tela de sucesso da conversão ----------*/
+.sucesso-icone {
+    width: 64px;
+    height: 64px;
+    background: rgba(42, 140, 110, 0.12);
+    border: 1px solid rgba(42, 140, 110, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.sucesso-icone i {
+    font-size: 1.8rem;
+    color: var(--verde-claro);
+}
+
+#converter-sucesso h2 {
+    color: var(--creme);
+}
+
+#converter-sucesso p {
+    color: var(--texto-muted);
+    font-size: 0.92rem;
+}
+
+#converter-sucesso .btn-confirmar {
+    margin-top: 0.5rem;
+}
+
+
+/*---------- TOAST: Notificação rápida no canto inferior ---------- */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--verde-escuro);
+    border: 1px solid rgba(42, 140, 110, 0.4);
+    border-radius: var(--raio-sm);
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    color: var(--creme);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    /*---------- Escondido por padrão ----------*/
+    opacity: 0;
+    transform: translateY(12px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/*---------- Exibido pelo JS ----------*/
+.toast.visivel {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast i {
+    color: var(--verde-claro);
+    font-size: 1rem;
+}
+
+
+/*---------- FOOTER ----------*/
+footer {
+    border-top: 1px solid var(--borda);
+    text-align: center;
+    padding: 2rem 5%;
+    font-size: 0.85rem;
+    color: var(--texto-muted);
+}
+
+
+/*---------- RESPONSIVO — TABLET (≤ 991px) ----------*/
+@media (max-width: 991px) {
+
+    /*---------- Ações em 2 colunas ----------*/
+    .acoes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    main section {
+        padding: 3.5rem 0;
+    }
+
+    .hero-carteira {
+        padding-top: 5rem !important;
+    }
+}
+
+
+/*---------- RESPONSIVO — MOBILE (≤ 768px) ---------- */
+@media (max-width: 768px) {
+
+    /*---------- Header com hambúrguer ----------*/
+    .header {
+        flex-wrap: nowrap;
+        align-items: center;
+        padding: 1rem 5%;
+        position: relative;
+    }
+
+    .menu-btn {
+        display: flex;
+    }
+
+    #menu-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: rgba(15, 26, 23, 0.98);
+        border-bottom: 1px solid var(--borda);
+        padding: 1rem 5%;
+        z-index: 99;
+    }
+
+    #menu-nav.menu-aberto {
+        display: block;
+    }
+
+    #menu-nav ul {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    #menu-nav ul li a.cabecalho {
+        display: block;
+        padding: 0.65rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    /*---------- Painel empilhado ----------*/
+    .painel {
+        grid-template-columns: 1fr;
+    }
+
+    /*---------- Ações em 2 colunas menores ----------*/
+    .acoes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    /*---------- Topo do histórico empilhado ----------*/
+    .historico-topo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    main section {
+        padding: 3rem 0;
+    }
+
+    .hero-carteira {
+        padding-top: 4rem !important;
+    }
+
+    /*---------- Toast menor ----------*/
+    .toast {
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+        justify-content: center;
+    }
+}
+
+
+/*---------- RESPONSIVO — MOBILE PEQUENO (≤ 480px) ----------*/
+@media (max-width: 480px) {
+
+    .hero-carteira h1 {
+        font-size: 2.8rem;
+    }
+
+    main {
+        padding: 0 4%;
+    }
+
+    .saldo-equivalente {
+        font-size: 0.7rem;
+    }
+
+    /*---------- Ações em coluna única ----------*/
+    .acoes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .saldo-numero {
+        font-size: 3.5rem;
+    }
+
+    /*---------- Modal ocupa quase a tela toda ----------*/
+    .modal-converter-box {
+        padding: 2rem 1.25rem;
+    }
+}
