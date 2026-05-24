@@ -35,15 +35,12 @@ A ideia central é conectar sustentabilidade 🌿 e mobilidade urbana 🚍: o us
 
 ---
 
-## 🛠️ Tecnologias utilizadas
-
-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="18"/> **HTML5** — estrutura semântica com tags `<header>`, `<main>`, `<section>`, `<footer>`
-
-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="18"/> **CSS3** — variáveis CSS, Grid, Flexbox, media queries e animações 🎨
-
-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="18"/> **JavaScript** — menu hambúrguer 🍔, accordion FAQ, validação de formulário e simulador de pontos
-
-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" width="18"/> **Google Fonts** — DM Serif Display + DM Sans ✨
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Font Awesome](https://img.shields.io/badge/Font%20Awesome-538DD7?style=for-the-badge&logo=fontawesome&logoColor=white)
+![Tabler Icons](https://img.shields.io/badge/Tabler%20Icons-206BC4?style=for-the-badge&logo=tabler&logoColor=white)
+![Google Fonts](https://img.shields.io/badge/Google%20Fonts-4285F4?style=for-the-badge&logo=google&logoColor=white)
 
 ---
 
