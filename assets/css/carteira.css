@@ -856,9 +856,7 @@ main section>h3:first-child {
 /*---------- FOOTER ----------*/
 footer {
     border-top: 1px solid var(--borda);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
     padding: 2rem 5%;
     font-size: 0.85rem;
     color: var(--texto-muted);
@@ -970,6 +968,10 @@ footer {
 
     main {
         padding: 0 4%;
+    }
+
+    .saldo-equivalente {
+        font-size: 0.7rem;
     }
 
     /*---------- Ações em coluna única ----------*/
