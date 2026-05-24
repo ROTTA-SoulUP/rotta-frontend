@@ -127,7 +127,6 @@ hr {
     height: 44px;
     width: auto;
     object-fit: contain;
-    border-radius: var(--raio-sm);
     display: block;
 }
 

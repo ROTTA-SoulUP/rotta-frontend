@@ -1,20 +1,4 @@
-/* ===========================
-   VARIÁVEIS (mesmas do projeto)
-=========================== */
-:root {
-    --fundo: #0f1a17;
-    --verde: #2a8c6e;
-    --verde-claro: #4ecba0;
-    --creme: #f0ede6;
-    --texto: #c8c5bc;
-    --texto-muted: #8a9990;
-    --borda: rgba(255, 255, 255, 0.07);
-    --raio-sm: 6px;
-    --raio: 12px;
-    --transicao: 0.2s ease;
-    --fonte-titulo: 'Georgia', 'Times New Roman', serif;
-    --fonte-corpo: system-ui, -apple-system, 'Segoe UI', sans-serif;
-}
+@import url('./variables.css');
 
 /* ===========================
    RESET & BASE
