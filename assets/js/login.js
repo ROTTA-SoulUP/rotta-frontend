@@ -14,9 +14,9 @@ window.addEventListener('DOMContentLoaded', () => {
 // =============================================================
 //  MOSTRAR / ESCONDER SENHA
 // =============================================================
-const btnOlho    = document.getElementById('btn-olho');
+const btnOlho = document.getElementById('btn-olho');
 const inputSenha = document.getElementById('senha');
-const iconeOlho  = document.getElementById('icone-olho');
+const iconeOlho = document.getElementById('icone-olho');
 
 if (btnOlho) {
     btnOlho.addEventListener('click', () => {
@@ -83,9 +83,12 @@ function entrar() {
         btn.disabled = true;
         btn.textContent = 'Entrando…';
     }
-    // Redireciona para a home após 1 segundo
+
+    // Marca que o usuário "logou"
+    localStorage.setItem('usuarioLogado', 'true');
+
     setTimeout(() => {
-        window.location.href = '../../index.html';
+        window.location.href = '../index.html';
     }, 1000);
 }
 
