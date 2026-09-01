@@ -1,142 +1,75 @@
+# React + TypeScript + Vite
 
-# Rotta — Sustentabilidade & Mobilidade Urbana 🚍
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-> 🎓 Challenge FIAP 2026 · 1º Ano · Análise e Desenvolvimento de Sistemas · Turma 1TDS
+Currently, two official plugins are available:
 
----
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## 📖 Descrição do projeto
+## React Compiler
 
-A **Rotta** é uma solução desenvolvida em parceria com a plataforma **SoulUp (Prospera)** para o Challenge FIAP 2026. O projeto aborda o **Desafio 2 — Utilização de Pontos para Transporte Público**. 🚉
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-A ideia central é conectar sustentabilidade 🌿 e mobilidade urbana 🚍: o usuário registra ações sustentáveis do dia a dia pelo app da SoulUp, acumula pontos validados por inteligência artificial 🤖 e converte esses pontos em créditos reais para usar no transporte público.
+## Expanding the ESLint configuration
 
----
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## ⚙️ Como funciona
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-1. 📸 **Registro** — O usuário documenta uma ação sustentável por foto ou vídeo no app
-2. 🤖 **Validação por IA** — O sistema analisa e aprova apenas ações reais
-3. 🏆 **Acúmulo de pontos** — Os pontos são somados ao perfil e o ranking é atualizado
-4. 🎫 **Conversão** — Os pontos viram créditos integrados ao sistema de bilhetagem
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
----
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 
-## 🖥️ Páginas do site
-
-| 📄 Arquivo                      | 📌 Descrição                                |
-| ------------------------------- | ------------------------------------------- |
-| `index.html`                    | 🏠 Página inicial — apresentação do projeto |
-| `assets/pages/integrantes.html` | 👥 Equipe — nome, foto, RM, turma e links   |
-| `assets/pages/sobre.html`       | 📚 Contexto, solução, tecnologias e roadmap |
-| `assets/pages/faq.html`         | ❓ Perguntas frequentes sobre o projeto     |
-| `assets/pages/contato.html`     | 📩 Formulário de contato com validação JS   |
-| `assets/pages/solucao.html`     | 💡 Simulador interativo + fluxo da solução  |
-
----
-
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Font Awesome](https://img.shields.io/badge/Font%20Awesome-538DD7?style=for-the-badge&logo=fontawesome&logoColor=white)
-![Tabler Icons](https://img.shields.io/badge/Tabler%20Icons-206BC4?style=for-the-badge&logo=tabler&logoColor=white)
-![Google Fonts](https://img.shields.io/badge/Google%20Fonts-4285F4?style=for-the-badge&logo=google&logoColor=white)
-
----
-
-
-
-## 📂 Estrutura de pastas
-
-```bash
-Challenge-SoulUp/
-├── index.html
-├── README.md
-├── pages/
-│    ├── carteira.html     
-│    ├── contato.html
-│    ├── faq.html
-│    ├── integrantes.html
-│    ├── login.html
-│    ├── sobre.html
-│    ├── solucao.html
-│   
-│        
-└── assets/
-     ├── css/
-     │    ├── carteira.css
-     │    ├── contato.css
-     │    ├── faq.css
-     │    ├── home.css
-     │    ├── integrantes.css
-     │    ├── login.css
-     │    ├── sobre.css
-     │    ├── solucao.css
-     │    └── variables.css
-     ├── js/
-     │    ├── carteira.js
-     │    ├── contato.js
-     │    ├── faq.js
-     │    ├── integrantes.js
-     │    ├── login.js
-     │    ├── menu.js
-     │    ├── solucao.js
-     │    └── verificacao-login.js
-     └── images/
-          ├── beatriz.jpeg
-          ├── carteira.jpeg
-          ├── contato.jpeg
-          ├── faq.jpeg
-          ├── geovanna.jpeg
-          ├── guilherme.jpeg
-          ├── home.jpeg
-          ├── integrantes.jpeg
-          ├── leonardo.jpeg
-          ├── Login.jpeg
-          ├── logo.svg
-          ├── sobre.jpeg
-          ├── solucao.jpeg
-          └── thiago.jpeg
 ```
 
----
+You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
 
-## 👨‍💻 Autores
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-| 👤 Nome | 🎓 RM | 🏫 Turma | 💼 Área | 😺 GitHub | 🔗 LinkedIn |
-|---|---|---|---|---|---|
-| Leonardo Arnaldo Cerqueira Da Silva | RM:573188 | 1TDSPJ | Front-End | [GitHub](https://github.com/LeonardoSilva1203) | [LinkedIn](https://www.linkedin.com/in/leonardo-cerqueira-12a400400/) |
-| Guilherme Matheus Magalhães Almeida | RM:571713 | 1TDSPJ | Java | [GitHub](https://github.com/GuilhermeAlmeida0207) | [LinkedIn](http://www.linkedin.com/in/guimmalmeida) |
-| Thiago Rodrigues Santa Rosa | RM:572616 | 1TDSPJ | Python & Business Model | [GitHub](https://github.com/Thiagordsr) | [LinkedIn](https://www.linkedin.com/in/thiago-rodrigues-santa-rosa-39b3b3305/) |
-| Beatriz Urbano Marques de Oliveira | RM:569341 | 1TDSPJ | AI & Chatbot | [GitHub](https://github.com/BeaUrbano) | [LinkedIn](https://www.linkedin.com/in/beatriz-urbano-5a9bab254) |
-| Geovanna Secchi Egea| RM:573452 | 1TDSPJ | Banco de Dados & Business Model | [GitHub](https://github.com/geovannasecchi) | [LinkedIn](https://www.linkedin.com/in/geovanna-secchi-egea-3194553b5) |
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 
----
-
-## 📸 Páginas
-
-| Home | Sobre |
-|------|-------|
-| ![Home](./assets/images/home.png) | ![Sobre](./assets/images/sobre.png) |
-
-| Solução | Carteira |
-|---------|-----|
-| ![Solução](./assets/images/solucao.png) | ![Carteira](./assets/images/carteira.png) |
-
-| FAQ | Integrantes |
-|---------|-----|
-| ![FAQ](./assets/images/faq.png) | ![Integrantes](./assets/images/integrantes.png) |
-
-| Contato | 
-|---------|
-| ![Contato](./assets/images/contato.png) |
-
-## 📦 Repositório
-
-🔗 [Challenge-SoulUp](https://github.com/ROTTA-SoulUP/rotta-frontend.git)
-
----
-
-## 📞 Contato
-
-Para dúvidas sobre o projeto, utilize o formulário na página de [Contato](./assets/pages/contato.html) 📩 ou entre em contato via LinkedIn com qualquer integrante da equipe. 🤝
+```
