@@ -1,30 +1,59 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import Logo from '../assets/Logo.svg'
+import Logo from "../assets/Logo.svg";
 export default function Header() {
+  const [menuAberto, setMenuAberto] = useState(false);
   return (
- <header className="header">
-        
-        <Link to="/home">
-            <img src={Logo} alt="Logo da Rotta"  className="logo"/>
-        </Link>
+    <header className="border222-b border-borda flex items-center justify-between px-4 py-6 bg-fundo">
+      <Link to="/home">
+        <img src={Logo} alt="Logo da Rotta" className="h-15" />
+      </Link>
 
-        <button className="menu-btn" id="menu-btn" aria-label="Abrir menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+      <button className=" md:hidden flex flex-col gap-1  p-2" onClick={() => setMenuAberto(!menuAberto)}>
+        <span className="w-6 h-0.5 bg-creme"></span>
+        <span className="w-6 h-0.5 bg-creme"></span>
+        <span className="w-6 h-0.5 bg-creme"></span>
+      </button>
 
-        <nav id="menu-nav">
-            <ul>
-                <li><Link to="/home" className="cabecalho">Home</Link></li>
-                <li><Link to="/sobre" className="cabecalho">Sobre</Link></li>
-                <li><Link to="/solucao" className="cabecalho">Solução</Link></li>
-                <li><Link to="/carteira" className="cabecalho">Carteira</Link></li>
-                <li><Link to="/faq" className="cabecalho">FAQ</Link></li>
-                <li><Link to="/integrantes" className="cabecalho">Integrantes</Link></li>
-                <li><Link to="/contato" className="cabecalho">Contato</Link></li>
-            </ul>
-        </nav>
+      <nav className={menuAberto? "block":"hidden md:block"}>
+        <ul className="flex flex-col md:flex-row gap-4 md:gap-6 items-center">
+          <li>
+            <Link className="text-creme hover:text-verde-claro transition-colors cursor-pointer" to="/home" onClick={() => setMenuAberto(false)}>
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link className="text-creme hover:text-verde-claro transition-colors cursor-pointer" to="/sobre" onClick={() => setMenuAberto(false)}>
+              Sobre
+            </Link>
+          </li>
+          <li>
+            <Link className="text-creme hover:text-verde-claro transition-colors cursor-pointer" to="/solucao" onClick={() => setMenuAberto(false)}>
+              Solução
+            </Link>
+          </li>
+          <li>
+            <Link className="text-creme hover:text-verde-claro transition-colors cursor-pointer" to="/carteira" onClick={() => setMenuAberto(false)}>
+              Carteira
+            </Link>
+          </li>
+          <li>
+            <Link className="text-creme hover:text-verde-claro transition-colors cursor-pointer" to="/faq" onClick={() => setMenuAberto(false)}>
+              FAQ
+            </Link>
+          </li>
+          <li>
+            <Link className="text-creme hover:text-verde-claro transition-colors cursor-pointer" to="/integrantes" onClick={() => setMenuAberto(false)}>
+              Integrantes
+            </Link>
+          </li>
+          <li>
+            <Link className="text-creme hover:text-verde-claro transition-colors cursor-pointer" to="/contato" onClick={() => setMenuAberto(false)}>
+              Contato
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </header>
-  )    
+  );
 }
