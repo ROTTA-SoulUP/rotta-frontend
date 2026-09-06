@@ -96,6 +96,41 @@ export default function Solucao() {
             })}
           </div>
         </div>
+
+          <aside className="bg-fundo-card border border-borda rounded-xl p-8 flex flex-col items-center text-center h-fit lg:sticky lg:top-8">
+            <p className="text-texto-muted text-sm uppercase tracking-widest mb-2">
+              Pontos por dia
+            </p>
+            <p className="text-4xl font-serif text-verde-claro mb-6">{ptsDia}</p>
+
+            <p className="text-texto-muted text-sm uppercase tracking-widest mb-2">
+              Pontos por mês (30 dias)
+            </p>
+            <p className="text-4xl font-serif text-verde-claro mb-6">{ptsMes}</p>
+
+            <hr className="border-borda w-full mb-6" />
+
+            <p className="text-texto-muted text-sm uppercase tracking-widest mb-2">
+              Créditos de transporte
+            </p>
+            <p className="text-3xl font-serif text-creme mb-2">
+              R$ {creditos.toFixed(2).replace(".", ",")}
+            </p>
+            <p className="text-texto-muted text-xs mb-6">
+              150 pts = R$ 5,30 em crédito
+            </p>
+
+            <div className="w-full bg-fundo rounded-full h-3 mb-2">
+              <div
+                className="bg-verde-claro h-3 rounded-full transition-all duration-500"
+                style={{ width: `${porcentagem}%` }}
+              />
+            </div>
+            <p className="text-texto-muted text-xs">
+              {porcentagem.toFixed(0)}% da passagem mensal (R$ 150)
+            </p>
+          </aside>
+
       </section>
     </main>
   );
