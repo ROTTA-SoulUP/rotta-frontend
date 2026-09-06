@@ -4,9 +4,19 @@ const acoes = [
   { id: "reciclaveis", label: "Separar recicláveis", pontos: 15, icon: "♻️" },
   { id: "garrafa", label: "Usar garrafa reutilizável", pontos: 20, icon: "🍶" },
   { id: "bike", label: "Ir a pé ou de bicicleta", pontos: 40, icon: "🚲" },
-  { id: "descarte", label: "Evitar descarte incorreto", pontos: 25, icon: "🗑️" },
+  {
+    id: "descarte",
+    label: "Evitar descarte incorreto",
+    pontos: 25,
+    icon: "🗑️",
+  },
   { id: "sacola", label: "Usar sacola reutilizável", pontos: 30, icon: "🛍️" },
-  { id: "energia", label: "Economizar energia em casa", pontos: 20, icon: "💡" },
+  {
+    id: "energia",
+    label: "Economizar energia em casa",
+    pontos: 20,
+    icon: "💡",
+  },
 ];
 
 export default function Solucao() {
@@ -21,7 +31,7 @@ export default function Solucao() {
 
   const toggle = (id: string) => {
     setSelecionadas((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
     );
   };
 
@@ -54,8 +64,8 @@ export default function Solucao() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+          
           <div className="space-y-3">
             <p className="text-texto-muted text-sm mb-4">
               Selecione suas ações sustentáveis:
@@ -75,18 +85,26 @@ export default function Solucao() {
                 >
                   <div
                     className={`w-10 h-10 flex items-center justify-center rounded-full text-lg ${
-                      ativa ? "bg-verde text-creme" : "bg-verde/10 text-verde-claro"
+                      ativa
+                        ? "bg-verde text-creme"
+                        : "bg-verde/10 text-verde-claro"
                     }`}
                   >
                     {acao.icon}
                   </div>
                   <div className="flex-1">
-                    <p className="text-creme text-sm font-medium">{acao.label}</p>
-                    <p className="text-texto-muted text-xs">+{acao.pontos} pts / dia</p>
+                    <p className="text-creme text-sm font-medium">
+                      {acao.label}
+                    </p>
+                    <p className="text-texto-muted text-xs">
+                      +{acao.pontos} pts / dia
+                    </p>
                   </div>
                   <div
                     className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                      ativa ? "border-verde-claro bg-verde-claro" : "border-texto-muted"
+                      ativa
+                        ? "border-verde-claro bg-verde-claro"
+                        : "border-texto-muted"
                     }`}
                   >
                     {ativa && <span className="text-fundo text-xs">✓</span>}
@@ -95,18 +113,21 @@ export default function Solucao() {
               );
             })}
           </div>
-        </div>
-
-          <aside className="bg-fundo-card border border-borda rounded-xl p-8 flex flex-col items-center text-center h-fit lg:sticky lg:top-8">
+        
+          <aside className="bg-fundo-card border border-borda rounded-xl p-8 flex flex-col items-center text-center h-fit  ">
             <p className="text-texto-muted text-sm uppercase tracking-widest mb-2">
               Pontos por dia
             </p>
-            <p className="text-4xl font-serif text-verde-claro mb-6">{ptsDia}</p>
+            <p className="text-4xl font-serif text-verde-claro mb-6">
+              {ptsDia}
+            </p>
 
             <p className="text-texto-muted text-sm uppercase tracking-widest mb-2">
               Pontos por mês (30 dias)
             </p>
-            <p className="text-4xl font-serif text-verde-claro mb-6">{ptsMes}</p>
+            <p className="text-4xl font-serif text-verde-claro mb-6">
+              {ptsMes}
+            </p>
 
             <hr className="border-borda w-full mb-6" />
 
@@ -130,7 +151,104 @@ export default function Solucao() {
               {porcentagem.toFixed(0)}% da passagem mensal (R$ 150)
             </p>
           </aside>
+        </div>
+      </section>
 
+      <section className="px-4 py-16 max-w-3xl mx-auto">
+        <div className="text-center mb-12">
+          <p className="text-verde-claro text-sm uppercase tracking-widest mb-4">
+            Passo a passo
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif text-creme mb-4">
+            O fluxo completo da Rotta
+          </h2>
+          <p className="text-texto-muted max-w-lg mx-auto">
+            Veja como cada etapa funciona, desde o registro da ação até o uso do
+            crédito no transporte.
+          </p>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <article className="bg-fundo-card border border-borda rounded-xl p-6 flex gap-5">
+            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-verde text-creme text-xl font-serif shrink-0">
+              1
+            </div>
+            <div>
+              <h3 className="text-lg font-medium text-creme mb-2">
+                Usuário registra a ação
+              </h3>
+              <p className="text-texto-muted text-sm leading-relaxed mb-3">
+                Pelo app da SoulUp, o usuário tira foto ou grava vídeo
+                documentando a ação sustentável — reciclar, usar bicicleta,
+                levar sacola, entre outras.
+              </p>
+              <span className="inline-block text-xs text-verde-claro border border-verde/30 rounded-full px-3 py-1">
+                App SoulUp
+              </span>
+            </div>
+          </article>
+
+          <div className="text-verde-claro text-2xl text-center">↓</div>
+
+          <article className="bg-fundo-card border border-borda rounded-xl p-6 flex gap-5">
+            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-verde text-creme text-xl font-serif shrink-0">
+              2
+            </div>
+            <div>
+              <h3 className="text-lg font-medium text-creme mb-2">
+                IA valida a ação
+              </h3>
+              <p className="text-texto-muted text-sm leading-relaxed mb-3">
+                O sistema de inteligência artificial analisa o conteúdo,
+                verifica a autenticidade e aprova ou rejeita. Nenhum ponto é
+                concedido sem validação.
+              </p>
+              <span className="inline-block text-xs text-verde-claro border border-verde/30 rounded-full px-3 py-1">
+                Validação automática
+              </span>
+            </div>
+          </article>
+
+          <div className="text-verde-claro text-2xl text-center">↓</div>
+
+          <article className="bg-fundo-card border border-borda rounded-xl p-6 flex gap-5">
+            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-verde text-creme text-xl font-serif shrink-0">
+              3
+            </div>
+            <div>
+              <h3 className="text-lg font-medium text-creme mb-2">
+                Pontos são creditados
+              </h3>
+              <p className="text-texto-muted text-sm leading-relaxed mb-3">
+                Após aprovação, os pontos são somados ao saldo. O ranking é
+                atualizado em tempo real com feedbacks visuais para o usuário.
+              </p>
+              <span className="inline-block text-xs text-verde-claro border border-verde/30 rounded-full px-3 py-1">
+                Sistema de pontos
+              </span>
+            </div>
+          </article>
+
+          <div className="text-verde-claro text-2xl text-center">↓</div>
+
+          <article className="bg-fundo-card border border-borda rounded-xl p-6 flex gap-5">
+            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-verde text-creme text-xl font-serif shrink-0">
+              4
+            </div>
+            <div>
+              <h3 className="text-lg font-medium text-creme mb-2">
+                Conversão em QR Code
+              </h3>
+              <p className="text-texto-muted text-sm leading-relaxed mb-3">
+                O usuário converte os pontos em um QR Code integrado diretamente
+                ao sistema de bilhetagem das operadoras parceiras.
+              </p>
+              <span className="inline-block text-xs text-verde-claro border border-verde/30 rounded-full px-3 py-1">
+                Integração bilhetagem
+              </span>
+            </div>
+          </article>
+        </div>
       </section>
     </main>
   );
