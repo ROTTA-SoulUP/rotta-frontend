@@ -27,7 +27,76 @@ export default function Solucao() {
 
   return (
     <main className="min-h-screen bg-fundo text-creme font-sans">
-      
+
+      <section className="flex flex-col items-center text-center px-4 pt-24 pb-16">
+        <span className="text-verde-claro text-sm uppercase tracking-widest mb-4">
+          A Solução
+        </span>
+        <h1 className="text-4xl md:text-5xl font-serif text-creme mb-4">
+          Como a Rotta funciona
+        </h1>
+        <p className="text-xl text-verde-claro font-light max-w-xl">
+          Da ação sustentável ao crédito no ônibus — em 4 passos simples.
+        </p>
+      </section>
+
+      <section className="px-4 py-16 max-w-5xl mx-auto">
+        <div className="text-center mb-10">
+          <p className="text-verde-claro text-sm uppercase tracking-widest mb-4">
+            Simulador interativo
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif text-creme mb-4">
+            Calcule seus créditos de transporte
+          </h2>
+          <p className="text-texto-muted max-w-lg mx-auto">
+            Selecione as ações que você faz no dia a dia e veja quantos créditos
+            acumularia por mês.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+          <div className="space-y-3">
+            <p className="text-texto-muted text-sm mb-4">
+              Selecione suas ações sustentáveis:
+            </p>
+
+            {acoes.map((acao) => {
+              const ativa = selecionadas.includes(acao.id);
+              return (
+                <button
+                  key={acao.id}
+                  onClick={() => toggle(acao.id)}
+                  className={`w-full flex items-center gap-4 p-4 rounded-xl border transition-colors duration-300 text-left ${
+                    ativa
+                      ? "border-verde-claro bg-verde/10"
+                      : "border-borda bg-fundo-card hover:border-verde-claro/40"
+                  }`}
+                >
+                  <div
+                    className={`w-10 h-10 flex items-center justify-center rounded-full text-lg ${
+                      ativa ? "bg-verde text-creme" : "bg-verde/10 text-verde-claro"
+                    }`}
+                  >
+                    {acao.icon}
+                  </div>
+                  <div className="flex-1">
+                    <p className="text-creme text-sm font-medium">{acao.label}</p>
+                    <p className="text-texto-muted text-xs">+{acao.pontos} pts / dia</p>
+                  </div>
+                  <div
+                    className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                      ativa ? "border-verde-claro bg-verde-claro" : "border-texto-muted"
+                    }`}
+                  >
+                    {ativa && <span className="text-fundo text-xs">✓</span>}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
