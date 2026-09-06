@@ -250,6 +250,52 @@ export default function Solucao() {
           </article>
         </div>
       </section>
+
+            {/* ===== IMPACTO ===== */}
+      <section className="px-4 py-16 max-w-5xl mx-auto">
+        <div className="text-center mb-12">
+          <p className="text-verde-claro text-sm uppercase tracking-widest mb-4">
+            Impacto
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif text-creme mb-4">
+            O que a Rotta gera na prática
+          </h2>
+          <p className="text-texto-muted max-w-lg mx-auto">
+            Cada ação registrada gera impacto real — para o usuário, para a cidade
+            e para o meio ambiente.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <article className="bg-fundo-card border border-borda rounded-xl p-8 flex flex-col items-center text-center hover:border-verde-claro/50 transition-colors duration-300">
+            <p className="text-4xl font-serif text-verde-claro mb-4">3x</p>
+            <p className="text-texto-muted text-sm leading-relaxed">
+              mais engajamento com sustentabilidade quando há recompensa concreta
+            </p>
+          </article>
+
+          <article className="bg-fundo-card border border-borda rounded-xl p-8 flex flex-col items-center text-center hover:border-verde-claro/50 transition-colors duration-300">
+            <p className="text-4xl font-serif text-verde-claro mb-4">R$100</p>
+            <p className="text-texto-muted text-sm leading-relaxed">
+              em créditos de transporte possíveis por mês com hábitos consistentes
+            </p>
+          </article>
+
+          <article className="bg-fundo-card border border-borda rounded-xl p-8 flex flex-col items-center text-center hover:border-verde-claro/50 transition-colors duration-300">
+            <p className="text-4xl font-serif text-verde-claro mb-4">0</p>
+            <p className="text-texto-muted text-sm leading-relaxed">
+              fraudes graças à validação por IA em 100% das ações registradas
+            </p>
+          </article>
+
+          <article className="bg-fundo-card border border-borda rounded-xl p-8 flex flex-col items-center text-center hover:border-verde-claro/50 transition-colors duration-300">
+            <p className="text-4xl font-serif text-verde-claro mb-4">CO₂</p>
+            <p className="text-texto-muted text-sm leading-relaxed">
+              redução de emissões incentivada pelo uso do transporte público
+            </p>
+          </article>
+        </div>
+      </section>
     </main>
   );
 }
