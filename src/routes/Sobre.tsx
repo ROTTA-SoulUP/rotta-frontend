@@ -34,7 +34,7 @@ export default function Sobre() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center">
+          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center hover:border-verde-claro/50 transition-colors duration-300">
             <div className="text-3xl mb-4">😞</div>
             <h3 className="text-creme text-sm font-medium mb-2">Falta de incentivo real</h3>
             <p className="text-texto-muted text-xs leading-relaxed">
@@ -44,7 +44,7 @@ export default function Sobre() {
             </p>
           </article>
 
-          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center">
+          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center hover:border-verde-claro/50 transition-colors duration-300">
             <div className="text-3xl mb-4">🚌</div>
             <h3 className="text-creme text-sm font-medium mb-2">Transporte como barreira</h3>
             <p className="text-texto-muted text-xs leading-relaxed">
@@ -54,7 +54,7 @@ export default function Sobre() {
             </p>
           </article>
 
-          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center">
+          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center hover:border-verde-claro/50 transition-colors duration-300">
             <div className="text-3xl mb-4">🔓</div>
             <h3 className="text-creme text-sm font-medium mb-2">Sistemas desconectados</h3>
             <p className="text-texto-muted text-xs leading-relaxed">
@@ -106,7 +106,7 @@ export default function Sobre() {
               <span className="absolute left-0 top-0 w-12 h-12 flex items-center justify-center rounded-full bg-verde text-creme font-serif text-lg">
                 {i + 1}
               </span>
-              <article className="bg-fundo-card border border-borda rounded-xl p-6">
+              <article className="bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
                 <h3 className="text-creme text-sm font-medium mb-2">
                   {passo.titulo}
                 </h3>
@@ -118,7 +118,7 @@ export default function Sobre() {
           ))}
         </ol>
 
-        <div className="mt-8 bg-fundo-card border border-borda rounded-xl p-6">
+        <div className="mt-8 bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
           <h3 className="text-verde-claro text-sm font-medium mb-2">Carteira</h3>
           <p className="text-texto-muted text-xs leading-relaxed">
             A plataforma contará com uma carteira digital onde o usuário poderá
@@ -143,7 +143,7 @@ export default function Sobre() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center">
+          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center hover:border-verde-claro/50 transition-colors duration-300">
             <div className="text-3xl mb-4">📱</div>
             <h3 className="text-creme text-sm font-medium mb-2">Aplicativo mobile</h3>
             <p className="text-texto-muted text-xs leading-relaxed">
@@ -152,7 +152,7 @@ export default function Sobre() {
             </p>
           </article>
 
-          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center">
+          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center hover:border-verde-claro/50 transition-colors duration-300">
             <div className="text-3xl mb-4">🤖</div>
             <h3 className="text-creme text-sm font-medium mb-2">Inteligência artificial</h3>
             <p className="text-texto-muted text-xs leading-relaxed">
@@ -161,7 +161,7 @@ export default function Sobre() {
             </p>
           </article>
 
-          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center">
+          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center hover:border-verde-claro/50 transition-colors duration-300">
             <div className="text-3xl mb-4">⚡</div>
             <h3 className="text-creme text-sm font-medium mb-2">APIs de mobilidade</h3>
             <p className="text-texto-muted text-xs leading-relaxed">
@@ -171,7 +171,7 @@ export default function Sobre() {
             </p>
           </article>
 
-          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center">
+          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center hover:border-verde-claro/50 transition-colors duration-300">
             <div className="text-3xl mb-4">🛡️</div>
             <h3 className="text-creme text-sm font-medium mb-2">Segurança e autenticação</h3>
             <p className="text-texto-muted text-xs leading-relaxed">
