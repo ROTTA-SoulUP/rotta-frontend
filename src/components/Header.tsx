@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Logo from "../assets/Logo.svg";
 export default function Header() {
   const [menuAberto, setMenuAberto] = useState(false);
   return (
     <header className="border-b border-borda flex items-center justify-between px-4 py-6 bg-fundo">
       <Link to="/home">
-        <img src={Logo} alt="Logo da Rotta" className="h-15" />
+        <img src="../../images/Logo.svg" alt="Logo da Rotta" className="h-15" />
       </Link>
 
       <button className=" md:hidden flex flex-col gap-1  p-2" onClick={() => setMenuAberto(!menuAberto)}>
