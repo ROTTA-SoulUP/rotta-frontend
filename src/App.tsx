@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./layouts/Layout";
-import Home from "./pages/Home";
-import Integrantes from "./pages/Integrantes";
-import Sobre from "./pages/Sobre";
-import Faq from "./pages/Faq";
-import Contato from "./pages/Contato";
-import Solucao from "./pages/Solucao";
-import Carteira from "./pages/Carteira";
+import Home from "./routes/Home";
+import Integrantes from "./routes/Integrantes";
+import Sobre from "./routes/Sobre";
+import Faq from "./routes/Faq";
+import Contato from "./routes/Contato";
+import Solucao from "./routes/Solucao";
+import Carteira from "./routes/Carteira";
 
 function App() {
   return (
