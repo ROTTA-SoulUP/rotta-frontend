@@ -157,3 +157,58 @@ export default function Faq() {
             " — nenhuma resultado encontrado"}
         </p>
       </section>
+
+            {/* ===== ACCORDION ===== */}
+      <section className="px-4 max-w-2xl mx-auto pb-24">
+        {secoesFiltradas.length === 0 ? (
+          // Nenhum resultado
+          <div className="text-center py-12">
+            <p className="text-texto-muted text-sm">
+              Nenhuma pergunta encontrada para "{busca}".
+            </p>
+
+            <button
+              onClick={() => setBusca("")}
+              className="mt-4 text-sm text-verde-claro border border-verde/30 rounded-full px-5 py-2 hover:bg-verde/10 transition-colors duration-300"
+            >
+              Limpar busca
+            </button>
+          </div>
+        ) : (
+          secoesFiltradas.map((secao, sIndex) => (
+            <div key={sIndex} className="mb-10">
+              <h3 className="text-lg font-serif text-verde-claro mb-4">
+                {secao.titulo}
+              </h3>
+
+              <div className="flex flex-col gap-3">
+                {secao.itens.map((item, iIndex) => {
+                  // Índice único = seção * 100 + item
+                  const index = sIndex * 100 + iIndex;
+                  const isOpen = aberta === index;
+
+                  return (
+                    <article
+                      key={index}
+                      className={`bg-fundo-card border rounded-xl overflow-hidden transition-colors duration-300 ${
+                        isOpen
+                          ? "border-verde-claro/50"
+                          : "border-borda"
+                      }`}
+                    >
+                      <button
+                        onClick={() => toggle(index)}
+                        className="w-full flex items-center justify-between text-left px-6 py-4 hover:bg-verde/5 transition-colors duration-300"
+                      >
+                        <span className="text-creme text-sm font-medium pr-4">
+                          {item.pergunta}
+                        </span>
+
+                        <span
+                          className={`text-verde-claro text-xl shrink-0 transition-transform duration-300 ${
+                            isOpen ? "rotate-45" : ""
+                          }`}
+                        >
+                          +
+                        </span>
+                      </button>
