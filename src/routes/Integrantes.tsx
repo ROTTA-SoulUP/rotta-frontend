@@ -97,7 +97,6 @@ export default function Integrantes() {
     navigate("/integrantes", { replace: true });
   };
 
-  // useEffect 1 — abre o modal automaticamente se acessar /integrantes/:id
   useEffect(() => {
     if (id) {
       const integrante = integrantes[parseInt(id)];
@@ -107,7 +106,6 @@ export default function Integrantes() {
     }
   }, [id]);
 
-  // useEffect 2 — salva o último perfil visualizado no localStorage
   useEffect(() => {
     if (integranteSelecionado) {
       localStorage.setItem("ultimoPerfil", integranteSelecionado.nome);
@@ -130,7 +128,6 @@ export default function Integrantes() {
         </p>
       </section>
 
-      {/* ===== NÚMEROS ===== */}
       <section className="px-4 py-12 max-w-4xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {numeros.map((num, i) => (
@@ -141,6 +138,79 @@ export default function Integrantes() {
               <p className="text-texto-muted text-sm uppercase tracking-widest">
                 {num.desc}
               </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="px-4 py-16 max-w-5xl mx-auto">
+        <div className="flex flex-col gap-12">
+          <div>
+            <span className="text-verde-claro text-sm uppercase tracking-widest mb-4 block">
+              O projeto
+            </span>
+            <h2 className="text-3xl md:text-4xl font-serif text-creme mb-6">
+              O que desenvolvemos
+            </h2>
+            <p className="text-texto-muted text-sm leading-relaxed mb-4">
+              A Rotta é a solução desenvolvida pelo grupo para o Challenge FIAP
+              2026, em parceria com a plataforma SoulUp. O desafio escolhido foi o{" "}
+              <strong className="text-creme">
+                Desafio 2 — Utilização de Pontos para Transporte Público
+              </strong>
+              .
+            </p>
+            <p className="text-texto-muted text-sm leading-relaxed">
+              O projeto conecta sustentabilidade e mobilidade urbana: o usuário
+              registra ações sustentáveis pelo app, acumula pontos validados por
+              inteligência artificial e converte esses pontos em créditos reais
+              para usar no transporte público.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            {tags.map((tag, i) => (
+              <span
+                key={i}
+                className="text-xs text-texto-muted border border-borda rounded-full px-3 py-1 hover:border-verde-claro hover:text-verde-claro transition-colors duration-300 cursor-default"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 py-16 max-w-5xl mx-auto">
+        <div className="text-center mb-12">
+          <p className="text-verde-claro text-sm uppercase tracking-widest mb-4">
+            Organização
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif text-creme mb-4">
+            Como nos dividimos
+          </h2>
+          <p className="text-texto-muted max-w-lg mx-auto">
+            Cada integrante ficou responsável por uma área técnica do projeto,
+            garantindo que todas as disciplinas fossem cobertas com dedicação.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {divisao.map((item, i) => (
+            <article
+              key={i}
+              className="bg-fundo-card border border-borda rounded-xl p-6 flex items-center gap-4 hover:border-verde-claro/50 transition-colors duration-300"
+            >
+              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-verde text-creme text-xl shrink-0">
+                {item.icon}
+              </div>
+              <div>
+                <p className="text-verde-claro text-xs uppercase tracking-widest mb-1">
+                  {item.area}
+                </p>
+                <p className="text-creme text-sm font-medium mb-1">{item.nome}</p>
+                <p className="text-texto-muted text-xs">{item.tech}</p>
+              </div>
             </article>
           ))}
         </div>
