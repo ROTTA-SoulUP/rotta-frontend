@@ -86,3 +86,74 @@ export default function Faq() {
       setAberta(null);
     }
   }, [busca]);
+
+    // Filtra as perguntas com base no termo de busca
+  const secoesFiltradas = secoes
+    .map((secao) => ({
+      ...secao,
+      itens: secao.itens.filter(
+        (item) =>
+          item.pergunta.toLowerCase().includes(busca.toLowerCase()) ||
+          item.resposta.toLowerCase().includes(busca.toLowerCase())
+      ),
+    }))
+    .filter((secao) => secao.itens.length > 0);
+
+  // Abre ou fecha a pergunta clicada
+  const toggle = (index: number) => {
+    setAberta(aberta === index ? null : index);
+  };
+
+  // Conta o total de perguntas
+  const totalPerguntas = secoes.reduce(
+    (acc, s) => acc + s.itens.length,
+    0
+  );
+
+  return (
+    <main className="min-h-screen bg-fundo text-creme font-sans">
+
+      {/* ===== HERO ===== */}
+      <section className="flex flex-col items-center text-center px-4 pt-24 pb-16">
+        <span className="text-verde-claro text-sm uppercase tracking-widest mb-4">
+          FAQ
+        </span>
+
+        <h1 className="text-4xl md:text-5xl font-serif text-creme mb-4">
+          Perguntas Frequentes
+        </h1>
+
+        <p className="text-xl text-verde-claro font-light max-w-xl">
+          Tire suas dúvidas sobre a Rotta e a SoulUp — como funciona, como
+          participar e como as recompensas são distribuídas.
+        </p>
+      </section>
+
+      {/* ===== BARRA DE BUSCA ===== */}
+      <section className="px-4 max-w-2xl mx-auto pb-8">
+        <div className="relative">
+          <input
+            type="text"
+            value={busca}
+            onChange={(e) => setBusca(e.target.value)}
+            placeholder="Buscar pergunta..."
+            className="w-full bg-fundo-card border border-borda rounded-full px-6 py-3 text-creme placeholder-texto-muted/50 focus:outline-none focus:border-verde-claro transition-colors"
+          />
+
+          {busca && (
+            <button
+              onClick={() => setBusca("")}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-texto-muted hover:text-verde-claro transition-colors text-lg"
+            >
+              ×
+            </button>
+          )}
+        </div>
+
+        <p className="text-texto-muted text-xs mt-3 text-center">
+          {totalPerguntas} perguntas disponíveis
+          {busca &&
+            secoesFiltradas.length === 0 &&
+            " — nenhuma resultado encontrado"}
+        </p>
+      </section>
