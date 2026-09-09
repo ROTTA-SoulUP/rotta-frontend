@@ -138,3 +138,120 @@ export default function Carteira() {
     setConvertido(true);
     setErroConverter("");
   };
+
+    return (
+    <main className="min-h-screen bg-fundo text-creme font-sans">
+
+      {/* ===== HERO ===== */}
+      <section className="flex flex-col items-center text-center px-4 pt-24 pb-16">
+        <span className="text-verde-claro text-sm uppercase tracking-widest mb-4">
+          Carteira Digital
+        </span>
+
+        <h1 className="text-4xl md:text-5xl font-serif text-creme mb-4">
+          Minha Carteira
+        </h1>
+
+        <p className="text-xl text-verde-claro font-light max-w-xl">
+          Acompanhe seus pontos, histórico e converta em créditos de transporte.
+        </p>
+      </section>
+
+      {/* ===== PAINEL PRINCIPAL ===== */}
+      <section className="px-4 max-w-5xl mx-auto pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          {/* Card de saldo */}
+          <article className="bg-fundo-card border border-borda rounded-xl p-8 flex flex-col">
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-verde-claro text-xs uppercase tracking-widest">
+                Saldo de Pontos
+              </span>
+
+              <span className="text-2xl">🌿</span>
+            </div>
+
+            <p className="text-5xl font-serif text-creme mb-1">
+              {saldoPontos}
+            </p>
+
+            <p className="text-texto-muted text-sm mb-6">
+              pontos acumulados
+            </p>
+
+            <div className="flex items-center gap-2 text-texto-muted text-sm mb-6">
+              <span>Equivale a</span>
+              <strong className="text-creme">R$ {saldoReais}</strong>
+              <span>em créditos</span>
+            </div>
+
+            <button
+              onClick={abrirModal}
+              disabled={saldoPontos < 100}
+              className="flex items-center justify-center gap-2 text-sm text-creme bg-verde rounded-full px-6 py-3 hover:bg-verde-claro hover:text-fundo transition-colors duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              <span>⇄</span>
+              <span>Converter Pontos</span>
+            </button>
+          </article>
+
+          {/* Card de resumo */}
+          <article className="bg-fundo-card border border-borda rounded-xl p-8 flex flex-col gap-6">
+
+            <div className="flex items-center gap-4">
+              <span className="text-2xl">⚡</span>
+
+              <div>
+                <p className="text-creme text-2xl font-serif">
+                  {historico.length}
+                </p>
+
+                <p className="text-texto-muted text-xs">
+                  ações registradas
+                </p>
+              </div>
+            </div>
+
+            <hr className="border-borda" />
+
+            <div className="flex items-center gap-4">
+              <span className="text-2xl">🚌</span>
+
+              <div>
+                <p className="text-creme text-2xl font-serif">
+                  R$ {totalConvertido.toFixed(2).replace(".", ",")}
+                </p>
+
+                <p className="text-texto-muted text-xs">
+                  já convertidos
+                </p>
+              </div>
+            </div>
+
+            <hr className="border-borda" />
+
+            <div className="flex items-center gap-4">
+              <span className="text-2xl">🎯</span>
+
+              <div className="flex-1">
+                <p className="text-creme text-2xl font-serif">
+                  {metaSemanal}/{metaLimite}
+                </p>
+
+                <p className="text-texto-muted text-xs mb-2">
+                  meta semanal
+                </p>
+
+                <div className="w-full h-2 bg-fundo rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-verde-claro rounded-full transition-all duration-500"
+                    style={{ width: `${metaProgresso}%` }}
+                  />
+                </div>
+              </div>
+            </div>
+
+          </article>
+
+        </div>
+      </section>
