@@ -87,14 +87,14 @@ export default function Faq() {
     }
   }, [busca]);
 
-    // Filtra as perguntas com base no termo de busca
+  // Filtra as perguntas com base no termo de busca
   const secoesFiltradas = secoes
     .map((secao) => ({
       ...secao,
       itens: secao.itens.filter(
         (item) =>
           item.pergunta.toLowerCase().includes(busca.toLowerCase()) ||
-          item.resposta.toLowerCase().includes(busca.toLowerCase())
+          item.resposta.toLowerCase().includes(busca.toLowerCase()),
       ),
     }))
     .filter((secao) => secao.itens.length > 0);
@@ -105,14 +105,10 @@ export default function Faq() {
   };
 
   // Conta o total de perguntas
-  const totalPerguntas = secoes.reduce(
-    (acc, s) => acc + s.itens.length,
-    0
-  );
+  const totalPerguntas = secoes.reduce((acc, s) => acc + s.itens.length, 0);
 
   return (
     <main className="min-h-screen bg-fundo text-creme font-sans">
-
       {/* ===== HERO ===== */}
       <section className="flex flex-col items-center text-center px-4 pt-24 pb-16">
         <span className="text-verde-claro text-sm uppercase tracking-widest mb-4">
@@ -158,7 +154,7 @@ export default function Faq() {
         </p>
       </section>
 
-            {/* ===== ACCORDION ===== */}
+      {/* ===== ACCORDION ===== */}
       <section className="px-4 max-w-2xl mx-auto pb-24">
         {secoesFiltradas.length === 0 ? (
           // Nenhum resultado
@@ -191,9 +187,7 @@ export default function Faq() {
                     <article
                       key={index}
                       className={`bg-fundo-card border rounded-xl overflow-hidden transition-colors duration-300 ${
-                        isOpen
-                          ? "border-verde-claro/50"
-                          : "border-borda"
+                        isOpen ? "border-verde-claro/50" : "border-borda"
                       }`}
                     >
                       <button
@@ -212,3 +206,24 @@ export default function Faq() {
                           +
                         </span>
                       </button>
+
+                      <div
+                        className={`overflow-hidden transition-all duration-300 ${
+                          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                        }`}
+                      >
+                        <p className="px-6 pb-4 text-texto-muted text-sm leading-relaxed">
+                          {item.resposta}
+                        </p>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+          ))
+        )}
+      </section>
+    </main>
+  );
+}
