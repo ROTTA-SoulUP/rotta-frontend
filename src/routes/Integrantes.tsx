@@ -53,3 +53,29 @@ const integrantes: Integrante[] = [
     linkedin: "https://www.linkedin.com/in/geovanna-secchi-egea-3194553b5",
   },
 ];
+
+const divisao = [
+  { area: "Front-End", nome: "Leonardo Cerqueira", tech: "HTML · CSS · JavaScript", icon: "💻" },
+  { area: "Java", nome: "Guilherme Almeida", tech: "Domain Driven Design", icon: "☕" },
+  { area: "Python", nome: "Thiago Santa Rosa", tech: "Computational Thinking", icon: "🐍" },
+  { area: "AI & Chatbot", nome: "Beatriz Urbano", tech: "Watson Assistant", icon: "🤖" },
+  { area: "Banco de Dados", nome: "Geovanna Secchi", tech: "Oracle · SQL · MER", icon: "🗄️" },
+  { area: "Business Model", nome: "Thiago & Geovanna", tech: "BMC · Pitch · Inovação", icon: "💼" },
+];
+
+const numeros = [
+  { valor: "5", desc: "integrantes" },
+  { valor: "2", desc: "semestre" },
+  { valor: "6", desc: "disciplinas" },
+  { valor: "1", desc: "projeto" },
+];
+
+const tags = [
+  "Challenge FIAP 2026",
+  "SoulUp",
+  "Desafio 2",
+  "Sustentabilidade",
+  "Transporte Público",
+  "IA",
+  "1TDSPJ",
+];
