@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import { FaCamera, FaBus, FaBrain } from "react-icons/fa6";
 
 export default function Home() {
+  const navigate = useNavigate();
+
   return (
     <main className=" min-h-screen bg-fundo text-creme font-sans">
 
@@ -23,6 +26,13 @@ export default function Home() {
           hábitos sustentáveis ao oferecer créditos reais para utilização no
           transporte público.
         </p>
+
+        <button
+          onClick={() => navigate("/sobre")}
+          className="mt-10 inline-flex items-center gap-2 text-sm text-creme bg-verde rounded-full px-8 py-3 hover:bg-verde-claro hover:text-fundo transition-colors duration-300"
+        >
+          Conheça mais
+        </button>
       </section>
 
       <section className="flex flex-col items-center text-center px-4 py-20 max-w-3xl mx-auto">
