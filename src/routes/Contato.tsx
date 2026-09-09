@@ -182,3 +182,188 @@ export default function Contato() {
           Preencha o formulário abaixo para nos enviar sua dúvida ou sugestão.
         </p>
       </section>
+
+            {/* ===== FORMULÁRIO ===== */}
+      <section className="px-4 py-8 max-w-2xl mx-auto pb-24">
+        <article className="bg-fundo-card border border-borda rounded-xl p-8">
+
+          {enviado ? (
+            // ===== MENSAGEM DE SUCESSO =====
+            <div className="flex flex-col items-center text-center py-12">
+              <div className="w-16 h-16 flex items-center justify-center rounded-full bg-verde text-creme text-3xl mb-6">
+                ✓
+              </div>
+
+              <h2 className="text-2xl font-serif text-creme mb-2">
+                Mensagem enviada!
+              </h2>
+
+              <p className="text-texto-muted text-sm mb-4">
+                Obrigado pelo contato. Retornaremos em breve.
+              </p>
+
+              {/* ===== CONTAGEM REGRESSIVA ===== */}
+              <p className="text-verde-claro text-sm mb-6">
+                Você será redirecionado pra página inicial em{" "}
+                <span className="font-serif text-lg text-creme">
+                  {contador}
+                </span>{" "}
+                seg
+              </p>
+
+              <button
+                onClick={resetForm}
+                className="inline-block text-sm text-verde-claro border border-verde/30 rounded-full px-6 py-3 hover:bg-verde/10 transition-colors duration-300"
+              >
+                Nova Mensagem
+              </button>
+            </div>
+          ) : (
+            // ===== FORM =====
+            <form onSubmit={handleSubmit} noValidate>
+
+              <h3 className="text-lg font-serif text-creme mb-6">
+                Seus Dados
+              </h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label
+                    htmlFor="nome"
+                    className="block text-verde-claro text-xs uppercase tracking-widest mb-2"
+                  >
+                    Nome Completo <span className="text-red-400">*</span>
+                  </label>
+
+                  <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    value={formData.nome}
+                    onChange={handleChange}
+                    placeholder="Seu nome completo"
+                    className="w-full bg-fundo border border-borda rounded-lg px-4 py-3 text-creme placeholder-texto-muted/50 focus:outline-none focus:border-verde-claro transition-colors"
+                  />
+
+                  {errors.nome && (
+                    <span className="text-red-400 text-xs mt-1 block">
+                      {errors.nome}
+                    </span>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-verde-claro text-xs uppercase tracking-widest mb-2"
+                  >
+                    E-mail <span className="text-red-400">*</span>
+                  </label>
+
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="seu@email.com"
+                    className="w-full bg-fundo border border-borda rounded-lg px-4 py-3 text-creme placeholder-texto-muted/50 focus:outline-none focus:border-verde-claro transition-colors"
+                  />
+
+                  {errors.email && (
+                    <span className="text-red-400 text-xs mt-1 block">
+                      {errors.email}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label
+                    htmlFor="telefone"
+                    className="block text-verde-claro text-xs uppercase tracking-widest mb-2"
+                  >
+                    Telefone
+                  </label>
+
+                  <input
+                    type="tel"
+                    id="telefone"
+                    name="telefone"
+                    value={formData.telefone}
+                    onChange={handlePhoneChange}
+                    placeholder="(11) 99999-9999"
+                    maxLength={15}
+                    className="w-full bg-fundo border border-borda rounded-lg px-4 py-3 text-creme placeholder-texto-muted/50 focus:outline-none focus:border-verde-claro transition-colors"
+                  />
+
+                  {errors.telefone && (
+                    <span className="text-red-400 text-xs mt-1 block">
+                      {errors.telefone}
+                    </span>
+                  )}
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="assunto"
+                    className="block text-verde-claro text-xs uppercase tracking-widest mb-2"
+                  >
+                    Assunto <span className="text-red-400">*</span>
+                  </label>
+
+                  <select
+                    id="assunto"
+                    name="assunto"
+                    value={formData.assunto}
+                    onChange={handleChange}
+                    className="w-full bg-fundo border border-borda rounded-lg px-4 py-3 text-creme focus:outline-none focus:border-verde-claro transition-colors"
+                  >
+                    <option value="" disabled>
+                      Selecione um assunto
+                    </option>
+                    <option value="duvida">Dúvida Geral</option>
+                    <option value="suporte">Suporte Técnico</option>
+                    <option value="parceria">Parceria</option>
+                    <option value="outro">Outro</option>
+                  </select>
+
+                  {errors.assunto && (
+                    <span className="text-red-400 text-xs mt-1 block">
+                      {errors.assunto}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <hr className="border-borda my-6" />
+
+              <h3 className="text-lg font-serif text-creme mb-6">
+                Sua Mensagem
+              </h3>
+
+              <div className="mb-6">
+                <label
+                  htmlFor="mensagem"
+                  className="block text-verde-claro text-xs uppercase tracking-widest mb-2"
+                >
+                  Dúvida ou Mensagem <span className="text-red-400">*</span>
+                </label>
+
+                <textarea
+                  id="mensagem"
+                  name="mensagem"
+                  rows={5}
+                  value={formData.mensagem}
+                  onChange={handleChange}
+                  placeholder="Escreva sua dúvida ou mensagem aqui..."
+                  className="w-full bg-fundo border border-borda rounded-lg px-4 py-3 text-creme placeholder-texto-muted/50 focus:outline-none focus:border-verde-claro transition-colors resize-none"
+                />
+
+                {errors.mensagem && (
+                  <span className="text-red-400 text-xs mt-1 block">
+                    {errors.mensagem}
+                  </span>
+                )}
+              </div>
