@@ -106,3 +106,79 @@ export default function Contato() {
     setErrors(novosErrors);
     return Object.keys(novosErrors).length === 0;
   };
+
+    const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleReset = () => {
+    setFormData({
+      nome: "",
+      email: "",
+      telefone: "",
+      assunto: "",
+      mensagem: "",
+    });
+
+    setErrors({});
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (validar()) {
+      setEnviado(true);
+    }
+  };
+
+  // Cancela a contagem e volta pro formulário
+  const resetForm = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+
+    setEnviado(false);
+    setContador(5);
+    handleReset();
+  };
+
+  // Aplica a máscara (XX) XXXXX-XXXX enquanto digita
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value.replace(/\D/g, "");
+
+    if (value.length > 11) value = value.slice(0, 11);
+
+    if (value.length <= 2) {
+      value = value.replace(/(\d{0,2})/, "($1");
+    } else if (value.length <= 7) {
+      value = value.replace(/(\d{2})(\d{0,5})/, "($1) $2");
+    } else {
+      value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, "($1) $2-$3");
+    }
+
+    setFormData((prev) => ({ ...prev, telefone: value }));
+  };
+
+  return (
+    <main className="min-h-screen bg-fundo text-creme font-sans">
+
+      {/* ===== HERO ===== */}
+      <section className="flex flex-col items-center text-center px-4 pt-24 pb-16">
+        <span className="text-verde-claro text-sm uppercase tracking-widest mb-4">
+          Fale Conosco
+        </span>
+
+        <h1 className="text-4xl md:text-5xl font-serif text-creme mb-4">
+          Entre em Contato
+        </h1>
+
+        <p className="text-xl text-verde-claro font-light max-w-xl">
+          Preencha o formulário abaixo para nos enviar sua dúvida ou sugestão.
+        </p>
+      </section>
