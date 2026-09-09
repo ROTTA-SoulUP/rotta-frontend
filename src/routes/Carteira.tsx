@@ -374,3 +374,168 @@ export default function Carteira() {
         )}
 
       </section>
+
+            {/* ===== MODAL DE CONVERSÃO ===== */}
+      {modalAberto && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70"
+          onClick={fecharModal}
+        >
+          <div
+            className="bg-fundo-card border border-borda rounded-xl max-w-md w-full p-8 relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+
+            <button
+              onClick={fecharModal}
+              className="absolute top-4 right-4 text-creme text-2xl hover:text-verde-claro transition-colors"
+            >
+              &times;
+            </button>
+
+            {convertido ? (
+              // ===== SUCESSO =====
+              <div className="flex flex-col items-center text-center py-8">
+
+                <div className="w-16 h-16 flex items-center justify-center rounded-full bg-verde text-creme text-3xl mb-6">
+                  ✓
+                </div>
+
+                <h2 className="text-2xl font-serif text-creme mb-2">
+                  Convertido!
+                </h2>
+
+                <p className="text-texto-muted text-sm mb-6">
+                  Seus créditos foram adicionados à sua carteira.
+                </p>
+
+                <button
+                  onClick={fecharModal}
+                  className="text-sm text-creme bg-verde rounded-full px-6 py-3 hover:bg-verde-claro hover:text-fundo transition-colors duration-300"
+                >
+                  Fechar
+                </button>
+
+              </div>
+            ) : (
+              // ===== FORM DE CONVERSÃO =====
+              <div>
+
+                <div className="flex flex-col items-center text-center mb-6">
+
+                  <div className="w-14 h-14 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl mb-4">
+                    ⇄
+                  </div>
+
+                  <h2 className="text-2xl font-serif text-creme mb-2">
+                    Converter Pontos
+                  </h2>
+
+                  <p className="text-texto-muted text-sm">
+                    Escolha quantos pontos deseja converter em créditos de transporte.
+                  </p>
+
+                </div>
+
+                {/* Taxa */}
+                <div className="flex items-center justify-center gap-3 bg-fundo rounded-lg px-4 py-3 mb-6">
+                  <span className="text-creme text-sm">
+                    150 pts
+                  </span>
+
+                  <span className="text-verde-claro">
+                    →
+                  </span>
+
+                  <span className="text-creme text-sm">
+                    R$ 5,30
+                  </span>
+                </div>
+
+                {/* Campo */}
+                <div className="mb-4">
+
+                  <label className="block text-verde-claro text-xs uppercase tracking-widest mb-2">
+                    Pontos a converter
+                  </label>
+
+                  <input
+                    type="number"
+                    min={100}
+                    step={100}
+                    value={pontosConverter}
+                    onChange={(e) => setPontosConverter(e.target.value)}
+                    placeholder="Ex: 500"
+                    className="w-full bg-fundo border border-borda rounded-lg px-4 py-3 text-creme placeholder-texto-muted/50 focus:outline-none focus:border-verde-claro transition-colors"
+                  />
+
+                  {erroConverter && (
+                    <span className="text-red-400 text-xs mt-1 block">
+                      {erroConverter}
+                    </span>
+                  )}
+
+                </div>
+
+                {/* Resultado */}
+                <div className="flex items-center justify-between bg-fundo rounded-lg px-4 py-3 mb-4">
+                  <span className="text-texto-muted text-sm">
+                    Você receberá:
+                  </span>
+
+                  <strong className="text-creme">
+                    R$ {valorReceber}
+                  </strong>
+                </div>
+
+                {/* Saldo disponível */}
+                <div className="text-center text-texto-muted text-sm mb-6">
+                  Saldo disponível:{" "}
+                  <strong className="text-creme">
+                    {saldoPontos} pts
+                  </strong>
+                </div>
+
+                {/* Botões */}
+                <div className="flex gap-4">
+
+                  <button
+                    onClick={fecharModal}
+                    className="text-sm text-texto-muted border border-borda rounded-full px-6 py-3 hover:border-verde-claro hover:text-verde-claro transition-colors duration-300"
+                  >
+                    Cancelar
+                  </button>
+
+                  <button
+                    onClick={confirmarConversao}
+                    className="flex-1 flex items-center justify-center gap-2 text-sm text-creme bg-verde rounded-full px-6 py-3 hover:bg-verde-claro hover:text-fundo transition-colors duration-300"
+                  >
+                    <span>✓</span>
+                    <span>Confirmar</span>
+                  </button>
+
+                </div>
+
+              </div>
+            )}
+
+          </div>
+        </div>
+      )}
+
+      {/* ===== TOAST ===== */}
+      {toast.visivel && (
+        <div className="fixed bottom-8 right-8 z-50 bg-fundo-card border border-verde-claro rounded-xl px-6 py-4 flex items-center gap-3 shadow-lg animate-fade-in">
+          <span className="text-verde-claro text-xl">
+            ✓
+          </span>
+
+          <span className="text-creme text-sm">
+            {toast.texto}
+          </span>
+        </div>
+      )}
+
+    </main>
+  );
+}
