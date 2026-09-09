@@ -67,3 +67,22 @@ const secoes: Secao[] = [
     ],
   },
 ];
+
+export default function Faq() {
+  // USESTATE — controla qual pergunta está aberta (guarda o índice)
+  const [aberta, setAberta] = useState<number | null>(null);
+
+  // USESTATE — termo de busca digitado pelo usuário
+  const [busca, setBusca] = useState("");
+
+  // USEEFFECT — scroll pro topo quando a página carrega
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // USEEFFECT — fecha o accordion se o usuário digitar na busca
+  useEffect(() => {
+    if (busca) {
+      setAberta(null);
+    }
+  }, [busca]);
