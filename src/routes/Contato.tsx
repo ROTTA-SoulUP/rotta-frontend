@@ -33,7 +33,7 @@ export default function Contato() {
   const navigate = useNavigate();
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-    // Scroll pro topo quando a página carrega
+  // Scroll pro topo quando a página carrega
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -107,10 +107,10 @@ export default function Contato() {
     return Object.keys(novosErrors).length === 0;
   };
 
-    const handleChange = (
+  const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
+    >,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -167,7 +167,6 @@ export default function Contato() {
 
   return (
     <main className="min-h-screen bg-fundo text-creme font-sans">
-
       {/* ===== HERO ===== */}
       <section className="flex flex-col items-center text-center px-4 pt-24 pb-16">
         <span className="text-verde-claro text-sm uppercase tracking-widest mb-4">
@@ -183,10 +182,9 @@ export default function Contato() {
         </p>
       </section>
 
-            {/* ===== FORMULÁRIO ===== */}
+      {/* ===== FORMULÁRIO ===== */}
       <section className="px-4 py-8 max-w-2xl mx-auto pb-24">
         <article className="bg-fundo-card border border-borda rounded-xl p-8">
-
           {enviado ? (
             // ===== MENSAGEM DE SUCESSO =====
             <div className="flex flex-col items-center text-center py-12">
@@ -221,10 +219,7 @@ export default function Contato() {
           ) : (
             // ===== FORM =====
             <form onSubmit={handleSubmit} noValidate>
-
-              <h3 className="text-lg font-serif text-creme mb-6">
-                Seus Dados
-              </h3>
+              <h3 className="text-lg font-serif text-creme mb-6">Seus Dados</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
@@ -367,3 +362,28 @@ export default function Contato() {
                   </span>
                 )}
               </div>
+
+              <div className="flex gap-4">
+                <button
+                  type="button"
+                  onClick={handleReset}
+                  className="text-sm text-texto-muted border border-borda rounded-full px-6 py-3 hover:border-verde-claro hover:text-verde-claro transition-colors duration-300"
+                >
+                  Limpar
+                </button>
+
+                <button
+                  type="submit"
+                  className="flex-1 flex items-center justify-center gap-2 text-sm text-creme bg-verde rounded-full px-6 py-3 hover:bg-verde-claro hover:text-fundo transition-colors duration-300"
+                >
+                  <span>Enviar Mensagem</span>
+                  <span>→</span>
+                </button>
+              </div>
+            </form>
+          )}
+        </article>
+      </section>
+    </main>
+  );
+}
