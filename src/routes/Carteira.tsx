@@ -255,3 +255,122 @@ export default function Carteira() {
 
         </div>
       </section>
+
+            {/* ===== REGISTRAR NOVA AÇÃO ===== */}
+      <section className="px-4 max-w-5xl mx-auto py-12">
+
+        <span className="text-verde-claro text-sm uppercase tracking-widest mb-4 block">
+          Nova Ação
+        </span>
+
+        <h2 className="text-3xl font-serif text-creme mb-2">
+          Registrar ação sustentável
+        </h2>
+
+        <p className="text-texto-muted text-sm mb-8">
+          Selecione a ação que você realizou hoje para acumular pontos.
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {acoesDisponiveis.map((acao, i) => (
+            <article
+              key={i}
+              onClick={() => registrarAcao(acao)}
+              className="bg-fundo-card border border-borda rounded-xl p-6 flex items-center gap-4 hover:border-verde-claro/50 hover:bg-verde/5 cursor-pointer transition-all duration-300"
+            >
+              <span className="text-3xl">
+                {acao.icone}
+              </span>
+
+              <div>
+                <p className="text-creme text-sm font-medium">
+                  {acao.nome}
+                </p>
+
+                <p className="text-verde-claro text-xs mt-1">
+                  +{acao.pontos} pts
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+      </section>
+
+      {/* ===== HISTÓRICO ===== */}
+      <section className="px-4 max-w-5xl mx-auto py-12">
+
+        <div className="flex items-center justify-between mb-6">
+
+          <div>
+            <span className="text-verde-claro text-sm uppercase tracking-widest mb-4 block">
+              Histórico
+            </span>
+
+            <h2 className="text-3xl font-serif text-creme">
+              Suas ações sustentáveis
+            </h2>
+          </div>
+
+          {historico.length > 0 && (
+            <button
+              onClick={limparHistorico}
+              className="flex items-center gap-2 text-xs text-texto-muted border border-borda rounded-full px-4 py-2 hover:border-red-400 hover:text-red-400 transition-colors duration-300"
+            >
+              <span>🗑️</span>
+              <span>Limpar histórico</span>
+            </button>
+          )}
+
+        </div>
+
+        {historico.length === 0 ? (
+          <div className="text-center py-12 bg-fundo-card border border-borda rounded-xl">
+            <p className="text-4xl mb-4">🕘</p>
+
+            <p className="text-texto-muted text-sm">
+              Nenhuma ação registrada ainda.
+            </p>
+
+            <p className="text-texto-muted text-xs mt-1">
+              Clique em uma ação acima para começar.
+            </p>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-3">
+
+            {historico.map((item) => (
+              <article
+                key={item.id}
+                className="bg-fundo-card border border-borda rounded-xl p-4 flex items-center justify-between"
+              >
+
+                <div className="flex items-center gap-4">
+
+                  <span className="w-10 h-10 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro">
+                    ✓
+                  </span>
+
+                  <div>
+                    <p className="text-creme text-sm font-medium">
+                      {item.nome}
+                    </p>
+
+                    <p className="text-texto-muted text-xs">
+                      {item.data}
+                    </p>
+                  </div>
+
+                </div>
+
+                <span className="text-verde-claro text-sm font-medium">
+                  +{item.pontos} pts
+                </span>
+
+              </article>
+            ))}
+
+          </div>
+        )}
+
+      </section>
