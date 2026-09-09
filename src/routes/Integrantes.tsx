@@ -215,3 +215,79 @@ export default function Integrantes() {
           ))}
         </div>
       </section>
+
+            {/* ===== CARDS DOS INTEGRANTES ===== */}
+      <section className="px-4 py-16 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {integrantes.map((integrante, i) => (
+            <CardIntegrante
+              key={i}
+              nome={integrante.nome}
+              cargo={integrante.cargo}
+              foto={integrante.foto}
+              onClick={() => navigate(`/integrantes/${i}`, { replace: true })}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* ===== MODAL ===== */}
+      {modalAberto && integranteSelecionado && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70"
+          onClick={fecharModal}
+        >
+          <div
+            className="bg-fundo-card border border-borda rounded-xl max-w-md w-full p-8 flex flex-col items-center text-center relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={fecharModal}
+              className="absolute top-4 right-4 text-creme text-2xl hover:text-verde-claro transition-colors"
+            >
+              &times;
+            </button>
+
+            <img
+              src={integranteSelecionado.foto}
+              alt={`Foto de ${integranteSelecionado.nome}`}
+              className="w-40 h-40 rounded-full object-cover border-4 border-verde/20 mb-6"
+            />
+
+            <h2 className="text-xl font-serif text-creme mb-2">
+              {integranteSelecionado.nome}
+            </h2>
+
+            <span className="inline-block text-verde-claro text-xs uppercase tracking-widest mb-2">
+              {integranteSelecionado.cargo}
+            </span>
+
+            <p className="text-texto-muted text-sm mb-6">
+              {integranteSelecionado.turma}
+            </p>
+
+            <div className="flex justify-center gap-4">
+              <a
+                href={integranteSelecionado.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs text-creme border border-borda rounded-full px-4 py-2 hover:border-verde-claro hover:text-verde-claro transition-colors duration-300"
+              >
+                🐙 GitHub
+              </a>
+
+              <a
+                href={integranteSelecionado.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs text-creme border border-borda rounded-full px-4 py-2 hover:border-verde-claro hover:text-verde-claro transition-colors duration-300"
+              >
+                💼 LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </main>
+  );
+}
