@@ -79,3 +79,69 @@ const tags = [
   "IA",
   "1TDSPJ",
 ];
+
+export default function Integrantes() {
+  const [modalAberto, setModalAberto] = useState(false);
+  const [integranteSelecionado, setIntegranteSelecionado] = useState<Integrante | null>(null);
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const abrirModal = (integrante: Integrante) => {
+    setIntegranteSelecionado(integrante);
+    setModalAberto(true);
+  };
+
+  const fecharModal = () => {
+    setModalAberto(false);
+    setIntegranteSelecionado(null);
+    navigate("/integrantes", { replace: true });
+  };
+
+  // useEffect 1 — abre o modal automaticamente se acessar /integrantes/:id
+  useEffect(() => {
+    if (id) {
+      const integrante = integrantes[parseInt(id)];
+      if (integrante) {
+        abrirModal(integrante);
+      }
+    }
+  }, [id]);
+
+  // useEffect 2 — salva o último perfil visualizado no localStorage
+  useEffect(() => {
+    if (integranteSelecionado) {
+      localStorage.setItem("ultimoPerfil", integranteSelecionado.nome);
+    }
+  }, [integranteSelecionado]);
+
+  return (
+    <main className="min-h-screen bg-fundo text-creme font-sans">
+
+      {/* ===== HERO ===== */}
+      <section className="flex flex-col items-center text-center px-4 pt-24 pb-16">
+        <span className="text-verde-claro text-sm uppercase tracking-widest mb-4">
+          Equipe
+        </span>
+        <h1 className="text-4xl md:text-5xl font-serif text-creme mb-4">
+          Quem somos
+        </h1>
+        <p className="text-xl text-verde-claro font-light max-w-xl">
+          Conheça os integrantes do grupo responsável pelo desenvolvimento da Rotta no Challenge FIAP 2026.
+        </p>
+      </section>
+
+      {/* ===== NÚMEROS ===== */}
+      <section className="px-4 py-12 max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {numeros.map((num, i) => (
+            <article key={i} className="flex flex-col items-center text-center">
+              <p className="text-4xl md:text-5xl font-serif text-verde-claro mb-2">
+                {num.valor}
+              </p>
+              <p className="text-texto-muted text-sm uppercase tracking-widest">
+                {num.desc}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
