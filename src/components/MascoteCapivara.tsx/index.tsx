@@ -8,7 +8,11 @@ const dicas = [
   "Convide amigos para a Rotta e ganhe créditos de transporte!",
 ];
 
-export default function MascoteCapivara() {
+type MascoteCapivaraProps = {
+  direcao?: "baixo" | "cima";
+};
+
+export default function MascoteCapivara({ direcao = "baixo" }: MascoteCapivaraProps) {
   const [abaAberta, setAbaAberta] = useState(false);
   const [dicaVisivel, setDicaVisivel] = useState(false);
   const [dicaAtual, setDicaAtual] = useState("");
@@ -18,6 +22,11 @@ export default function MascoteCapivara() {
     setDicaAtual(dicaAleatoria);
     setDicaVisivel(true);
   };
+
+  const posicaoAba:string =
+    direcao === "cima"
+      ? "absolute right-0 bottom-12 z-50"
+      : "absolute right-0 top-12 z-50";
 
   return (
     <div className="relative flex items-center">
@@ -40,7 +49,7 @@ export default function MascoteCapivara() {
 
       {/* Aba que desce */}
       {abaAberta && (
-        <div className="absolute right-0 top-15 z-50 bg-fundo-card border border-verde-claro/30 rounded-xl p-15 shadow-lg w-80 transition-all duration-300">
+        <div className={`${posicaoAba} bg-fundo-card border border-verde-claro/30 rounded-xl p-5 shadow-lg w-80 transition-all duration-300`}>
 
           {!dicaVisivel ? (
             <div className="flex flex-col items-center text-center gap-3">
