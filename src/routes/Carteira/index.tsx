@@ -1,3 +1,7 @@
+import { GoGoal } from "react-icons/go";
+import { FaBusAlt, FaClock  } from "react-icons/fa";
+import {  MdBolt } from "react-icons/md";
+import { RiCoinsLine } from "react-icons/ri";
 import { useState } from "react";
 
 type Acao = {
@@ -168,7 +172,8 @@ export default function Carteira() {
                 Saldo de Pontos
               </span>
 
-              <span className="text-2xl">🌿</span>
+              <span className="text-2xl text-verde-claro"> 
+              <RiCoinsLine /></span>
             </div>
 
             <p className="text-5xl font-serif text-creme mb-1">
@@ -199,7 +204,8 @@ export default function Carteira() {
           <article className="bg-fundo-card border border-borda rounded-xl p-8 flex flex-col gap-6">
 
             <div className="flex items-center gap-4">
-              <span className="text-2xl">⚡</span>
+              <span className="text-2xl text-verde-claro">  
+              <MdBolt/></span>
 
               <div>
                 <p className="text-creme text-2xl font-serif">
@@ -215,7 +221,8 @@ export default function Carteira() {
             <hr className="border-borda" />
 
             <div className="flex items-center gap-4">
-              <span className="text-2xl">🚌</span>
+              <span className="text-2xl text-verde-claro"> 
+              <FaBusAlt/></span>
 
               <div>
                 <p className="text-creme text-2xl font-serif">
@@ -231,7 +238,8 @@ export default function Carteira() {
             <hr className="border-borda" />
 
             <div className="flex items-center gap-4">
-              <span className="text-2xl">🎯</span>
+              <span className="text-2xl text-verde-claro">
+               <GoGoal/></span>
 
               <div className="flex-1">
                 <p className="text-creme text-2xl font-serif">
@@ -325,8 +333,9 @@ export default function Carteira() {
         </div>
 
         {historico.length === 0 ? (
-          <div className="text-center py-12 bg-fundo-card border border-borda rounded-xl">
-            <p className="text-4xl mb-4">🕘</p>
+          <div className="flex flex-col items-center text-center bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
+            <p className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6"> 
+            <FaClock /></p>
 
             <p className="text-texto-muted text-sm">
               Nenhuma ação registrada ainda.
