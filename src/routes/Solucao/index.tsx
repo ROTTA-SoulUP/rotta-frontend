@@ -169,7 +169,7 @@ export default function Solucao() {
         </div>
 
         <div className="flex flex-col gap-4">
-          <article className="bg-fundo-card border border-borda rounded-xl p-6 flex gap-5">
+          <article className="bg-fundo-card border border-borda hover:border-verde-claro/50 rounded-xl p-6 flex gap-5">
             <div className="w-12 h-12 flex items-center justify-center rounded-full bg-verde text-creme text-xl font-serif shrink-0">
               1
             </div>
@@ -182,7 +182,7 @@ export default function Solucao() {
                 documentando a ação sustentável — reciclar, usar bicicleta,
                 levar sacola, entre outras.
               </p>
-              <span className="inline-block text-xs text-verde-claro border border-verde/30 rounded-full px-3 py-1">
+              <span className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1">
                 App SoulUp
               </span>
             </div>
@@ -190,7 +190,7 @@ export default function Solucao() {
 
           <div className="text-verde-claro text-2xl text-center">↓</div>
 
-          <article className="bg-fundo-card border border-borda rounded-xl p-6 flex gap-5">
+          <article className="bg-fundo-card border border-borda hover:border-verde-claro/50 rounded-xl p-6 flex gap-5">
             <div className="w-12 h-12 flex items-center justify-center rounded-full bg-verde text-creme text-xl font-serif shrink-0">
               2
             </div>
@@ -203,7 +203,7 @@ export default function Solucao() {
                 verifica a autenticidade e aprova ou rejeita. Nenhum ponto é
                 concedido sem validação.
               </p>
-              <span className="inline-block text-xs text-verde-claro border border-verde/30 rounded-full px-3 py-1">
+              <span className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1">
                 Validação automática
               </span>
             </div>
@@ -211,7 +211,7 @@ export default function Solucao() {
 
           <div className="text-verde-claro text-2xl text-center">↓</div>
 
-          <article className="bg-fundo-card border border-borda rounded-xl p-6 flex gap-5">
+          <article className="bg-fundo-card border border-borda hover:border-verde-claro/50 rounded-xl p-6 flex gap-5">
             <div className="w-12 h-12 flex items-center justify-center rounded-full bg-verde text-creme text-xl font-serif shrink-0">
               3
             </div>
@@ -223,7 +223,7 @@ export default function Solucao() {
                 Após aprovação, os pontos são somados ao saldo. O ranking é
                 atualizado em tempo real com feedbacks visuais para o usuário.
               </p>
-              <span className="inline-block text-xs text-verde-claro border border-verde/30 rounded-full px-3 py-1">
+              <span className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1">
                 Sistema de pontos
               </span>
             </div>
@@ -231,7 +231,7 @@ export default function Solucao() {
 
           <div className="text-verde-claro text-2xl text-center">↓</div>
 
-          <article className="bg-fundo-card border border-borda rounded-xl p-6 flex gap-5">
+          <article className="bg-fundo-card border border-borda hover:border-verde-claro/50 rounded-xl p-6 flex gap-5">
             <div className="w-12 h-12 flex items-center justify-center rounded-full bg-verde text-creme text-xl font-serif shrink-0">
               4
             </div>
@@ -243,7 +243,7 @@ export default function Solucao() {
                 O usuário converte os pontos em um QR Code integrado diretamente
                 ao sistema de bilhetagem das operadoras parceiras.
               </p>
-              <span className="inline-block text-xs text-verde-claro border border-verde/30 rounded-full px-3 py-1">
+              <span className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1">
                 Integração bilhetagem
               </span>
             </div>
