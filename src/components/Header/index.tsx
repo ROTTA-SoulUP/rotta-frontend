@@ -1,3 +1,4 @@
+import MascoteCapivara from "../MascoteCapivara.tsx/index";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 export default function Header() {
@@ -50,6 +51,9 @@ export default function Header() {
             <Link className="text-creme hover:text-verde-claro transition-colors cursor-pointer" to="/contato" onClick={() => setMenuAberto(false)}>
               Contato
             </Link>
+          </li>
+          <li>
+            <MascoteCapivara />
           </li>
         </ul>
       </nav>
