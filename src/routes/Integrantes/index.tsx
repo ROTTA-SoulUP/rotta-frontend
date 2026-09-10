@@ -1,4 +1,6 @@
-import CardIntegrante from "../components/CardIntegrante";
+import { FaLinkedin, FaGithub, FaJava, FaPython, FaRobot, FaDatabase, FaBriefcase } from "react-icons/fa";
+import { MdComputer } from "react-icons/md";
+import CardIntegrante from "../../components/CardIntegrante";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -55,12 +57,12 @@ const integrantes: Integrante[] = [
 ];
 
 const divisao = [
-  { area: "Front-End", nome: "Leonardo Cerqueira", tech: "HTML · CSS · JavaScript", icon: "💻" },
-  { area: "Java", nome: "Guilherme Almeida", tech: "Domain Driven Design", icon: "☕" },
-  { area: "Python", nome: "Thiago Santa Rosa", tech: "Computational Thinking", icon: "🐍" },
-  { area: "AI & Chatbot", nome: "Beatriz Urbano", tech: "Watson Assistant", icon: "🤖" },
-  { area: "Banco de Dados", nome: "Geovanna Secchi", tech: "Oracle · SQL · MER", icon: "🗄️" },
-  { area: "Business Model", nome: "Thiago & Geovanna", tech: "BMC · Pitch · Inovação", icon: "💼" },
+  { area: "Front-End", nome: "Leonardo Cerqueira", tech: "HTML · CSS · JavaScript", icon: <MdComputer/> },
+  { area: "Java", nome: "Guilherme Almeida", tech: "Domain Driven Design", icon: <FaJava/> },
+  { area: "Python", nome: "Thiago Santa Rosa", tech: "Computational Thinking", icon: <FaPython/> },
+  { area: "AI & Chatbot", nome: "Beatriz Urbano", tech: "Watson Assistant", icon: <FaRobot/> },
+  { area: "Banco de Dados", nome: "Geovanna Secchi", tech: "Oracle · SQL · MER", icon: <FaDatabase/> },
+  { area: "Business Model", nome: "Thiago & Geovanna", tech: "BMC · Pitch · Inovação", icon: <FaBriefcase /> },
 ];
 
 const numeros = [
@@ -273,7 +275,7 @@ export default function Integrantes() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs text-creme border border-borda rounded-full px-4 py-2 hover:border-verde-claro hover:text-verde-claro transition-colors duration-300"
               >
-                🐙 GitHub
+                <FaGithub /> GitHub
               </a>
 
               <a
@@ -282,7 +284,7 @@ export default function Integrantes() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs text-creme border border-borda rounded-full px-4 py-2 hover:border-verde-claro hover:text-verde-claro transition-colors duration-300"
               >
-                💼 LinkedIn
+                <FaLinkedin /> LinkedIn
               </a>
             </div>
           </div>

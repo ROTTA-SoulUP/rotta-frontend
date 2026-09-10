@@ -1,3 +1,7 @@
+import { FaBusAlt, FaRobot, FaShieldAlt } from "react-icons/fa";
+import { GiPadlockOpen } from "react-icons/gi";
+import { PiSmileySad } from "react-icons/pi";
+import { MdOutlinePhoneIphone, MdBolt } from "react-icons/md";
 export default function Sobre() {
   return (
     <main className="min-h-screen bg-fundo text-creme font-sans">
@@ -34,8 +38,9 @@ export default function Sobre() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center hover:border-verde-claro/50 transition-colors duration-300">
-            <div className="text-3xl mb-4">😞</div>
+          <article className="flex flex-col items-center text-center bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
+            <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6"> 
+            <PiSmileySad /></div>
             <h3 className="text-creme text-sm font-medium mb-2">Falta de incentivo real</h3>
             <p className="text-texto-muted text-xs leading-relaxed">
               Mesmo com maior conscientização ambiental, a falta de benefícios
@@ -44,8 +49,9 @@ export default function Sobre() {
             </p>
           </article>
 
-          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center hover:border-verde-claro/50 transition-colors duration-300">
-            <div className="text-3xl mb-4">🚌</div>
+          <article className="flex flex-col items-center text-center bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
+            <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6">
+            <FaBusAlt/></div>
             <h3 className="text-creme text-sm font-medium mb-2">Transporte como barreira</h3>
             <p className="text-texto-muted text-xs leading-relaxed">
               Milhões de brasileiros enfrentam diariamente o alto custo do
@@ -54,8 +60,9 @@ export default function Sobre() {
             </p>
           </article>
 
-          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center hover:border-verde-claro/50 transition-colors duration-300">
-            <div className="text-3xl mb-4">🔓</div>
+          <article className="flex flex-col items-center text-center bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
+            <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6">
+            <GiPadlockOpen/></div>
             <h3 className="text-creme text-sm font-medium mb-2">Sistemas desconectados</h3>
             <p className="text-texto-muted text-xs leading-relaxed">
               A Rotta transforma sustentabilidade em benefício real ao integrar
@@ -143,8 +150,9 @@ export default function Sobre() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center hover:border-verde-claro/50 transition-colors duration-300">
-            <div className="text-3xl mb-4">📱</div>
+          <article className="flex flex-col items-center text-center bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
+            <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6"> 
+            <MdOutlinePhoneIphone/></div>
             <h3 className="text-creme text-sm font-medium mb-2">Aplicativo mobile</h3>
             <p className="text-texto-muted text-xs leading-relaxed">
               Interface para registrar ações, acompanhar pontuação e usar os
@@ -152,8 +160,9 @@ export default function Sobre() {
             </p>
           </article>
 
-          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center hover:border-verde-claro/50 transition-colors duration-300">
-            <div className="text-3xl mb-4">🤖</div>
+          <article className="flex flex-col items-center text-center bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
+            <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6">
+            <FaRobot/> </div>
             <h3 className="text-creme text-sm font-medium mb-2">Inteligência artificial</h3>
             <p className="text-texto-muted text-xs leading-relaxed">
               Validação automática de fotos e vídeos e chatbot integrado para
@@ -161,8 +170,9 @@ export default function Sobre() {
             </p>
           </article>
 
-          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center hover:border-verde-claro/50 transition-colors duration-300">
-            <div className="text-3xl mb-4">⚡</div>
+          <article className="flex flex-col items-center text-center bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
+            <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6"> 
+            <MdBolt/></div>
             <h3 className="text-creme text-sm font-medium mb-2">APIs de mobilidade</h3>
             <p className="text-texto-muted text-xs leading-relaxed">
               Integração com sistemas de transporte público para exibição de
@@ -171,8 +181,9 @@ export default function Sobre() {
             </p>
           </article>
 
-          <article className="bg-fundo-card border border-borda rounded-xl p-6 text-center hover:border-verde-claro/50 transition-colors duration-300">
-            <div className="text-3xl mb-4">🛡️</div>
+          <article className="flex flex-col items-center text-center bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
+            <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6"> 
+            <FaShieldAlt /></div>
             <h3 className="text-creme text-sm font-medium mb-2">Segurança e autenticação</h3>
             <p className="text-texto-muted text-xs leading-relaxed">
               Autenticação de usuários, controle de acesso e registro de
