@@ -10,7 +10,7 @@ export default function Header() {
 
       {/* ===== LOGO — some quando menu abre no mobile ===== */}
       <Link to="/home" className={menuAberto ? "hidden md:block" : "block"}>
-        <img src="../../images/Logo.jpeg" alt="Logo da Rotta" className="h-15" />
+        <img src="../../images/img02-logo.jpeg" alt="Logo da Rotta" className="h-15" />
       </Link>
 
       {/* ===== HAMBURGUER (3 barras) — some quando menu abre ===== */}

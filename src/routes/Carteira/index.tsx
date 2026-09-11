@@ -578,7 +578,7 @@ export default function Carteira() {
   <div className="relative group mb-10">
     <div className="absolute inset-0 bg-verde-claro/20 blur-2xl rounded-full group-hover:bg-verde-claro/30 transition-colors"></div>
     <img
-      src="../../images/rotta-card.png"
+      src="../../images/img04-rotta-card.png"
       alt="Cartão ROTTA Card"
       className="relative w-full max-w-md p-5 drop-shadow-2xl group-hover:scale-105 transition-transform duration-500"
     />

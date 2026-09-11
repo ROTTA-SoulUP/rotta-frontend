@@ -41,7 +41,7 @@ export default function MascoteCapivara({ direcao = "baixo" }: MascoteCapivaraPr
         aria-label="Dica do dia"
       >
         <img
-          src="../../public/images/mascote.png"
+          src="../../images/img03-mascote.png"
           alt="Mascote capivara da Rotta"
           className="w-full h-full object-cover"
         />

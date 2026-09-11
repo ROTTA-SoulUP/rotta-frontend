@@ -52,7 +52,7 @@ export default function Login() {
 
         <aside className="md:w-1/2 h-64 md:h-auto">
           <img
-            src="../../public/images/login.jpeg"
+            src="../../images/img01-login.jpeg"
             alt="Imagem ilustrativa Rotta"
             className="w-full h-full object-contain object-center"
           />
