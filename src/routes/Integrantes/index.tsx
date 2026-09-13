@@ -174,7 +174,7 @@ export default function Integrantes() {
             {tags.map((tag, i) => (
               <span
                 key={i}
-                className="text-xs text-texto-muted border border-borda rounded-full px-3 py-1 hover:border-verde-claro hover:text-verde-claro transition-colors duration-300 cursor-default"
+                className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1"
               >
                 {tag}
               </span>
