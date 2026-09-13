@@ -6,7 +6,6 @@ export default function Home() {
 
   return (
     <main className=" min-h-screen bg-fundo text-creme font-sans">
-
       <section className="flex flex-col items-center text-center px-4 pt-24 pb-20">
         <span className="inline-block border border-verde/40 rounded-full px-5 py-1.5 text-xs uppercase tracking-widest text-verde-claro mb-10">
           Sustentabilidade & Mobilidade Urbana
@@ -22,8 +21,9 @@ export default function Home() {
         </p>
 
         <p className="text-texto-muted max-w-lg mt-6 leading-relaxed">
-        Uma empresa da Soul Up que, por meio de um aplicativo, incentiva hábitos sustentáveis e transforma essas ações em pontos para utilização no transporte público. 
-
+          Uma empresa da Soul Up que, por meio de um aplicativo, incentiva
+          hábitos sustentáveis e transforma essas ações em pontos para
+          utilização no transporte público.
         </p>
 
         <button
@@ -42,8 +42,12 @@ export default function Home() {
           Qual é o projeto da Rotta?
         </h2>
         <p className="text-texto-muted leading-relaxed">
-          A Rotta foi criada para tornar o transporte público na Grande São Paulo mais acessível enquanto promove ações sustentáveis no cotidiano urbano. O usuário registra uma ação pelo aplicativo, envia uma comprovação por foto ou vídeo e, após a validação, recebe pontos que podem ser utilizados em passagens de transporte público via cartão NFC ou QR Code.
-
+          A Rotta foi criada para tornar o transporte público na Grande São
+          Paulo mais acessível enquanto promove ações sustentáveis no cotidiano
+          urbano. O usuário registra uma ação pelo aplicativo, envia uma
+          comprovação por foto ou vídeo e, após a validação, recebe pontos que
+          podem ser utilizados em passagens de transporte público via cartão NFC
+          ou QR Code.
         </p>
       </section>
 
@@ -68,7 +72,8 @@ export default function Home() {
               Registro por foto ou vídeo (MOBILE)
             </h3>
             <p className="text-texto-muted text-sm leading-relaxed">
-             Registre sua ação sustentável por foto ou vídeo diretamente pela câmera do aplicativo mobile. 
+              Registre sua ação sustentável por foto ou vídeo diretamente pela
+              câmera do aplicativo mobile.
             </p>
           </article>
 
@@ -78,11 +83,11 @@ export default function Home() {
               <FaBus />
             </div>
             <h3 className="text-lg font-medium text-creme mb-3">
-              Passagens de Transporte 
+              Passagens de Transporte
             </h3>
             <p className="text-texto-muted text-sm leading-relaxed">
-              Utilize seus pontos acumulados para resgatar passagens de transporte público. 
-
+              Utilize seus pontos acumulados para resgatar passagens de
+              transporte público.
             </p>
           </article>
 
@@ -95,7 +100,8 @@ export default function Home() {
               Validação por IA
             </h3>
             <p className="text-texto-muted text-sm leading-relaxed">
-              A validação analisa a comprovação enviada antes que os pontos sejam liberados. 
+              A validação analisa a comprovação enviada antes que os pontos
+              sejam liberados.
             </p>
           </article>
         </div>

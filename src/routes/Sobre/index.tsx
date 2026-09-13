@@ -1,11 +1,11 @@
 import { FaBusAlt, FaRobot, FaShieldAlt } from "react-icons/fa";
+import { FaNfcSymbol } from "react-icons/fa6";
 import { GiPadlockOpen } from "react-icons/gi";
 import { PiSmileySad } from "react-icons/pi";
-import { MdOutlinePhoneIphone, MdBolt } from "react-icons/md";
+import { MdOutlinePhoneIphone } from "react-icons/md";
 export default function Sobre() {
   return (
     <main className="min-h-screen bg-fundo text-creme font-sans">
-
       <section className="flex flex-col items-center text-center px-4 pt-24 pb-16">
         <span className="text-verde-claro text-sm uppercase tracking-widest mb-4">
           Sobre
@@ -26,17 +26,25 @@ export default function Sobre() {
           O problema que queremos resolver
         </h2>
         <p className="text-texto-muted text-sm leading-relaxed mb-4">
-          A Grande São Paulo enfrenta dois desafios urgentes e interligados: a necessidade de mudança de hábitos para reduzir o impacto ambiental e a dificuldade de tornar o transporte público mais acessível e atraente.  
+          A Grande São Paulo enfrenta dois desafios urgentes e interligados: a
+          necessidade de mudança de hábitos para reduzir o impacto ambiental e a
+          dificuldade de tornar o transporte público mais acessível e atraente.
         </p>
         <p className="text-texto-muted text-sm leading-relaxed mb-8">
-          Muitas pessoas enfrentam dificuldades para arcar com seus deslocamentos diários, enquanto ações sustentáveis ainda recebem pouco incentivo. A Rotta conecta esses dois pontos ao transformar atitudes sustentáveis em pontos destinados ao transporte público. 
+          Muitas pessoas enfrentam dificuldades para arcar com seus
+          deslocamentos diários, enquanto ações sustentáveis ainda recebem pouco
+          incentivo. A Rotta conecta esses dois pontos ao transformar atitudes
+          sustentáveis em pontos destinados ao transporte público.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <article className="flex flex-col items-center text-center bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
-            <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6"> 
-            <PiSmileySad /></div>
-            <h3 className="text-creme text-sm font-medium mb-2">Falta de incentivo</h3>
+            <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6">
+              <PiSmileySad />
+            </div>
+            <h3 className="text-creme text-sm font-medium mb-2">
+              Falta de incentivo
+            </h3>
             <p className="text-texto-muted text-xs leading-relaxed">
               Mesmo com maior conscientização ambiental, a falta de benefícios
               concretos ainda torna a adesão a hábitos sustentáveis baixa e
@@ -46,17 +54,26 @@ export default function Sobre() {
 
           <article className="flex flex-col items-center text-center bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
             <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6">
-            <FaBusAlt/></div>
-            <h3 className="text-creme text-sm font-medium mb-2">Transporte como barreira</h3>
+              <FaBusAlt />
+            </div>
+            <h3 className="text-creme text-sm font-medium mb-2">
+              Transporte como barreira
+            </h3>
             <p className="text-texto-muted text-xs leading-relaxed">
-              Moradores da Grande São Paulo que não possuem vale-transporte ou gratuidade podem enfrentar dificuldades para cobrir seus deslocamentos diários. A Rotta busca contribuir para essa realidade por meio de pontos destinados ao transporte público. 
+              Moradores da Grande São Paulo que não possuem vale-transporte ou
+              gratuidade podem enfrentar dificuldades para cobrir seus
+              deslocamentos diários. A Rotta busca contribuir para essa
+              realidade por meio de pontos destinados ao transporte público.
             </p>
           </article>
 
           <article className="flex flex-col items-center text-center bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
             <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6">
-            <GiPadlockOpen/></div>
-            <h3 className="text-creme text-sm font-medium mb-2">Sistemas desconectados</h3>
+              <GiPadlockOpen />
+            </div>
+            <h3 className="text-creme text-sm font-medium mb-2">
+              Sistemas desconectados
+            </h3>
             <p className="text-texto-muted text-xs leading-relaxed">
               A Rotta transforma sustentabilidade em benefício real ao integrar
               ações sustentáveis ao transporte público, criando impacto contínuo
@@ -101,7 +118,7 @@ export default function Sobre() {
               texto:
                 "Quando a comprovação é aprovada, os pontos do desafio são adicionados à carteira do usuário. A pontuação também contribui para sua sequência de dias e evolução do Capi.",
             },
-             {
+            {
               titulo: "Resgate da passagem",
               texto:
                 "Ao acumular múltiplos de 150 pontos, o usuário pode solicitar uma passagem de transporte público utilizando o Rotta Card, por NFC, ou um QR Code.",
@@ -124,7 +141,9 @@ export default function Sobre() {
         </ol>
 
         <div className="mt-8 bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
-          <h3 className="text-verde-claro text-sm font-medium mb-2">Carteira</h3>
+          <h3 className="text-verde-claro text-sm font-medium mb-2">
+            Carteira
+          </h3>
           <p className="text-texto-muted text-xs leading-relaxed">
             A plataforma contará com uma carteira digital onde o usuário poderá
             acompanhar sua quantidade de pontos, visualizar o histórico de ações
@@ -133,17 +152,20 @@ export default function Sobre() {
           </p>
         </div>
       </section>
-<section className="px-4 max-w-5xl mx-auto py-16">
-  <div className="mt-8 bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
-    <h2 className="text-verde-claro text-lg font-medium mb-2">
-         Armazenamento offline
-        </h2>
+      <section className="px-4 max-w-5xl mx-auto py-16">
+        <div className="mt-8 bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
+          <h2 className="text-verde-claro text-lg font-medium mb-2">
+            Armazenamento offline
+          </h2>
 
-        <p>
-          Caso não queira enviar a comprovação imediatamente, o usuário pode salvar temporariamente a foto ou o vídeo no armazenamento offline do aplicativo. As mídias ficam disponíveis para envio posterior e são excluídas automaticamente ao final do dia.
-        </p>
-  </div>
-</section>
+          <p>
+            Caso não queira enviar a comprovação imediatamente, o usuário pode
+            salvar temporariamente a foto ou o vídeo no armazenamento offline do
+            aplicativo. As mídias ficam disponíveis para envio posterior e são
+            excluídas automaticamente ao final do dia.
+          </p>
+        </div>
+      </section>
       <section className="px-4 max-w-5xl mx-auto py-16">
         <span className="text-verde-claro text-sm uppercase tracking-widest mb-4 block">
           Tecnologias
@@ -152,14 +174,18 @@ export default function Sobre() {
           O que sustenta o projeto
         </h2>
         <p className="text-texto-muted text-sm leading-relaxed mb-8">
-          A Rotta é constituída sobre tecnologias modernas que garantem a performance, segurança e experiência de uso fluida. 
+          A Rotta é constituída sobre tecnologias modernas que garantem a
+          performance, segurança e experiência de uso fluida.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <article className="flex flex-col items-center text-center bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
-            <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6"> 
-            <MdOutlinePhoneIphone/></div>
-            <h3 className="text-creme text-sm font-medium mb-2">Aplicativo mobile</h3>
+            <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6">
+              <MdOutlinePhoneIphone />
+            </div>
+            <h3 className="text-creme text-sm font-medium mb-2">
+              Aplicativo mobile
+            </h3>
             <p className="text-texto-muted text-xs leading-relaxed">
               Interface para registrar ações, acompanhar pontuação e usar os
               créditos de transporte — tudo em um único app.
@@ -168,8 +194,11 @@ export default function Sobre() {
 
           <article className="flex flex-col items-center text-center bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
             <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6">
-            <FaRobot/> </div>
-            <h3 className="text-creme text-sm font-medium mb-2">Inteligência artificial</h3>
+              <FaRobot />{" "}
+            </div>
+            <h3 className="text-creme text-sm font-medium mb-2">
+              Inteligência artificial
+            </h3>
             <p className="text-texto-muted text-xs leading-relaxed">
               Validação automática de fotos e vídeos e chatbot integrado para
               suporte ao usuário em tempo real.
@@ -177,18 +206,25 @@ export default function Sobre() {
           </article>
 
           <article className="flex flex-col items-center text-center bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
-            <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6"> 
-            <MdBolt/></div>
-            <h3 className="text-creme text-sm font-medium mb-2">Tecnologia NFC</h3>
+            <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6">
+              <FaNfcSymbol />
+            </div>
+            <h3 className="text-creme text-sm font-medium mb-2">
+              Tecnologia NFC
+            </h3>
             <p className="text-texto-muted text-xs leading-relaxed">
-             Permite utilizar o Rotta Card por aproximação para realizar o resgate de pontos e liberar o acesso ao transporte público.
+              Permite utilizar o Rotta Card por aproximação para realizar o
+              resgate de pontos e liberar o acesso ao transporte público.
             </p>
           </article>
 
           <article className="flex flex-col items-center text-center bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
-            <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6"> 
-            <FaShieldAlt /></div>
-            <h3 className="text-creme text-sm font-medium mb-2">Segurança e autenticação</h3>
+            <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6">
+              <FaShieldAlt />
+            </div>
+            <h3 className="text-creme text-sm font-medium mb-2">
+              Segurança e autenticação
+            </h3>
             <p className="text-texto-muted text-xs leading-relaxed">
               Autenticação de usuários, controle de acesso e registro de
               atividades garantem proteção dos dados e rastreabilidade das
@@ -197,8 +233,6 @@ export default function Sobre() {
           </article>
         </div>
       </section>
-
-
     </main>
   );
 }

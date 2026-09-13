@@ -69,25 +69,20 @@ const secoes: Secao[] = [
 ];
 
 export default function Faq() {
-  // USESTATE — controla qual pergunta está aberta (guarda o índice)
   const [aberta, setAberta] = useState<number | null>(null);
 
-  // USESTATE — termo de busca digitado pelo usuário
   const [busca, setBusca] = useState("");
 
-  // USEEFFECT — scroll pro topo quando a página carrega
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  // USEEFFECT — fecha o accordion se o usuário digitar na busca
   useEffect(() => {
     if (busca) {
       setAberta(null);
     }
   }, [busca]);
 
-  // Filtra as perguntas com base no termo de busca
   const secoesFiltradas = secoes
     .map((secao) => ({
       ...secao,
@@ -99,17 +94,14 @@ export default function Faq() {
     }))
     .filter((secao) => secao.itens.length > 0);
 
-  // Abre ou fecha a pergunta clicada
   const toggle = (index: number) => {
     setAberta(aberta === index ? null : index);
   };
 
-  // Conta o total de perguntas
   const totalPerguntas = secoes.reduce((acc, s) => acc + s.itens.length, 0);
 
   return (
     <main className="min-h-screen bg-fundo text-creme font-sans">
-      {/* ===== HERO ===== */}
       <section className="flex flex-col items-center text-center px-4 pt-24 pb-16">
         <span className="text-verde-claro text-sm uppercase tracking-widest mb-4">
           FAQ
@@ -125,7 +117,6 @@ export default function Faq() {
         </p>
       </section>
 
-      {/* ===== BARRA DE BUSCA ===== */}
       <section className="px-4 max-w-2xl mx-auto pb-8">
         <div className="relative">
           <input
@@ -154,10 +145,8 @@ export default function Faq() {
         </p>
       </section>
 
-      {/* ===== ACCORDION ===== */}
       <section className="px-4 max-w-2xl mx-auto pb-24">
         {secoesFiltradas.length === 0 ? (
-          // Nenhum resultado
           <div className="text-center py-12">
             <p className="text-texto-muted text-sm">
               Nenhuma pergunta encontrada para "{busca}".
@@ -179,7 +168,6 @@ export default function Faq() {
 
               <div className="flex flex-col gap-3">
                 {secao.itens.map((item, iIndex) => {
-                  // Índice único = seção * 100 + item
                   const index = sIndex * 100 + iIndex;
                   const isOpen = aberta === index;
 
