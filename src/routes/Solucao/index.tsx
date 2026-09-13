@@ -25,9 +25,9 @@ export default function Solucao() {
   const ptsDia = acoes
     .filter((a) => selecionadas.includes(a.id))
     .reduce((soma, a) => soma + a.pontos, 0);
-  const ptsMes = ptsDia * 30;
-  const creditos = (ptsMes / 150) * 5.3;
-  const porcentagem = Math.min((creditos / 150) * 100, 100);
+    const ptsMes = ptsDia * 30;  
+  const passagens = Math.floor(ptsDia / 150);
+
 
   const toggle = (id: string) => {
     setSelecionadas((prev) =>
@@ -56,11 +56,11 @@ export default function Solucao() {
             Simulador interativo
           </p>
           <h2 className="text-3xl md:text-4xl font-serif text-creme mb-4">
-            Calcule seus créditos de transporte
+            Simule suas rottas (pontos)
           </h2>
           <p className="text-texto-muted max-w-lg mx-auto">
-            Selecione as ações que você faz no dia a dia e veja quantos créditos
-            acumularia por mês.
+            Selecione as ações sustentáveis que você realiza e veja quantas rottas você pode acumular. 
+
           </p>
         </div>
 
@@ -132,23 +132,13 @@ export default function Solucao() {
             <hr className="border-borda w-full mb-6" />
 
             <p className="text-texto-muted text-sm uppercase tracking-widest mb-2">
-              Créditos de transporte
+              Rottas acumuladas 
             </p>
             <p className="text-3xl font-serif text-creme mb-2">
-              R$ {creditos.toFixed(2).replace(".", ",")}
+              {passagens} {passagens === 1 ? "passagem" : "passagens"}
             </p>
             <p className="text-texto-muted text-xs mb-6">
-              150 pts = R$ 5,30 em crédito
-            </p>
-
-            <div className="w-full bg-fundo rounded-full h-3 mb-2">
-              <div
-                className="bg-verde-claro h-3 rounded-full transition-all duration-500"
-                style={{ width: `${porcentagem}%` }}
-              />
-            </div>
-            <p className="text-texto-muted text-xs">
-              {porcentagem.toFixed(0)}% da passagem mensal (R$ 150)
+              150 rtt = 1 passagem de transporte público
             </p>
           </aside>
         </div>
@@ -175,16 +165,12 @@ export default function Solucao() {
             </div>
             <div>
               <h3 className="text-lg font-medium text-creme mb-2">
-                Usuário registra a ação
+                Escolha um desafio
               </h3>
               <p className="text-texto-muted text-sm leading-relaxed mb-3">
-                Pelo app da SoulUp, o usuário tira foto ou grava vídeo
-                documentando a ação sustentável — reciclar, usar bicicleta,
-                levar sacola, entre outras.
+                O usuário escolhe uma ação sustentável disponível no aplicativo e verifica a pontuação correspondente.
+
               </p>
-              <span className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1">
-                App SoulUp
-              </span>
             </div>
           </article>
 
@@ -196,16 +182,11 @@ export default function Solucao() {
             </div>
             <div>
               <h3 className="text-lg font-medium text-creme mb-2">
-                IA valida a ação
+                Registre a ação
               </h3>
               <p className="text-texto-muted text-sm leading-relaxed mb-3">
-                O sistema de inteligência artificial analisa o conteúdo,
-                verifica a autenticidade e aprova ou rejeita. Nenhum ponto é
-                concedido sem validação.
+                A ação é registrada por foto ou vídeo diretamente pelo aplicativo, vinculada ao desafio escolhido.
               </p>
-              <span className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1">
-                Validação automática
-              </span>
             </div>
           </article>
 
@@ -217,15 +198,11 @@ export default function Solucao() {
             </div>
             <div>
               <h3 className="text-lg font-medium text-creme mb-2">
-                Pontos são creditados
+                Validação da comprovação
               </h3>
               <p className="text-texto-muted text-sm leading-relaxed mb-3">
-                Após aprovação, os pontos são somados ao saldo. O ranking é
-                atualizado em tempo real com feedbacks visuais para o usuário.
+                A comprovação é analisada para verificar se atende aos requisitos do desafio. Nesta versão, a validação por inteligência artificial é simulada.
               </p>
-              <span className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1">
-                Sistema de pontos
-              </span>
             </div>
           </article>
 
@@ -237,15 +214,27 @@ export default function Solucao() {
             </div>
             <div>
               <h3 className="text-lg font-medium text-creme mb-2">
-                Conversão em QR Code
+                Receba seus pontos
               </h3>
               <p className="text-texto-muted text-sm leading-relaxed mb-3">
-                O usuário converte os pontos em um QR Code integrado diretamente
-                ao sistema de bilhetagem das operadoras parceiras.
+               Após a aprovação, os pontos são adicionados à carteira e contribuem para a evolução do Capi e da sequência de dias.
               </p>
-              <span className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1">
-                Integração bilhetagem
-              </span>
+            </div>
+          </article>
+
+          <div className="text-verde-claro text-2xl text-center">↓</div>
+
+          <article className="bg-fundo-card border border-borda hover:border-verde-claro/50 rounded-xl p-6 flex gap-5">
+            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-verde text-creme text-xl font-serif shrink-0">
+              5
+            </div>
+            <div>
+              <h3 className="text-lg font-medium text-creme mb-2">
+                Resgate sua passagem
+              </h3>
+              <p className="text-texto-muted text-sm leading-relaxed mb-3">
+               Ao atingir múltiplos de 150 pontos, o usuário pode resgatar uma passagem utilizando o Rotta Card por NFC ou um QR Code.
+              </p>
             </div>
           </article>
         </div>
@@ -261,12 +250,11 @@ export default function Solucao() {
             O que a Rotta gera na prática
           </h2>
           <p className="text-texto-muted max-w-lg mx-auto">
-            Cada ação registrada gera impacto real — para o usuário, para a cidade
-            e para o meio ambiente.
+            Cada ação registrada gera impacto para o usuário, na cidade e ao meio ambiente.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <article className="bg-fundo-card border border-borda rounded-xl p-8 flex flex-col items-center text-center hover:border-verde-claro/50 transition-colors duration-300">
             <p className="text-4xl font-serif text-verde-claro mb-4">3x</p>
             <p className="text-texto-muted text-sm leading-relaxed">
@@ -275,9 +263,10 @@ export default function Solucao() {
           </article>
 
           <article className="bg-fundo-card border border-borda rounded-xl p-8 flex flex-col items-center text-center hover:border-verde-claro/50 transition-colors duration-300">
-            <p className="text-4xl font-serif text-verde-claro mb-4">R$100</p>
+            <p className="text-4xl font-serif text-verde-claro mb-4">150</p>
             <p className="text-texto-muted text-sm leading-relaxed">
-              em créditos de transporte possíveis por mês com hábitos consistentes
+              rottas para transformar sustentabilidade em mobilidade no seu dia a dia.  
+
             </p>
           </article>
 
@@ -287,14 +276,13 @@ export default function Solucao() {
               fraudes graças à validação por IA em 100% das ações registradas
             </p>
           </article>
-
-          <article className="bg-fundo-card border border-borda rounded-xl p-8 flex flex-col items-center text-center hover:border-verde-claro/50 transition-colors duration-300">
-            <p className="text-4xl font-serif text-verde-claro mb-4">CO₂</p>
-            <p className="text-texto-muted text-sm leading-relaxed">
-              redução de emissões incentivada pelo uso do transporte público
-            </p>
-          </article>
         </div>
+      </section>
+
+       <section className="px-4 py-12">
+        <h2 className="text-creme text-2xl font-bold text-center mb-8">
+          Validação com IA
+        </h2>
       </section>
     </main>
   );
