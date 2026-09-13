@@ -1,7 +1,8 @@
 import { GoGoal } from "react-icons/go";
 import { FaBusAlt, FaClock  } from "react-icons/fa";
-import {  MdBolt } from "react-icons/md";
+import {  MdBolt, MdMan } from "react-icons/md";
 import { RiCoinsLine } from "react-icons/ri";
+import { BiWorld } from "react-icons/bi";
 import { useState } from "react";
 
 type Acao = {
@@ -544,6 +545,95 @@ export default function Carteira() {
           </span>
         </div>
       )}
+
+
+<section className="flex flex-col items-center text-center px-4 pt-24 pb-16">
+
+  <span className="text-verde-claro text-sm uppercase tracking-widest mb-4">
+    ROTTA Card
+  </span>
+
+  <h2 className="text-4xl md:text-5xl font-serif text-creme mb-4">
+    Minha Carteira
+  </h2>
+
+  <p className="text-xl text-verde-claro font-light max-w-xl mb-10">
+    Apresentamos o nosso cartão ROTTA Card, aonde você irá usar os seus pontos para economizar no seu transporte público
+  </p>
+
+  {/* Badge de destaque */}
+  <div className="flex flex-wrap justify-center gap-3 mb-8">
+    <span className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1">
+     Sustentável
+    </span>
+    <span className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1">
+     Transporte Público
+    </span>
+    <span className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1">
+     Pontos
+    </span>
+  </div>
+
+  {/* Imagem do cartão com hover */}
+  <div className="relative group mb-10">
+    <div className="absolute inset-0 bg-verde-claro/20 blur-2xl rounded-full group-hover:bg-verde-claro/30 transition-colors"></div>
+    <img
+      src="../../images/img04-rotta-card.png"
+      alt="Cartão ROTTA Card"
+      className="relative w-full max-w-md p-5 drop-shadow-2xl group-hover:scale-105 transition-transform duration-500"
+    />
+  </div>
+
+  {/* Texto dividido em 3 parágrafos */}
+  <div className="max-w-2xl space-y-4 mb-10">
+    <p className="text-creme/80 text-lg leading-relaxed">
+      Criamos esse cartão com a ideia de ajudar o trabalhador da grande São Paulo que usa do próprio dinheiro para pagar seu transporte de casa para o trabalho e do trabalho pra casa.
+    </p>
+    <p className="text-creme/80 text-lg leading-relaxed">
+      Achamos injusto a pessoa trabalhar e tirar do próprio bolso para pagar uma coisa que a empresa deveria pagar. Por isso, implementamos essa ideia.
+    </p>
+    <p className="text-verde-claro text-lg leading-relaxed font-medium">
+      Aonde além de ajudar o trabalhador, ajudamos o mundo.
+      <BiWorld className="inline ml-1"/>
+    </p>
+  </div>
+
+  {/* Cards de benefícios */}
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl w-full mb-10">
+
+    <div className="bg-fundo-card border border-borda rounded-xl p-6 flex flex-col items-center gap-3 hover:border-verde-claro/50 transition-colors">
+      <div className="w-12 h-12 rounded-full bg-verde/10 flex items-center justify-center text-verde-claro">
+        <RiCoinsLine />
+      </div>
+      <h3 className="text-creme font-medium text-base">Economize Dinheiro</h3>
+      <p className="text-creme/50 text-sm leading-relaxed text-center ">
+        Use seus pontos acumulados para reduzir o custo do transporte
+      </p>
+    </div>
+
+    <div className="bg-fundo-card border border-borda rounded-xl p-6 flex flex-col items-center gap-3 hover:border-verde-claro/50 transition-colors">
+      <div className="w-12 h-12 rounded-full bg-verde/10 flex items-center justify-center text-verde-claro">
+        <MdMan />
+      </div>
+      <h3 className="text-creme font-medium text-base">Para Trabalhadores</h3>
+      <p className="text-creme/50 text-sm leading-relaxed text-center">
+        Feito pra quem depende do transporte público todos os dias
+      </p>
+    </div>
+
+    <div className="bg-fundo-card border border-borda rounded-xl p-6 flex flex-col items-center gap-3 hover:border-verde-claro/50 transition-colors">
+      <div className="w-12 h-12 rounded-full bg-verde/10 flex items-center justify-center text-verde-claro">
+        <BiWorld />
+      </div>
+      <h3 className="text-creme font-medium text-base">Ajuda o Planeta</h3>
+      <p className="text-creme/50 text-sm leading-relaxed text-center">
+        Cada ação sustentável contribui para um mundo melhor
+      </p>
+    </div>
+
+  </div>
+
+</section>
 
     </main>
   );

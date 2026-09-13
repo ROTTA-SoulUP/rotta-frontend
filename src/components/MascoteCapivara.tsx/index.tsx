@@ -37,11 +37,11 @@ export default function MascoteCapivara({ direcao = "baixo" }: MascoteCapivaraPr
           setAbaAberta(!abaAberta);
           setDicaVisivel(false);
         }}
-        className="w-14 h-14 rounded-full border-2 border-verde-claro/50 overflow-hidden hover:border-verde-claro hover:scale-110 transition-all duration-300 shrink-0"
+        className="w-14 h-14 rounded-full border-2 border-verde-claro/50 overflow-hidden hover:border-verde-claro hover:scale-110 transition-all duration-300 shrink-0 cursor-pointer"
         aria-label="Dica do dia"
       >
         <img
-          src="../../public/images/mascote.png"
+          src="../../images/img03-mascote.png"
           alt="Mascote capivara da Rotta"
           className="w-full h-full object-cover"
         />
@@ -54,7 +54,7 @@ export default function MascoteCapivara({ direcao = "baixo" }: MascoteCapivaraPr
           {!dicaVisivel ? (
             <div className="flex flex-col items-center text-center gap-3">
               <p className="text-creme text-sm font-medium">
-                Receba a dica do dia! 🦫
+                Receba a dica do dia!
               </p>
               <button
                 onClick={mostrarDica}

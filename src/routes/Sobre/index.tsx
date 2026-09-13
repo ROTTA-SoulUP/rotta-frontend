@@ -11,7 +11,7 @@ export default function Sobre() {
           Sobre
         </span>
         <h1 className="text-4xl md:text-5xl font-serif text-creme mb-4">
-          SoulUp
+          Rotta
         </h1>
         <p className="text-xl text-verde-claro font-light max-w-xl">
           Contexto do projeto, solução proposta e tecnologias utilizadas.
@@ -26,22 +26,17 @@ export default function Sobre() {
           O problema que queremos resolver
         </h2>
         <p className="text-texto-muted text-sm leading-relaxed mb-4">
-          Cidades brasileiras enfrentam dois desafios urgentes e interligados: a
-          necessidade de mudança de hábitos para reduzir o impacto ambiental e a
-          dificuldade de tornar o transporte público mais acessível e atraente.
+          A Grande São Paulo enfrenta dois desafios urgentes e interligados: a necessidade de mudança de hábitos para reduzir o impacto ambiental e a dificuldade de tornar o transporte público mais acessível e atraente.  
         </p>
         <p className="text-texto-muted text-sm leading-relaxed mb-8">
-          Comportamentos sustentáveis raramente recebem qualquer tipo de
-          recompensa tangível. Ao mesmo tempo, o custo do transporte representa
-          uma barreira real para boa parte da população. A SoulUp e a Rotta
-          resolvem esses dois problemas juntos.
+          Muitas pessoas enfrentam dificuldades para arcar com seus deslocamentos diários, enquanto ações sustentáveis ainda recebem pouco incentivo. A Rotta conecta esses dois pontos ao transformar atitudes sustentáveis em pontos destinados ao transporte público. 
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <article className="flex flex-col items-center text-center bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
             <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6"> 
             <PiSmileySad /></div>
-            <h3 className="text-creme text-sm font-medium mb-2">Falta de incentivo real</h3>
+            <h3 className="text-creme text-sm font-medium mb-2">Falta de incentivo</h3>
             <p className="text-texto-muted text-xs leading-relaxed">
               Mesmo com maior conscientização ambiental, a falta de benefícios
               concretos ainda torna a adesão a hábitos sustentáveis baixa e
@@ -54,9 +49,7 @@ export default function Sobre() {
             <FaBusAlt/></div>
             <h3 className="text-creme text-sm font-medium mb-2">Transporte como barreira</h3>
             <p className="text-texto-muted text-xs leading-relaxed">
-              Milhões de brasileiros enfrentam diariamente o alto custo do
-              transporte público para trabalhar e estudar, tornando a mobilidade
-              urbana um dos grandes desafios das cidades atuais.
+              Moradores da Grande São Paulo que não possuem vale-transporte ou gratuidade podem enfrentar dificuldades para cobrir seus deslocamentos diários. A Rotta busca contribuir para essa realidade por meio de pontos destinados ao transporte público. 
             </p>
           </article>
 
@@ -89,24 +82,29 @@ export default function Sobre() {
         <ol className="flex flex-col gap-4 list-none counter-reset">
           {[
             {
-              titulo: "Registro da ação sustentável",
+              titulo: "Escolha do desafio",
               texto:
-                "O usuário documenta uma ação cotidiana — separar recicláveis, usar transporte alternativo, evitar descarte incorreto — por foto ou vídeo diretamente pelo app.",
+                "O usuário escolhe um desafio sustentável disponível no aplicativo, como caminhada no parque, descarte correto ou redução do uso de sacolas plásticas.",
             },
             {
-              titulo: "Validação por inteligência artificial",
+              titulo: "Registro da ação",
               texto:
-                "Um sistema de IA analisa o conteúdo enviado, confirma a autenticidade da ação e aprova a pontuação. Essa etapa é fundamental para evitar fraudes e manter a credibilidade junto aos parceiros.",
+                "O usuário registra a ação por foto ou vídeo diretamente pelo aplicativo. A comprovação é vinculada ao desafio escolhido.",
             },
             {
-              titulo: "Acúmulo de pontos e engajamento",
+              titulo: "Validação da comprovação",
               texto:
-                "Após validação, os pontos são somados ao perfil. O app conta com ranking, níveis de progressão e streak diário para estimular a consistência dos hábitos.",
+                "A mídia enviada passa por uma etapa de validação, que verifica se a comprovação atende aos requisitos do desafio. Nesta versão do projeto, essa validação é simulada.",
             },
             {
-              titulo: "Conversão em crédito de transporte",
+              titulo: "Pontos na carteira",
               texto:
-                "Os pontos acumulados são convertidos em créditos para o transporte público, integrados diretamente com as operadoras parceiras via APIs de mobilidade.",
+                "Quando a comprovação é aprovada, os pontos do desafio são adicionados à carteira do usuário. A pontuação também contribui para sua sequência de dias e evolução do Capi.",
+            },
+             {
+              titulo: "Resgate da passagem",
+              texto:
+                "Ao acumular múltiplos de 150 pontos, o usuário pode solicitar uma passagem de transporte público utilizando o Rotta Card, por NFC, ou um QR Code.",
             },
           ].map((passo, i) => (
             <li key={i} className="relative pl-16">
@@ -135,7 +133,17 @@ export default function Sobre() {
           </p>
         </div>
       </section>
+<section className="px-4 max-w-5xl mx-auto py-16">
+  <div className="mt-8 bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
+    <h2 className="text-verde-claro text-lg font-medium mb-2">
+         Armazenamento offline
+        </h2>
 
+        <p>
+          Caso não queira enviar a comprovação imediatamente, o usuário pode salvar temporariamente a foto ou o vídeo no armazenamento offline do aplicativo. As mídias ficam disponíveis para envio posterior e são excluídas automaticamente ao final do dia.
+        </p>
+  </div>
+</section>
       <section className="px-4 max-w-5xl mx-auto py-16">
         <span className="text-verde-claro text-sm uppercase tracking-widest mb-4 block">
           Tecnologias
@@ -144,9 +152,7 @@ export default function Sobre() {
           O que sustenta o projeto
         </h2>
         <p className="text-texto-muted text-sm leading-relaxed mb-8">
-          O SoulUp é construído sobre tecnologias modernas que garantem
-          performance, segurança e experiência de uso fluida. A IA ocupa o
-          centro da arquitetura como peça estrutural.
+          A Rotta é constituída sobre tecnologias modernas que garantem a performance, segurança e experiência de uso fluida. 
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -173,11 +179,9 @@ export default function Sobre() {
           <article className="flex flex-col items-center text-center bg-fundo-card border border-borda rounded-xl p-6 hover:border-verde-claro/50 transition-colors duration-300">
             <div className="w-14 h-14 shrink-0 flex items-center justify-center rounded-full bg-verde/10 text-verde-claro text-2xl [&>svg]:w-6 [&>svg]:h-6 mb-6"> 
             <MdBolt/></div>
-            <h3 className="text-creme text-sm font-medium mb-2">APIs de mobilidade</h3>
+            <h3 className="text-creme text-sm font-medium mb-2">Tecnologia NFC</h3>
             <p className="text-texto-muted text-xs leading-relaxed">
-              Integração com sistemas de transporte público para exibição de
-              ônibus em tempo real e conversão de pontos em créditos de
-              bilhetagem.
+             Permite utilizar o Rotta Card por aproximação para realizar o resgate de pontos e liberar o acesso ao transporte público.
             </p>
           </article>
 

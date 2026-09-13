@@ -18,13 +18,12 @@ export default function Home() {
         </div>
 
         <p className="text-xl md:text-2xl text-verde-claro mt-6 font-light">
-          Ações sustentáveis que movem a cidade.
+          Seu caminho, nossa rotta.
         </p>
 
         <p className="text-texto-muted max-w-lg mt-6 leading-relaxed">
-          Uma empresa da SoulUp que, por meio de um aplicativo mobile, incentiva
-          hábitos sustentáveis ao oferecer créditos reais para utilização no
-          transporte público.
+        Uma empresa da Soul Up que, por meio de um aplicativo, incentiva hábitos sustentáveis e transforma essas ações em pontos para utilização no transporte público. 
+
         </p>
 
         <button
@@ -43,10 +42,8 @@ export default function Home() {
           Qual é o projeto da Rotta?
         </h2>
         <p className="text-texto-muted leading-relaxed">
-          A Rotta foi criada para tornar o transporte público mais acessível
-          enquanto promove ações sustentáveis no dia a dia urbano. O usuário
-          registra ações do dia a dia pelo app da SoulUp, acumula pontos e
-          converte em créditos reais para andar de ônibus.
+          A Rotta foi criada para tornar o transporte público na Grande São Paulo mais acessível enquanto promove ações sustentáveis no cotidiano urbano. O usuário registra uma ação pelo aplicativo, envia uma comprovação por foto ou vídeo e, após a validação, recebe pontos que podem ser utilizados em passagens de transporte público via cartão NFC ou QR Code.
+
         </p>
       </section>
 
@@ -57,7 +54,7 @@ export default function Home() {
             Funcionalidades
           </p>
           <h2 className="text-3xl md:text-4xl font-serif text-creme">
-            O que o app da Rotta oferece
+            O que a Rotta oferece?
           </h2>
         </div>
 
@@ -68,10 +65,10 @@ export default function Home() {
               <FaCamera />
             </div>
             <h3 className="text-lg font-medium text-creme mb-3">
-              Registro por foto ou vídeo
+              Registro por foto ou vídeo (MOBILE)
             </h3>
             <p className="text-texto-muted text-sm leading-relaxed">
-              Documente suas ações sustentáveis diretamente pelo app.
+             Registre sua ação sustentável por foto ou vídeo diretamente pela câmera do aplicativo mobile. 
             </p>
           </article>
 
@@ -81,10 +78,11 @@ export default function Home() {
               <FaBus />
             </div>
             <h3 className="text-lg font-medium text-creme mb-3">
-              Créditos de transporte
+              Passagens de Transporte 
             </h3>
             <p className="text-texto-muted text-sm leading-relaxed">
-              Converta seus pontos em créditos para o transporte público.
+              Utilize seus pontos acumulados para resgatar passagens de transporte público. 
+
             </p>
           </article>
 
@@ -97,7 +95,7 @@ export default function Home() {
               Validação por IA
             </h3>
             <p className="text-texto-muted text-sm leading-relaxed">
-              Inteligência artificial garante que só ações reais sejam pontuadas.
+              A validação analisa a comprovação enviada antes que os pontos sejam liberados. 
             </p>
           </article>
         </div>
@@ -119,17 +117,14 @@ export default function Home() {
         </p>
 
         <div className="flex flex-wrap justify-center gap-3">
-          <span className="border border-borda rounded-full px-5 py-2 text-sm text-texto-muted hover:border-verde-claro/50 hover:text-creme transition-colors duration-300 cursor-default">
+          <span className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1">
             Empresas de transporte público
           </span>
-          <span className="border border-borda rounded-full px-5 py-2 text-sm text-texto-muted hover:border-verde-claro/50 hover:text-creme transition-colors duration-300 cursor-default">
+          <span className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1">
             Prefeitura
           </span>
-          <span className="border border-borda rounded-full px-5 py-2 text-sm text-texto-muted hover:border-verde-claro/50 hover:text-creme transition-colors duration-300 cursor-default">
+          <span className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1">
             Patrocinadores privados
-          </span>
-          <span className="border border-borda rounded-full px-5 py-2 text-sm text-texto-muted hover:border-verde-claro/50 hover:text-creme transition-colors duration-300 cursor-default">
-            APIs de mobilidade
           </span>
         </div>
       </section>
