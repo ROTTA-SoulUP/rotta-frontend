@@ -1,3 +1,4 @@
+import ValidacaoFoto from "../../components/ValidacaoFoto";
 import { useState } from "react";
 
 const acoes = [
@@ -284,6 +285,7 @@ export default function Solucao() {
           Validação com IA
         </h2>
       </section>
+        <ValidacaoFoto />
     </main>
   );
 }
