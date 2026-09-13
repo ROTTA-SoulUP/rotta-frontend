@@ -36,32 +36,32 @@ export default function Contato() {
     window.scrollTo(0, 0);
   }, []);
 
- useEffect(() => {
-  if (!enviado) return;
+  useEffect(() => {
+    if (!enviado) return;
 
-  setContador(5);
-  let segundos = 5;
+    setContador(5);
+    let segundos = 5;
 
-  intervalRef.current = setInterval(() => {
-    segundos -= 1;
-    setContador(segundos);
+    intervalRef.current = setInterval(() => {
+      segundos -= 1;
+      setContador(segundos);
 
-    if (segundos <= 0) {
+      if (segundos <= 0) {
+        if (intervalRef.current) {
+          clearInterval(intervalRef.current);
+          intervalRef.current = null;
+        }
+        navigate("/home");
+      }
+    }, 2000);
+
+    return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
       }
-      navigate("/home");
-    }
-  }, 2000);
-
-  return () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-  };
-}, [enviado, navigate]); 
+    };
+  }, [enviado, navigate]);
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value.replace(/\D/g, "");
@@ -77,7 +77,7 @@ export default function Contato() {
   };
 
   const onSubmit = (data: FormData) => {
-  console.log("Dados do formulário:", data);
+    console.log("Dados do formulário:", data);
     setEnviado(true);
   };
 
@@ -98,7 +98,6 @@ export default function Contato() {
   return (
     <main className="min-h-screen bg-fundo text-creme font-sans">
 
-      {/* ===== HERO ===== */}
       <section className="flex flex-col items-center text-center px-4 pt-24 pb-16">
         <span className="text-verde-claro text-sm uppercase tracking-widest mb-4">
           Fale Conosco
@@ -231,7 +230,9 @@ export default function Contato() {
                   <select
                     id="assunto"
                     className="w-full bg-fundo border border-borda rounded-lg px-4 py-3 text-creme focus:outline-none focus:border-verde-claro transition-colors"
-                    {...register("assunto", { required: "Selecione um assunto" })}
+                    {...register("assunto", {
+                      required: "Selecione um assunto",
+                    })}
                   >
                     <option value="" disabled>
                       Selecione um assunto
@@ -264,7 +265,9 @@ export default function Contato() {
                   rows={5}
                   placeholder="Escreva sua dúvida ou mensagem aqui..."
                   className="w-full bg-fundo border border-borda rounded-lg px-4 py-3 text-creme placeholder-texto-muted/50 focus:outline-none focus:border-verde-claro transition-colors resize-none"
-                  {...register("mensagem", { required: "Mensagem é obrigatória" })}
+                  {...register("mensagem", {
+                    required: "Mensagem é obrigatória",
+                  })}
                 />
                 {errors.mensagem && (
                   <span className="text-red-400 text-xs mt-1 block">

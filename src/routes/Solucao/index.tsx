@@ -1,22 +1,50 @@
 import ValidacaoFoto from "../../components/ValidacaoFoto";
+import {
+  FaRecycle,
+  FaBottleWater,
+  FaBicycle,
+  FaTrashCan,
+  FaBagShopping,
+  FaLightbulb,
+} from "react-icons/fa6";
 import { useState } from "react";
 
 const acoes = [
-  { id: "reciclaveis", label: "Separar recicláveis", pontos: 15, icon: "♻️" },
-  { id: "garrafa", label: "Usar garrafa reutilizável", pontos: 20, icon: "🍶" },
-  { id: "bike", label: "Ir a pé ou de bicicleta", pontos: 40, icon: "🚲" },
+  {
+    id: "reciclaveis",
+    label: "Separar recicláveis",
+    pontos: 15,
+    icon: <FaRecycle className="text-2xl text-verde-claro" />,
+  },
+  {
+    id: "garrafa",
+    label: "Usar garrafa reutilizável",
+    pontos: 20,
+    icon: <FaBottleWater className="text-2xl text-verde-claro" />,
+  },
+  {
+    id: "bike",
+    label: "Ir a pé ou de bicicleta",
+    pontos: 40,
+    icon: <FaBicycle className="text-2xl text-verde-claro" />,
+  },
   {
     id: "descarte",
     label: "Evitar descarte incorreto",
     pontos: 25,
-    icon: "🗑️",
+    icon: <FaTrashCan className="text-2xl text-verde-claro" />,
   },
-  { id: "sacola", label: "Usar sacola reutilizável", pontos: 30, icon: "🛍️" },
+  {
+    id: "sacola",
+    label: "Usar sacola reutilizável",
+    pontos: 30,
+    icon: <FaBagShopping className="text-2xl text-verde-claro" />,
+  },
   {
     id: "energia",
     label: "Economizar energia em casa",
     pontos: 20,
-    icon: "💡",
+    icon: <FaLightbulb className="text-2xl text-verde-claro" />,
   },
 ];
 
@@ -26,9 +54,8 @@ export default function Solucao() {
   const ptsDia = acoes
     .filter((a) => selecionadas.includes(a.id))
     .reduce((soma, a) => soma + a.pontos, 0);
-    const ptsMes = ptsDia * 30;  
+  const ptsMes = ptsDia * 30;
   const passagens = Math.floor(ptsDia / 150);
-
 
   const toggle = (id: string) => {
     setSelecionadas((prev) =>
@@ -38,7 +65,6 @@ export default function Solucao() {
 
   return (
     <main className="min-h-screen bg-fundo text-creme font-sans">
-
       <section className="flex flex-col items-center text-center px-4 pt-24 pb-16">
         <span className="text-verde-claro text-sm uppercase tracking-widest mb-4">
           A Solução
@@ -60,13 +86,12 @@ export default function Solucao() {
             Simule suas rottas (pontos)
           </h2>
           <p className="text-texto-muted max-w-lg mx-auto">
-            Selecione as ações sustentáveis que você realiza e veja quantas rottas você pode acumular. 
-
+            Selecione as ações sustentáveis que você realiza e veja quantas
+            rottas você pode acumular.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-          
           <div className="space-y-3">
             <p className="text-texto-muted text-sm mb-4">
               Selecione suas ações sustentáveis:
@@ -114,7 +139,7 @@ export default function Solucao() {
               );
             })}
           </div>
-        
+
           <aside className="bg-fundo-card border border-borda rounded-xl p-8 flex flex-col items-center text-center h-fit  ">
             <p className="text-texto-muted text-sm uppercase tracking-widest mb-2">
               Pontos por dia
@@ -133,7 +158,7 @@ export default function Solucao() {
             <hr className="border-borda w-full mb-6" />
 
             <p className="text-texto-muted text-sm uppercase tracking-widest mb-2">
-              Rottas acumuladas 
+              Rottas acumuladas
             </p>
             <p className="text-3xl font-serif text-creme mb-2">
               {passagens} {passagens === 1 ? "passagem" : "passagens"}
@@ -169,8 +194,8 @@ export default function Solucao() {
                 Escolha um desafio
               </h3>
               <p className="text-texto-muted text-sm leading-relaxed mb-3">
-                O usuário escolhe uma ação sustentável disponível no aplicativo e verifica a pontuação correspondente.
-
+                O usuário escolhe uma ação sustentável disponível no aplicativo
+                e verifica a pontuação correspondente.
               </p>
             </div>
           </article>
@@ -186,7 +211,8 @@ export default function Solucao() {
                 Registre a ação
               </h3>
               <p className="text-texto-muted text-sm leading-relaxed mb-3">
-                A ação é registrada por foto ou vídeo diretamente pelo aplicativo, vinculada ao desafio escolhido.
+                A ação é registrada por foto ou vídeo diretamente pelo
+                aplicativo, vinculada ao desafio escolhido.
               </p>
             </div>
           </article>
@@ -202,7 +228,9 @@ export default function Solucao() {
                 Validação da comprovação
               </h3>
               <p className="text-texto-muted text-sm leading-relaxed mb-3">
-                A comprovação é analisada para verificar se atende aos requisitos do desafio. Nesta versão, a validação por inteligência artificial é simulada.
+                A comprovação é analisada para verificar se atende aos
+                requisitos do desafio. Nesta versão, a validação por
+                inteligência artificial é simulada.
               </p>
             </div>
           </article>
@@ -218,7 +246,8 @@ export default function Solucao() {
                 Receba seus pontos
               </h3>
               <p className="text-texto-muted text-sm leading-relaxed mb-3">
-               Após a aprovação, os pontos são adicionados à carteira e contribuem para a evolução do Capi e da sequência de dias.
+                Após a aprovação, os pontos são adicionados à carteira e
+                contribuem para a evolução do Capi e da sequência de dias.
               </p>
             </div>
           </article>
@@ -234,14 +263,14 @@ export default function Solucao() {
                 Resgate sua passagem
               </h3>
               <p className="text-texto-muted text-sm leading-relaxed mb-3">
-               Ao atingir múltiplos de 150 pontos, o usuário pode resgatar uma passagem utilizando o Rotta Card por NFC ou um QR Code.
+                Ao atingir múltiplos de 150 pontos, o usuário pode resgatar uma
+                passagem utilizando o Rotta Card por NFC ou um QR Code.
               </p>
             </div>
           </article>
         </div>
       </section>
 
-            {/* ===== IMPACTO ===== */}
       <section className="px-4 py-16 max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <p className="text-verde-claro text-sm uppercase tracking-widest mb-4">
@@ -251,7 +280,8 @@ export default function Solucao() {
             O que a Rotta gera na prática
           </h2>
           <p className="text-texto-muted max-w-lg mx-auto">
-            Cada ação registrada gera impacto para o usuário, na cidade e ao meio ambiente.
+            Cada ação registrada gera impacto para o usuário, na cidade e ao
+            meio ambiente.
           </p>
         </div>
 
@@ -259,15 +289,16 @@ export default function Solucao() {
           <article className="bg-fundo-card border border-borda rounded-xl p-8 flex flex-col items-center text-center hover:border-verde-claro/50 transition-colors duration-300">
             <p className="text-4xl font-serif text-verde-claro mb-4">3x</p>
             <p className="text-texto-muted text-sm leading-relaxed">
-              mais engajamento com sustentabilidade quando há recompensa concreta
+              mais engajamento com sustentabilidade quando há recompensa
+              concreta
             </p>
           </article>
 
           <article className="bg-fundo-card border border-borda rounded-xl p-8 flex flex-col items-center text-center hover:border-verde-claro/50 transition-colors duration-300">
             <p className="text-4xl font-serif text-verde-claro mb-4">150</p>
             <p className="text-texto-muted text-sm leading-relaxed">
-              rottas para transformar sustentabilidade em mobilidade no seu dia a dia.  
-
+              rottas para transformar sustentabilidade em mobilidade no seu dia
+              a dia.
             </p>
           </article>
 
@@ -280,12 +311,12 @@ export default function Solucao() {
         </div>
       </section>
 
-       <section className="px-4 py-12">
+      <section className="px-4 py-12">
         <h2 className="text-creme text-2xl font-bold text-center mb-8">
           Validação com IA
         </h2>
       </section>
-        <ValidacaoFoto />
+      <ValidacaoFoto />
     </main>
   );
 }

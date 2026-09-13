@@ -12,7 +12,9 @@ type MascoteCapivaraProps = {
   direcao?: "baixo" | "cima";
 };
 
-export default function MascoteCapivara({ direcao = "baixo" }: MascoteCapivaraProps) {
+export default function MascoteCapivara({
+  direcao = "baixo",
+}: MascoteCapivaraProps) {
   const [abaAberta, setAbaAberta] = useState(false);
   const [dicaVisivel, setDicaVisivel] = useState(false);
   const [dicaAtual, setDicaAtual] = useState("");
@@ -23,7 +25,7 @@ export default function MascoteCapivara({ direcao = "baixo" }: MascoteCapivaraPr
     setDicaVisivel(true);
   };
 
-  const posicaoAba:string =
+  const posicaoAba: string =
     direcao === "cima"
       ? "absolute right-0 bottom-12 z-50"
       : "absolute right-0 top-12 z-50";
@@ -31,7 +33,6 @@ export default function MascoteCapivara({ direcao = "baixo" }: MascoteCapivaraPr
   return (
     <div className="relative flex items-center">
 
-      {/* Círculo da capivara */}
       <button
         onClick={() => {
           setAbaAberta(!abaAberta);
@@ -47,10 +48,10 @@ export default function MascoteCapivara({ direcao = "baixo" }: MascoteCapivaraPr
         />
       </button>
 
-      {/* Aba que desce */}
       {abaAberta && (
-        <div className={`${posicaoAba} bg-fundo-card border border-verde-claro/30 rounded-xl p-5 shadow-lg w-80 transition-all duration-300`}>
-
+        <div
+          className={`${posicaoAba} bg-fundo-card border border-verde-claro/30 rounded-xl p-5 shadow-lg w-80 transition-all duration-300`}
+        >
           {!dicaVisivel ? (
             <div className="flex flex-col items-center text-center gap-3">
               <p className="text-creme text-sm font-medium">
@@ -68,9 +69,7 @@ export default function MascoteCapivara({ direcao = "baixo" }: MascoteCapivaraPr
               <p className="text-verde-claro text-xs uppercase tracking-widest">
                 Dica do dia
               </p>
-              <p className="text-creme text-sm leading-relaxed">
-                {dicaAtual}
-              </p>
+              <p className="text-creme text-sm leading-relaxed">{dicaAtual}</p>
               <button
                 onClick={mostrarDica}
                 className="text-xs text-verde-claro border border-verde/30 rounded-full px-4 py-2 hover:bg-verde/10 transition-colors duration-300"

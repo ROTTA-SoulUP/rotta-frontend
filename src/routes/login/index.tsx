@@ -40,16 +40,19 @@ export default function Login() {
 
   return (
     <div className="h-screen overflow-hidden flex flex-col">
-
       <div className="bg-verde border-verde/30 text-creme px-4 py-3 flex items-center gap-3 text-sm">
         <div>
-          <p><strong>Ambiente de demonstração</strong></p>
-          <p>Não é necessário criar conta. Use qualquer e-mail e senha para entrar.</p>
+          <p>
+            <strong>Ambiente de demonstração</strong>
+          </p>
+          <p>
+            Não é necessário criar conta. Use qualquer e-mail e senha para
+            entrar.
+          </p>
         </div>
       </div>
 
       <div className="flex flex-1 flex-col md:flex-row">
-
         <aside className="md:w-1/2 h-64 md:h-auto">
           <img
             src="../../images/img01-login.jpeg"
@@ -60,15 +63,18 @@ export default function Login() {
 
         <main className="md:w-1/2 flex items-center justify-center px-6 py-12 bg-fundo">
           <div className="w-full max-w-md">
-
-            <h1 className="text-creme text-3xl items-start font-bold mb-8">Bem-Vindo a ROTTA</h1>
+            <h1 className="text-creme text-3xl items-start font-bold mb-8">
+              Bem-Vindo a ROTTA
+            </h1>
 
             <h2 className="text-creme text-3xl font-bold mb-8">Login</h2>
 
             <form onSubmit={handleSubmit} noValidate>
-
               <div className="mb-5">
-                <label htmlFor="email" className="block text-creme text-sm mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-creme text-sm mb-2"
+                >
                   Email ou Username
                 </label>
                 <div className="relative">
@@ -82,11 +88,18 @@ export default function Login() {
                     className="w-full bg-fundo-card border border-borda text-creme rounded-lg pl-5 pr-4 py-3 focus:outline-none focus:border-verde-claro transition-colors"
                   />
                 </div>
-                {erroEmail && <span className="text-red-400 text-xs mt-1 block">{erroEmail}</span>}
+                {erroEmail && (
+                  <span className="text-red-400 text-xs mt-1 block">
+                    {erroEmail}
+                  </span>
+                )}
               </div>
 
               <div className="mb-5">
-                <label htmlFor="senha" className="block text-creme text-sm mb-2">
+                <label
+                  htmlFor="senha"
+                  className="block text-creme text-sm mb-2"
+                >
                   Senha
                 </label>
                 <div className="relative">
@@ -104,10 +117,13 @@ export default function Login() {
                     onClick={() => setMostrarSenha(!mostrarSenha)}
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-creme/50 hover:text-creme transition-colors"
                     aria-label="Mostrar senha"
-                  >
-                  </button>
+                  ></button>
                 </div>
-                {erroSenha && <span className="text-red-400 text-xs mt-1 block">{erroSenha}</span>}
+                {erroSenha && (
+                  <span className="text-red-400 text-xs mt-1 block">
+                    {erroSenha}
+                  </span>
+                )}
               </div>
 
               <div className="flex items-center justify-between mb-6">
@@ -120,7 +136,10 @@ export default function Login() {
                   />
                   <span>Remember me</span>
                 </label>
-                <a href="#" className="text-verde-claro text-sm hover:underline">
+                <a
+                  href="#"
+                  className="text-verde-claro text-sm hover:underline"
+                >
                   Esqueceu a Senha?
                 </a>
               </div>
