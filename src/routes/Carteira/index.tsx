@@ -563,14 +563,14 @@ export default function Carteira() {
 
   {/* Badge de destaque */}
   <div className="flex flex-wrap justify-center gap-3 mb-8">
-    <span className="bg-verde/10 border border-verde/30 text-verde-claro text-xs font-medium rounded-full px-4 py-2">
-      <i className="fa-solid fa-leaf mr-1"></i> Sustentável
+    <span className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1">
+     Sustentável
     </span>
-    <span className="bg-verde/10 border border-verde/30 text-verde-claro text-xs font-medium rounded-full px-4 py-2">
-      <i className="fa-solid fa-bus mr-1"></i> Transporte Público
+    <span className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1">
+     Transporte Público
     </span>
-    <span className="bg-verde/10 border border-verde/30 text-verde-claro text-xs font-medium rounded-full px-4 py-2">
-      <i className="fa-solid fa-coins mr-1"></i> Pontos
+    <span className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1">
+     Pontos
     </span>
   </div>
 
@@ -593,7 +593,8 @@ export default function Carteira() {
       Achamos injusto a pessoa trabalhar e tirar do próprio bolso para pagar uma coisa que a empresa deveria pagar. Por isso, implementamos essa ideia.
     </p>
     <p className="text-verde-claro text-lg leading-relaxed font-medium">
-      Aonde além de ajudar o trabalhador, ajudamos o mundo. 🌍
+      Aonde além de ajudar o trabalhador, ajudamos o mundo.
+      <BiWorld className="inline ml-1"/>
     </p>
   </div>
 
@@ -601,17 +602,17 @@ export default function Carteira() {
   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl w-full mb-10">
 
     <div className="bg-fundo-card border border-borda rounded-xl p-6 flex flex-col items-center gap-3 hover:border-verde-claro/50 transition-colors">
-      <div className="w-12 h-12 rounded-full bg-verde/10 flex items-center justify-center">
+      <div className="w-12 h-12 rounded-full bg-verde/10 flex items-center justify-center text-verde-claro">
         <RiCoinsLine />
       </div>
       <h3 className="text-creme font-medium text-base">Economize Dinheiro</h3>
-      <p className="text-creme/50 text-sm leading-relaxed text-center">
+      <p className="text-creme/50 text-sm leading-relaxed text-center ">
         Use seus pontos acumulados para reduzir o custo do transporte
       </p>
     </div>
 
     <div className="bg-fundo-card border border-borda rounded-xl p-6 flex flex-col items-center gap-3 hover:border-verde-claro/50 transition-colors">
-      <div className="w-12 h-12 rounded-full bg-verde/10 flex items-center justify-center">
+      <div className="w-12 h-12 rounded-full bg-verde/10 flex items-center justify-center text-verde-claro">
         <MdMan />
       </div>
       <h3 className="text-creme font-medium text-base">Para Trabalhadores</h3>
@@ -621,7 +622,7 @@ export default function Carteira() {
     </div>
 
     <div className="bg-fundo-card border border-borda rounded-xl p-6 flex flex-col items-center gap-3 hover:border-verde-claro/50 transition-colors">
-      <div className="w-12 h-12 rounded-full bg-verde/10 flex items-center justify-center">
+      <div className="w-12 h-12 rounded-full bg-verde/10 flex items-center justify-center text-verde-claro">
         <BiWorld />
       </div>
       <h3 className="text-creme font-medium text-base">Ajuda o Planeta</h3>
