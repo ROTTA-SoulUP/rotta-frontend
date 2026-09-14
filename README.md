@@ -45,49 +45,95 @@ O projeto foi desenvolvido utilizando:
 ## 📁 Estrutura de pastas
 
 ```text
-rot ta/
-│
-├── public/
-│   └── images/
-│       ├── Logo.svg
-│       ├── Beatriz.jpeg
-│       ├── Geovanna.jpeg
-│       ├── Guilherme.jpeg
-│       ├── Leonardo.jpeg
-│       └── Thiago.jpeg
-│
-├── src/
-│   │
-│   ├── components/
-│   │   ├── CardIntegrante.tsx
-│   │   ├── Footer.tsx
-│   │   └── Header.tsx
-│   │
-│   ├── layouts/
-│   │   └── Layout.tsx
-│   │
-│   ├── routes/
-│   │   ├── Home.tsx
-│   │   ├── Integrantes.tsx
-│   │   ├── Sobre.tsx
-│   │   ├── Faq.tsx
-│   │   ├── Contato.tsx
-│   │   ├── Solucao.tsx
-│   │   └── Carteira.tsx
-│   │
-│   ├── App.tsx
-│   ├── main.tsx
-│   └── index.css
+rotta/
 │
 ├── .gitignore
+├── README.md
+├── eslint.config.js
 ├── index.html
 ├── package.json
 ├── package-lock.json
+├── tailwind.config.js
 ├── tsconfig.json
 ├── tsconfig.app.json
 ├── tsconfig.node.json
 ├── vite.config.ts
-└── README.md
+│
+├── public/
+│   ├── images/
+│   │   ├── img01-login.jpeg
+│   │   ├── img02-logo.jpeg
+│   │   ├── img03-mascote.png
+│   │   ├── img04-rotta-card.png
+│   │   ├── img05-leonardo.jpeg
+│   │   ├── img06-guilherme.jpeg
+│   │   ├── img07-thiago.jpeg
+│   │   ├── img08-beatriz.jpeg
+│   │   ├── img09-geovanna.jpeg
+│   │   ├── img10-ecobag.png
+│   │   ├── img11-login.png
+│   │   ├── img12-home.png
+│   │   ├── img13-sobre.png
+│   │   ├── img14-solucao.png
+│   │   ├── img15-carteira.png
+│   │   ├── img16-faq.png
+│   │   ├── img17-contato.png
+│   │   └── img18-integrantes.png
+│   │
+│   └── videos/
+│       └── vid01-capi.mp4
+│
+└── src/
+    │
+    ├── App.tsx
+    ├── index.css
+    └── main.tsx
+    │
+    ├── components/
+    │   │
+    │   ├── CardIntegrante/
+    │   │   └── index.tsx
+    │   │
+    │   ├── Footer/
+    │   │   └── index.tsx
+    │   │
+    │   ├── Header/
+    │   │   └── index.tsx
+    │   │
+    │   ├── MascoteCapivara.tsx/
+    │   │   └── index.tsx
+    │   │
+    │   └── ValidacaoFoto/
+    │       └── index.tsx
+    │
+    ├── layouts/
+    │   └── Layout.tsx
+    │
+    └── routes/
+        │
+        ├── Carteira/
+        │   └── index.tsx
+        │
+        ├── Contato/
+        │   └── index.tsx
+        │
+        ├── Faq/
+        │   └── index.tsx
+        │
+        ├── Home/
+        │   └── index.tsx
+        │
+        ├── Integrantes/
+        │   └── index.tsx
+        │
+        ├── Sobre/
+        │   └── index.tsx
+        │
+        ├── Solucao/
+        │   └── index.tsx
+        │
+        └── login/
+            └── index.tsx
 ```
 
 ---
