@@ -501,7 +501,7 @@ export default function Carteira() {
         </span>
 
         <h2 className="text-4xl md:text-5xl font-serif text-creme mb-4">
-          Minha Carteira
+          Cartão
         </h2>
 
         <p className="text-xl text-verde-claro font-light max-w-xl mb-10">

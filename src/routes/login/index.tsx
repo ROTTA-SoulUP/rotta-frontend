@@ -53,11 +53,11 @@ export default function Login() {
       </div>
 
       <div className="flex flex-1 flex-col md:flex-row">
-        <aside className="md:w-1/2 h-64 md:h-auto">
+        <aside className="md:w-1/2 h-64 md:h-full overflow-hidden flex items-center justify-center bg-verde">
           <img
             src="../../images/img01-login.jpeg"
             alt="Imagem ilustrativa Rotta"
-            className="w-full h-full object-contain object-center"
+            className="full h-full object-cover "
           />
         </aside>
 
