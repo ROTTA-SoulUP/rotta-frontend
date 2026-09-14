@@ -297,7 +297,7 @@ https://github.com/ROTTA-SoulUP/rotta-frontend
 
 **Apresentação do projeto no YouTube:**
 
-[COLOCAR LINK DO YOUTUBE AQUI]
+[https://www.youtube.com/watch?v=Ja8B9hhbAPE]
 
 ---
 
@@ -313,7 +313,7 @@ https://github.com/ROTTA-SoulUP/rotta-frontend
 
 **GitHub:** https://github.com/LeonardoSilva1203
 
-<img src="/images/Leonardo.jpeg" width="150">
+<img src="./public/images/img05-leonardo.jpeg">
 
 ---
 
@@ -327,7 +327,7 @@ https://github.com/ROTTA-SoulUP/rotta-frontend
 
 **GitHub:** https://github.com/BeaUrbano
 
-<img src="/images/Beatriz.jpeg" width="150">
+<img src="./public/images/img08-beatriz.jpeg">
 
 ---
 
@@ -341,7 +341,7 @@ https://github.com/ROTTA-SoulUP/rotta-frontend
 
 **GitHub:** https://github.com/geovannasecchi
 
-<img src="/images/Geovanna.jpeg" width="150">
+<img src="./public/images/img09-geovanna.jpeg">
 
 ---
 
@@ -355,7 +355,7 @@ https://github.com/ROTTA-SoulUP/rotta-frontend
 
 **GitHub:** https://github.com/GuilhermeAlmeida0207"
 
-<img src="/images/Guilherme.jpeg" width="150">
+<img src="./public/images/img06-guilherme.jpeg">
 
 ---
 
@@ -369,7 +369,7 @@ https://github.com/ROTTA-SoulUP/rotta-frontend
 
 **GitHub:** https://github.com/Thiagordsr
 
-<img src="/images/Thiago.jpeg" width="150">
+<img src="./public/images/img07-thiago.jpeg">
 
 ---
 
@@ -414,14 +414,6 @@ Para informações sobre o projeto, entre em contato com a equipe:
 
 **GitHub:** https://github.com/ROTTA-SoulUP/rotta-frontend
 
-**YouTube:** [COLOCAR LINK DO VÍDEO]
-
----
-
-## 📚 Contexto acadêmico
-
-Projeto desenvolvido para a disciplina de **Front-End Design Engineering — Sprint 03**, utilizando React, Vite, TypeScript, Tailwind CSS e React Router DOM.
-
-**FIAP — Análise e Desenvolvimento de Sistemas**
+**YouTube:** [https://www.youtube.com/watch?v=Ja8B9hhbAPE]
 
 ---
