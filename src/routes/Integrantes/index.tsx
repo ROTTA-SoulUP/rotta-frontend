@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 import { MdComputer } from "react-icons/md";
 import CardIntegrante from "../../components/CardIntegrante";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 type Integrante = {
@@ -122,32 +122,25 @@ const tags = [
 ];
 
 export default function Integrantes() {
-  const [modalAberto, setModalAberto] = useState(false);
-  const [integranteSelecionado, setIntegranteSelecionado] =
-    useState<Integrante | null>(null);
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const abrirModal = (integrante: Integrante) => {
-    setIntegranteSelecionado(integrante);
-    setModalAberto(true);
-  };
+  // O integrante selecionado é derivado da URL, sem precisar
+  // atualizar o estado dentro de um useEffect.
+  const indice = id !== undefined ? Number(id) : -1;
+
+  const integranteSelecionado =
+    Number.isInteger(indice) && indice >= 0 && indice < integrantes.length
+      ? integrantes[indice]
+      : null;
+
+  const modalAberto = integranteSelecionado !== null;
 
   const fecharModal = () => {
-    setModalAberto(false);
-    setIntegranteSelecionado(null);
     navigate("/integrantes", { replace: true });
   };
 
-  useEffect(() => {
-    if (id) {
-      const integrante = integrantes[parseInt(id)];
-      if (integrante) {
-        abrirModal(integrante);
-      }
-    }
-  }, [id]);
-
+  // Salva o último perfil visualizado no armazenamento local.
   useEffect(() => {
     if (integranteSelecionado) {
       localStorage.setItem("ultimoPerfil", integranteSelecionado.nome);
@@ -155,29 +148,34 @@ export default function Integrantes() {
   }, [integranteSelecionado]);
 
   return (
-    <main className="min-h-screen bg-fundo text-creme font-sans">
-
-      <section className="flex flex-col items-center text-center px-4 pt-24 pb-16">
-        <span className="text-verde-claro text-sm uppercase tracking-widest mb-4">
+    <main className="min-h-screen bg-fundo font-sans text-creme">
+      <section className="flex flex-col items-center px-4 pb-16 pt-24 text-center">
+        <span className="mb-4 text-sm uppercase tracking-widest text-verde-claro">
           Equipe
         </span>
-        <h1 className="text-4xl md:text-5xl font-serif text-creme mb-4">
+
+        <h1 className="mb-4 font-serif text-4xl text-creme md:text-5xl">
           Quem somos
         </h1>
-        <p className="text-xl text-verde-claro font-light max-w-xl">
+
+        <p className="max-w-xl text-xl font-light text-verde-claro">
           Conheça os integrantes do grupo responsável pelo desenvolvimento da
           Rotta no Challenge FIAP 2026.
         </p>
       </section>
 
-      <section className="px-4 py-12 max-w-4xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {numeros.map((num, i) => (
-            <article key={i} className="flex flex-col items-center text-center">
-              <p className="text-4xl md:text-5xl font-serif text-verde-claro mb-2">
+      <section className="mx-auto max-w-4xl px-4 py-12">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+          {numeros.map((num) => (
+            <article
+              key={num.desc}
+              className="flex flex-col items-center text-center"
+            >
+              <p className="mb-2 font-serif text-4xl text-verde-claro md:text-5xl">
                 {num.valor}
               </p>
-              <p className="text-texto-muted text-sm uppercase tracking-widest">
+
+              <p className="text-sm uppercase tracking-widest text-texto-muted">
                 {num.desc}
               </p>
             </article>
@@ -185,16 +183,18 @@ export default function Integrantes() {
         </div>
       </section>
 
-      <section className="px-4 py-16 max-w-5xl mx-auto">
+      <section className="mx-auto max-w-5xl px-4 py-16">
         <div className="flex flex-col gap-12">
           <div>
-            <span className="text-verde-claro text-sm uppercase tracking-widest mb-4 block">
+            <span className="mb-4 block text-sm uppercase tracking-widest text-verde-claro">
               O projeto
             </span>
-            <h2 className="text-3xl md:text-4xl font-serif text-creme mb-6">
+
+            <h2 className="mb-6 font-serif text-3xl text-creme md:text-4xl">
               O que desenvolvemos
             </h2>
-            <p className="text-texto-muted text-sm leading-relaxed mb-4">
+
+            <p className="mb-4 text-sm leading-relaxed text-texto-muted">
               A Rotta é a solução desenvolvida pelo grupo para o Challenge FIAP
               2026, em parceria com a plataforma SoulUp. O desafio escolhido foi
               o{" "}
@@ -203,7 +203,8 @@ export default function Integrantes() {
               </strong>
               .
             </p>
-            <p className="text-texto-muted text-sm leading-relaxed">
+
+            <p className="text-sm leading-relaxed text-texto-muted">
               O projeto conecta sustentabilidade e mobilidade urbana: o usuário
               registra ações sustentáveis pelo app, acumula pontos validados por
               inteligência artificial e converte esses pontos em créditos reais
@@ -212,10 +213,10 @@ export default function Integrantes() {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            {tags.map((tag, i) => (
+            {tags.map((tag) => (
               <span
-                key={i}
-                className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1"
+                key={tag}
+                className="inline-block rounded-full border border-verde/30 px-3 py-1 text-xs text-verde-claro transition-colors hover:border-verde-claro/50"
               >
                 {tag}
               </span>
@@ -224,52 +225,57 @@ export default function Integrantes() {
         </div>
       </section>
 
-      <section className="px-4 py-16 max-w-5xl mx-auto">
-        <div className="text-center mb-12">
-          <p className="text-verde-claro text-sm uppercase tracking-widest mb-4">
+      <section className="mx-auto max-w-5xl px-4 py-16">
+        <div className="mb-12 text-center">
+          <p className="mb-4 text-sm uppercase tracking-widest text-verde-claro">
             Organização
           </p>
-          <h2 className="text-3xl md:text-4xl font-serif text-creme mb-4">
+
+          <h2 className="mb-4 font-serif text-3xl text-creme md:text-4xl">
             Como nos dividimos
           </h2>
-          <p className="text-texto-muted max-w-lg mx-auto">
+
+          <p className="mx-auto max-w-lg text-texto-muted">
             Cada integrante ficou responsável por uma área técnica do projeto,
             garantindo que todas as disciplinas fossem cobertas com dedicação.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {divisao.map((item, i) => (
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {divisao.map((item) => (
             <article
-              key={i}
-              className="bg-fundo-card border border-borda rounded-xl p-6 flex items-center gap-4 hover:border-verde-claro/50 transition-colors duration-300"
+              key={item.area}
+              className="flex items-center gap-4 rounded-xl border border-borda bg-fundo-card p-6 transition-colors duration-300 hover:border-verde-claro/50"
             >
-              <div className="w-12 h-12 flex items-center justify-center rounded-full bg-verde text-creme text-xl shrink-0">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-verde text-xl text-creme">
                 {item.icon}
               </div>
+
               <div>
-                <p className="text-verde-claro text-xs uppercase tracking-widest mb-1">
+                <p className="mb-1 text-xs uppercase tracking-widest text-verde-claro">
                   {item.area}
                 </p>
-                <p className="text-creme text-sm font-medium mb-1">
+
+                <p className="mb-1 text-sm font-medium text-creme">
                   {item.nome}
                 </p>
-                <p className="text-texto-muted text-xs">{item.tech}</p>
+
+                <p className="text-xs text-texto-muted">{item.tech}</p>
               </div>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="px-4 py-16 max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="mx-auto max-w-5xl px-4 py-16">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {integrantes.map((integrante, i) => (
             <CardIntegrante
-              key={i}
+              key={integrante.nome}
               nome={integrante.nome}
               cargo={integrante.cargo}
               foto={integrante.foto}
-              onClick={() => navigate(`/integrantes/${i}`, { replace: true })}
+              onClick={() => navigate(`/integrantes/${i}`)}
             />
           ))}
         </div>
@@ -277,16 +283,21 @@ export default function Integrantes() {
 
       {modalAberto && integranteSelecionado && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
           onClick={fecharModal}
         >
           <div
-            className="bg-fundo-card border border-borda rounded-xl max-w-md w-full p-8 flex flex-col items-center text-center relative"
-            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="titulo-integrante"
+            className="relative flex w-full max-w-md flex-col items-center rounded-xl border border-borda bg-fundo-card p-8 text-center"
+            onClick={(evento) => evento.stopPropagation()}
           >
             <button
+              type="button"
               onClick={fecharModal}
-              className="absolute top-4 right-4 text-creme text-2xl hover:text-verde-claro transition-colors"
+              aria-label="Fechar perfil"
+              className="absolute right-4 top-4 text-2xl text-creme transition-colors hover:text-verde-claro"
             >
               &times;
             </button>
@@ -294,18 +305,21 @@ export default function Integrantes() {
             <img
               src={integranteSelecionado.foto}
               alt={`Foto de ${integranteSelecionado.nome}`}
-              className="w-40 h-40 rounded-full object-cover border-4 border-verde/20 mb-6"
+              className="mb-6 h-40 w-40 rounded-full border-4 border-verde/20 object-cover"
             />
 
-            <h2 className="text-xl font-serif text-creme mb-2">
+            <h2
+              id="titulo-integrante"
+              className="mb-2 font-serif text-xl text-creme"
+            >
               {integranteSelecionado.nome}
             </h2>
 
-            <span className="inline-block text-verde-claro text-xs uppercase tracking-widest mb-2">
+            <span className="mb-2 inline-block text-xs uppercase tracking-widest text-verde-claro">
               {integranteSelecionado.cargo}
             </span>
 
-            <p className="text-texto-muted text-sm mb-6">
+            <p className="mb-6 text-sm text-texto-muted">
               {integranteSelecionado.turma}
             </p>
 
@@ -314,7 +328,7 @@ export default function Integrantes() {
                 href={integranteSelecionado.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs text-creme border border-borda rounded-full px-4 py-2 hover:border-verde-claro hover:text-verde-claro transition-colors duration-300"
+                className="inline-flex items-center gap-2 rounded-full border border-borda px-4 py-2 text-xs text-creme transition-colors duration-300 hover:border-verde-claro hover:text-verde-claro"
               >
                 <FaGithub /> GitHub
               </a>
@@ -323,7 +337,7 @@ export default function Integrantes() {
                 href={integranteSelecionado.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs text-creme border border-borda rounded-full px-4 py-2 hover:border-verde-claro hover:text-verde-claro transition-colors duration-300"
+                className="inline-flex items-center gap-2 rounded-full border border-borda px-4 py-2 text-xs text-creme transition-colors duration-300 hover:border-verde-claro hover:text-verde-claro"
               >
                 <FaLinkedin /> LinkedIn
               </a>

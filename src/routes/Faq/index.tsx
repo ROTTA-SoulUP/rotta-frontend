@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 
 type Pergunta = {
@@ -69,19 +70,12 @@ const secoes: Secao[] = [
 ];
 
 export default function Faq() {
-  const [aberta, setAberta] = useState<number | null>(null);
-
+  const [aberta, setAberta] = useState<string | null>(null);
   const [busca, setBusca] = useState("");
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  useEffect(() => {
-    if (busca) {
-      setAberta(null);
-    }
-  }, [busca]);
 
   const secoesFiltradas = secoes
     .map((secao) => ({
@@ -94,100 +88,116 @@ export default function Faq() {
     }))
     .filter((secao) => secao.itens.length > 0);
 
-  const toggle = (index: number) => {
-    setAberta(aberta === index ? null : index);
+  const toggle = (id: string) => {
+    setAberta((anterior) => (anterior === id ? null : id));
   };
 
-  const totalPerguntas = secoes.reduce((acc, s) => acc + s.itens.length, 0);
+  const totalPerguntas = secoes.reduce(
+    (total, secao) => total + secao.itens.length,
+    0,
+  );
+
+  const handleBuscaChange = (valor: string) => {
+    setBusca(valor);
+    setAberta(null);
+  };
 
   return (
-    <main className="min-h-screen bg-fundo text-creme font-sans">
-      <section className="flex flex-col items-center text-center px-4 pt-24 pb-16">
-        <span className="text-verde-claro text-sm uppercase tracking-widest mb-4">
+    <main className="min-h-screen bg-fundo font-sans text-creme">
+      <section className="flex flex-col items-center px-4 pb-16 pt-24 text-center">
+        <span className="mb-4 text-sm uppercase tracking-widest text-verde-claro">
           FAQ
         </span>
 
-        <h1 className="text-4xl md:text-5xl font-serif text-creme mb-4">
+        <h1 className="mb-4 font-serif text-4xl text-creme md:text-5xl">
           Perguntas Frequentes
         </h1>
 
-        <p className="text-xl text-verde-claro font-light max-w-xl">
+        <p className="max-w-xl text-xl font-light text-verde-claro">
           Tire suas dúvidas sobre a Rotta e a SoulUp — como funciona, como
           participar e como as recompensas são distribuídas.
         </p>
       </section>
 
-      <section className="px-4 max-w-2xl mx-auto pb-8">
+      <section className="mx-auto max-w-2xl px-4 pb-8">
         <div className="relative">
           <input
             type="text"
             value={busca}
-            onChange={(e) => setBusca(e.target.value)}
+            onChange={(evento) => handleBuscaChange(evento.target.value)}
             placeholder="Buscar pergunta..."
-            className="w-full bg-fundo-card border border-borda rounded-full px-6 py-3 text-creme placeholder-texto-muted/50 focus:outline-none focus:border-verde-claro transition-colors"
+            aria-label="Buscar perguntas frequentes"
+            className="w-full rounded-full border border-borda bg-fundo-card px-6 py-3 text-creme placeholder:text-texto-muted/50 transition-colors focus:border-verde-claro focus:outline-none"
           />
 
           {busca && (
             <button
-              onClick={() => setBusca("")}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-texto-muted hover:text-verde-claro transition-colors text-lg"
+              type="button"
+              onClick={() => handleBuscaChange("")}
+              aria-label="Limpar busca"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-lg text-texto-muted transition-colors hover:text-verde-claro"
             >
               ×
             </button>
           )}
         </div>
 
-        <p className="text-texto-muted text-xs mt-3 text-center">
+        <p className="mt-3 text-center text-xs text-texto-muted">
           {totalPerguntas} perguntas disponíveis
-          {busca &&
-            secoesFiltradas.length === 0 &&
-            " — nenhuma resultado encontrado"}
+          {busca && secoesFiltradas.length === 0 &&
+            " — nenhum resultado encontrado"}
         </p>
       </section>
 
-      <section className="px-4 max-w-2xl mx-auto pb-24">
+      <section className="mx-auto max-w-2xl px-4 pb-24">
         {secoesFiltradas.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-texto-muted text-sm">
+          <div className="py-12 text-center">
+            <p className="text-sm text-texto-muted">
               Nenhuma pergunta encontrada para "{busca}".
             </p>
 
             <button
-              onClick={() => setBusca("")}
-              className="mt-4 text-sm text-verde-claro border border-verde/30 rounded-full px-5 py-2 hover:bg-verde/10 transition-colors duration-300"
+              type="button"
+              onClick={() => handleBuscaChange("")}
+              className="mt-4 rounded-full border border-verde/30 px-5 py-2 text-sm text-verde-claro transition-colors duration-300 hover:bg-verde/10"
             >
               Limpar busca
             </button>
           </div>
         ) : (
-          secoesFiltradas.map((secao, sIndex) => (
-            <div key={sIndex} className="mb-10">
-              <h3 className="text-lg font-serif text-verde-claro mb-4">
+          secoesFiltradas.map((secao) => (
+            <div key={secao.titulo} className="mb-10">
+              <h3 className="mb-4 font-serif text-lg text-verde-claro">
                 {secao.titulo}
               </h3>
 
               <div className="flex flex-col gap-3">
-                {secao.itens.map((item, iIndex) => {
-                  const index = sIndex * 100 + iIndex;
-                  const isOpen = aberta === index;
+                {secao.itens.map((item) => {
+                  const id = `${secao.titulo}-${item.pergunta}`;
+                  const isOpen = aberta === id;
 
                   return (
                     <article
-                      key={index}
-                      className={`bg-fundo-card border rounded-xl overflow-hidden transition-colors duration-300 ${
-                        isOpen ? "border-verde-claro/50" : "border-borda"
+                      key={id}
+                      className={`overflow-hidden rounded-xl border bg-fundo-card transition-colors duration-300 ${
+                        isOpen
+                          ? "border-verde-claro/50"
+                          : "border-borda"
                       }`}
                     >
                       <button
-                        onClick={() => toggle(index)}
-                        className="w-full flex items-center justify-between text-left px-6 py-4 hover:bg-verde/5 transition-colors duration-300"
+                        type="button"
+                        onClick={() => toggle(id)}
+                        aria-expanded={isOpen}
+                        className="flex w-full items-center justify-between px-6 py-4 text-left transition-colors duration-300 hover:bg-verde/5"
                       >
-                        <span className="text-creme text-sm font-medium pr-4">
+                        <span className="pr-4 text-sm font-medium text-creme">
                           {item.pergunta}
                         </span>
 
                         <span
-                          className={`text-verde-claro text-xl shrink-0 transition-transform duration-300 ${
+                          aria-hidden="true"
+                          className={`shrink-0 text-xl text-verde-claro transition-transform duration-300 ${
                             isOpen ? "rotate-45" : ""
                           }`}
                         >
@@ -197,10 +207,12 @@ export default function Faq() {
 
                       <div
                         className={`overflow-hidden transition-all duration-300 ${
-                          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                          isOpen
+                            ? "max-h-96 opacity-100"
+                            : "max-h-0 opacity-0"
                         }`}
                       >
-                        <p className="px-6 pb-4 text-texto-muted text-sm leading-relaxed">
+                        <p className="px-6 pb-4 text-sm leading-relaxed text-texto-muted">
                           {item.resposta}
                         </p>
                       </div>
