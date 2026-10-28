@@ -158,6 +158,7 @@ export default function Login() {
               {erroLogin && (
                 <p
                   role="alert"
+                  aria-live="polite"
                   className="text-red-400 text-sm mb-4"
                 >
                   {erroLogin}
