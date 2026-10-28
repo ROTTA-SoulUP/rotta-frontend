@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -58,10 +59,7 @@ export default function Login() {
 
           <form onSubmit={handleSubmit} noValidate>
             <div className="mb-5">
-              <label
-                htmlFor="email"
-                className="mb-2 block text-sm text-creme"
-              >
+              <label htmlFor="email" className="mb-2 block text-sm text-creme">
                 Email ou Username
               </label>
 
@@ -83,10 +81,7 @@ export default function Login() {
             </div>
 
             <div className="mb-5">
-              <label
-                htmlFor="senha"
-                className="mb-2 block text-sm text-creme"
-              >
+              <label htmlFor="senha" className="mb-2 block text-sm text-creme">
                 Senha
               </label>
 
@@ -129,12 +124,12 @@ export default function Login() {
                 <span>Remember me</span>
               </label>
 
-              <a
-                href="#"
-                className="text-sm text-verde-claro hover:underline"
+              <Link
+                to="/recuperar-senha"
+                className="text-verde-claro text-sm hover:underline"
               >
                 Esqueceu a Senha?
-              </a>
+              </Link>
             </div>
 
             <button
@@ -144,6 +139,15 @@ export default function Login() {
               Entrar
             </button>
           </form>
+          <p className="mt-6 text-center text-sm text-creme/80">
+            Ainda não tem uma conta?{" "}
+            <Link
+              to="/cadastro"
+              className="font-semibold text-verde-claro hover:underline"
+            >
+              Criar conta
+            </Link>
+          </p>
         </div>
       </main>
     </div>
