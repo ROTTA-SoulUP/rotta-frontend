@@ -1,4 +1,14 @@
-import CardIntegrante from "../components/CardIntegrante";
+import {
+  FaLinkedin,
+  FaGithub,
+  FaJava,
+  FaPython,
+  FaRobot,
+  FaDatabase,
+  FaBriefcase,
+} from "react-icons/fa";
+import { MdComputer } from "react-icons/md";
+import CardIntegrante from "../../components/CardIntegrante";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -16,7 +26,7 @@ const integrantes: Integrante[] = [
     nome: "Leonardo Arnaldo Cerqueira Da Silva",
     cargo: "Front-End",
     turma: "1TDSPJ — RM: 573188",
-    foto: "../../public/images/leonardo.jpeg",
+    foto: "../../images/img05-leonardo.jpeg",
     github: "https://github.com/LeonardoSilva1203",
     linkedin: "https://www.linkedin.com/in/leonardo-cerqueira-12a400400/",
   },
@@ -24,7 +34,7 @@ const integrantes: Integrante[] = [
     nome: "Guilherme Matheus Magalhães Almeida",
     cargo: "Java",
     turma: "1TDSPJ — RM: 571713",
-    foto: "../../public/images/guilherme.jpeg",
+    foto: "../../images/img06-guilherme.jpeg",
     github: "https://github.com/GuilhermeAlmeida0207",
     linkedin: "http://www.linkedin.com/in/guimmalmeida",
   },
@@ -32,15 +42,16 @@ const integrantes: Integrante[] = [
     nome: "Thiago Rodrigues Santa Rosa",
     cargo: "Python & Business Model",
     turma: "1TDSPJ — RM: 572616",
-    foto: "../../public/images/thiago.jpeg",
+    foto: "../../images/img07-thiago.jpeg",
     github: "https://github.com/Thiagordsr",
-    linkedin: "https://www.linkedin.com/in/thiago-rodrigues-santa-rosa-39b3b3305/",
+    linkedin:
+      "https://www.linkedin.com/in/thiago-rodrigues-santa-rosa-39b3b3305/",
   },
   {
     nome: "Beatriz Urbano Marques de Oliveira",
     cargo: "AI & Chatbot",
     turma: "1TDSPJ — RM: 569341",
-    foto: "../../public/images/beatriz.jpeg",
+    foto: "../../images/img08-beatriz.jpeg",
     github: "https://github.com/BeaUrbano",
     linkedin: "https://www.linkedin.com/in/beatriz-urbano-5a9bab254",
   },
@@ -48,19 +59,49 @@ const integrantes: Integrante[] = [
     nome: "Geovanna Secchi Egea",
     cargo: "Banco de Dados & Business Model",
     turma: "1TDSPJ — RM: 573452",
-    foto: "../../public/images/geovanna.jpeg",
+    foto: "../../images/img09-geovanna.jpeg",
     github: "https://github.com/geovannasecchi",
     linkedin: "https://www.linkedin.com/in/geovanna-secchi-egea-3194553b5",
   },
 ];
 
 const divisao = [
-  { area: "Front-End", nome: "Leonardo Cerqueira", tech: "HTML · CSS · JavaScript", icon: "💻" },
-  { area: "Java", nome: "Guilherme Almeida", tech: "Domain Driven Design", icon: "☕" },
-  { area: "Python", nome: "Thiago Santa Rosa", tech: "Computational Thinking", icon: "🐍" },
-  { area: "AI & Chatbot", nome: "Beatriz Urbano", tech: "Watson Assistant", icon: "🤖" },
-  { area: "Banco de Dados", nome: "Geovanna Secchi", tech: "Oracle · SQL · MER", icon: "🗄️" },
-  { area: "Business Model", nome: "Thiago & Geovanna", tech: "BMC · Pitch · Inovação", icon: "💼" },
+  {
+    area: "Front-End",
+    nome: "Leonardo Cerqueira",
+    tech: "HTML · CSS · JavaScript",
+    icon: <MdComputer />,
+  },
+  {
+    area: "Java",
+    nome: "Guilherme Almeida",
+    tech: "Domain Driven Design",
+    icon: <FaJava />,
+  },
+  {
+    area: "Python",
+    nome: "Thiago Santa Rosa",
+    tech: "Computational Thinking",
+    icon: <FaPython />,
+  },
+  {
+    area: "AI & Chatbot",
+    nome: "Beatriz Urbano",
+    tech: "Watson Assistant",
+    icon: <FaRobot />,
+  },
+  {
+    area: "Banco de Dados",
+    nome: "Geovanna Secchi",
+    tech: "Oracle · SQL · MER",
+    icon: <FaDatabase />,
+  },
+  {
+    area: "Business Model",
+    nome: "Thiago & Geovanna",
+    tech: "BMC · Pitch · Inovação",
+    icon: <FaBriefcase />,
+  },
 ];
 
 const numeros = [
@@ -82,7 +123,8 @@ const tags = [
 
 export default function Integrantes() {
   const [modalAberto, setModalAberto] = useState(false);
-  const [integranteSelecionado, setIntegranteSelecionado] = useState<Integrante | null>(null);
+  const [integranteSelecionado, setIntegranteSelecionado] =
+    useState<Integrante | null>(null);
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -115,7 +157,6 @@ export default function Integrantes() {
   return (
     <main className="min-h-screen bg-fundo text-creme font-sans">
 
-      {/* ===== HERO ===== */}
       <section className="flex flex-col items-center text-center px-4 pt-24 pb-16">
         <span className="text-verde-claro text-sm uppercase tracking-widest mb-4">
           Equipe
@@ -124,7 +165,8 @@ export default function Integrantes() {
           Quem somos
         </h1>
         <p className="text-xl text-verde-claro font-light max-w-xl">
-          Conheça os integrantes do grupo responsável pelo desenvolvimento da Rotta no Challenge FIAP 2026.
+          Conheça os integrantes do grupo responsável pelo desenvolvimento da
+          Rotta no Challenge FIAP 2026.
         </p>
       </section>
 
@@ -154,7 +196,8 @@ export default function Integrantes() {
             </h2>
             <p className="text-texto-muted text-sm leading-relaxed mb-4">
               A Rotta é a solução desenvolvida pelo grupo para o Challenge FIAP
-              2026, em parceria com a plataforma SoulUp. O desafio escolhido foi o{" "}
+              2026, em parceria com a plataforma SoulUp. O desafio escolhido foi
+              o{" "}
               <strong className="text-creme">
                 Desafio 2 — Utilização de Pontos para Transporte Público
               </strong>
@@ -172,7 +215,7 @@ export default function Integrantes() {
             {tags.map((tag, i) => (
               <span
                 key={i}
-                className="text-xs text-texto-muted border border-borda rounded-full px-3 py-1 hover:border-verde-claro hover:text-verde-claro transition-colors duration-300 cursor-default"
+                className="inline-block text-xs text-verde-claro border hover:border-verde-claro/50 border-verde/30 rounded-full px-3 py-1"
               >
                 {tag}
               </span>
@@ -208,7 +251,9 @@ export default function Integrantes() {
                 <p className="text-verde-claro text-xs uppercase tracking-widest mb-1">
                   {item.area}
                 </p>
-                <p className="text-creme text-sm font-medium mb-1">{item.nome}</p>
+                <p className="text-creme text-sm font-medium mb-1">
+                  {item.nome}
+                </p>
                 <p className="text-texto-muted text-xs">{item.tech}</p>
               </div>
             </article>
@@ -216,7 +261,6 @@ export default function Integrantes() {
         </div>
       </section>
 
-            {/* ===== CARDS DOS INTEGRANTES ===== */}
       <section className="px-4 py-16 max-w-5xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {integrantes.map((integrante, i) => (
@@ -231,7 +275,6 @@ export default function Integrantes() {
         </div>
       </section>
 
-      {/* ===== MODAL ===== */}
       {modalAberto && integranteSelecionado && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70"
@@ -273,7 +316,7 @@ export default function Integrantes() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs text-creme border border-borda rounded-full px-4 py-2 hover:border-verde-claro hover:text-verde-claro transition-colors duration-300"
               >
-                🐙 GitHub
+                <FaGithub /> GitHub
               </a>
 
               <a
@@ -282,7 +325,7 @@ export default function Integrantes() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs text-creme border border-borda rounded-full px-4 py-2 hover:border-verde-claro hover:text-verde-claro transition-colors duration-300"
               >
-                💼 LinkedIn
+                <FaLinkedin /> LinkedIn
               </a>
             </div>
           </div>

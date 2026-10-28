@@ -5,7 +5,12 @@ type CardIntegranteProps = {
   onClick: () => void;
 };
 
-export default function CardIntegrante({ nome, cargo, foto, onClick }: CardIntegranteProps) {
+export default function CardIntegrante({
+  nome,
+  cargo,
+  foto,
+  onClick,
+}: CardIntegranteProps) {
   return (
     <article className="bg-fundo-card border border-borda rounded-xl p-8 flex flex-col items-center text-center hover:border-verde-claro/50 transition-colors duration-300">
       <img

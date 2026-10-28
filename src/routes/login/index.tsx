@@ -48,9 +48,7 @@ export default function Login() {
 
     try {
       setCarregando(true);
-
       await fazerLogin(email, senha);
-
       navigate("/home");
     } catch (erro) {
       setErroLogin(

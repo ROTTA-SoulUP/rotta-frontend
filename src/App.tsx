@@ -7,11 +7,13 @@ import Faq from "./routes/Faq";
 import Contato from "./routes/Contato";
 import Solucao from "./routes/Solucao";
 import Carteira from "./routes/Carteira";
+import Login from "./routes/login";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Login />} />
         <Route element={<Layout />}><Route path="/home" element={<Home />} />
         <Route path="/integrantes" element={<Integrantes />} />    
         <Route path="integrantes/:id" element={<Integrantes />} />
