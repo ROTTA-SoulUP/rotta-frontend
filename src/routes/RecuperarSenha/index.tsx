@@ -1,5 +1,13 @@
 
+import { useState, type FormEvent } from "react";
+
 export default function RecuperarSenha() {
+  const [email, setEmail] = useState("");
+
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+  }
+
   return (
     <div className="flex min-h-dvh w-full flex-col bg-fundo md:flex-row">
       <aside className="relative h-44 shrink-0 overflow-hidden bg-verde sm:h-56 md:h-dvh md:w-1/2">
@@ -25,6 +33,35 @@ export default function RecuperarSenha() {
             Quando a recuperação estiver integrada, você poderá receber
             as instruções para redefinir sua senha.
           </p>
+
+          <form onSubmit={handleSubmit} noValidate>
+            <div className="mb-5">
+              <label
+                htmlFor="email-recuperacao"
+                className="mb-2 block text-sm text-creme"
+              >
+                E-mail cadastrado
+              </label>
+
+              <input
+                id="email-recuperacao"
+                name="email"
+                type="email"
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="seuemail@exemplo.com"
+                className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full rounded-lg bg-verde py-3 font-semibold text-fundo transition-colors hover:bg-verde-claro"
+            >
+              Recuperar senha
+            </button>
+          </form>
         </div>
       </main>
     </div>
