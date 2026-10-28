@@ -16,6 +16,10 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (carregando) {
+      return;
+    }
+
     setErroEmail("");
     setErroSenha("");
     setErroLogin("");
