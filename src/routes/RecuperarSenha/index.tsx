@@ -3,9 +3,21 @@ import { useState, type FormEvent } from "react";
 
 export default function RecuperarSenha() {
   const [email, setEmail] = useState("");
+  const [erro, setErro] = useState("");
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setErro("");
+
+    if (!email.trim()) {
+      setErro("Digite seu e-mail.");
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setErro("Digite um e-mail válido.");
+      return;
+    }
   }
 
   return (
@@ -54,6 +66,12 @@ export default function RecuperarSenha() {
                 className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
               />
             </div>
+
+            {erro && (
+              <p role="alert" className="mb-4 text-sm text-red-400">
+                {erro}
+              </p>
+            )}
 
             <button
               type="submit"
