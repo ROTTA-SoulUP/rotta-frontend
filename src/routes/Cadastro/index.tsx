@@ -1,8 +1,11 @@
 
 import { useState, type FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { criarConta } from "../../services/auth";
 
 export default function Cadastro() {
+  const navigate = useNavigate();
+
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
@@ -12,9 +15,15 @@ export default function Cadastro() {
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [erro, setErro] = useState("");
   const [mensagem, setMensagem] = useState("");
+  const [carregando, setCarregando] = useState(false);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (carregando) {
+      return;
+    }
+
     setErro("");
     setMensagem("");
 
@@ -55,9 +64,31 @@ export default function Cadastro() {
       return;
     }
 
-    setMensagem(
-      "Dados validados! A criação da conta ficará disponível quando a API estiver integrada."
-    );
+    try {
+      setCarregando(true);
+
+      await criarConta({
+        nome,
+        email,
+        cpf,
+        telefone,
+        senha,
+      });
+
+      setMensagem("Conta criada com sucesso! Redirecionando para o login...");
+
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
+    } catch (erro) {
+      setErro(
+        erro instanceof Error
+          ? erro.message
+          : "Não foi possível criar sua conta."
+      );
+    } finally {
+      setCarregando(false);
+    }
   }
 
   return (
@@ -89,6 +120,7 @@ export default function Cadastro() {
               <label htmlFor="nome" className="mb-2 block text-sm text-creme">
                 Nome completo
               </label>
+
               <input
                 id="nome"
                 name="nome"
@@ -96,14 +128,19 @@ export default function Cadastro() {
                 value={nome}
                 onChange={(e) => setNome(e.target.value)}
                 placeholder="Digite seu nome completo"
+                disabled={carregando}
                 className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
               />
             </div>
 
             <div className="mb-4">
-              <label htmlFor="email-cadastro" className="mb-2 block text-sm text-creme">
+              <label
+                htmlFor="email-cadastro"
+                className="mb-2 block text-sm text-creme"
+              >
                 E-mail
               </label>
+
               <input
                 id="email-cadastro"
                 name="email"
@@ -112,6 +149,7 @@ export default function Cadastro() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="seuemail@exemplo.com"
+                disabled={carregando}
                 className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
               />
             </div>
@@ -121,6 +159,7 @@ export default function Cadastro() {
                 <label htmlFor="cpf" className="mb-2 block text-sm text-creme">
                   CPF
                 </label>
+
                 <input
                   id="cpf"
                   name="cpf"
@@ -130,14 +169,19 @@ export default function Cadastro() {
                   onChange={(e) => setCpf(e.target.value)}
                   placeholder="Somente números"
                   maxLength={14}
+                  disabled={carregando}
                   className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
                 />
               </div>
 
               <div>
-                <label htmlFor="telefone" className="mb-2 block text-sm text-creme">
+                <label
+                  htmlFor="telefone"
+                  className="mb-2 block text-sm text-creme"
+                >
                   Telefone
                 </label>
+
                 <input
                   id="telefone"
                   name="telefone"
@@ -148,15 +192,20 @@ export default function Cadastro() {
                   onChange={(e) => setTelefone(e.target.value)}
                   placeholder="DDD + número"
                   maxLength={16}
+                  disabled={carregando}
                   className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
                 />
               </div>
             </div>
 
             <div className="mb-4">
-              <label htmlFor="senha-cadastro" className="mb-2 block text-sm text-creme">
+              <label
+                htmlFor="senha-cadastro"
+                className="mb-2 block text-sm text-creme"
+              >
                 Senha
               </label>
+
               <input
                 id="senha-cadastro"
                 name="senha"
@@ -165,14 +214,19 @@ export default function Cadastro() {
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
                 placeholder="Mínimo de 8 caracteres"
+                disabled={carregando}
                 className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
               />
             </div>
 
             <div className="mb-5">
-              <label htmlFor="confirmar-senha" className="mb-2 block text-sm text-creme">
+              <label
+                htmlFor="confirmar-senha"
+                className="mb-2 block text-sm text-creme"
+              >
                 Confirmar senha
               </label>
+
               <input
                 id="confirmar-senha"
                 name="confirmarSenha"
@@ -181,6 +235,7 @@ export default function Cadastro() {
                 value={confirmarSenha}
                 onChange={(e) => setConfirmarSenha(e.target.value)}
                 placeholder="Digite a senha novamente"
+                disabled={carregando}
                 className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
               />
             </div>
@@ -190,6 +245,7 @@ export default function Cadastro() {
                 type="checkbox"
                 checked={mostrarSenha}
                 onChange={(e) => setMostrarSenha(e.target.checked)}
+                disabled={carregando}
                 className="accent-verde-claro"
               />
               Mostrar senhas
@@ -212,9 +268,10 @@ export default function Cadastro() {
 
             <button
               type="submit"
-              className="w-full rounded-lg bg-verde py-3 font-semibold text-fundo transition-colors hover:bg-verde-claro"
+              disabled={carregando}
+              className="w-full rounded-lg bg-verde py-3 font-semibold text-fundo transition-colors hover:bg-verde-claro disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Criar conta
+              {carregando ? "Criando conta..." : "Criar conta"}
             </button>
           </form>
 
