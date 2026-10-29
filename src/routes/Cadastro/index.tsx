@@ -1,5 +1,6 @@
 
 import { useState, type FormEvent } from "react";
+import { Link } from "react-router-dom";
 
 export default function Cadastro() {
   const [nome, setNome] = useState("");
@@ -10,10 +11,12 @@ export default function Cadastro() {
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [erro, setErro] = useState("");
+  const [mensagem, setMensagem] = useState("");
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setErro("");
+    setMensagem("");
 
     if (
       !nome.trim() ||
@@ -51,6 +54,10 @@ export default function Cadastro() {
       setErro("As senhas não coincidem.");
       return;
     }
+
+    setMensagem(
+      "Dados validados! A criação da conta ficará disponível quando a API estiver integrada."
+    );
   }
 
   return (
@@ -191,6 +198,15 @@ export default function Cadastro() {
             {erro && (
               <p role="alert" className="mb-4 text-sm text-red-400">
                 {erro}
+              </p>
+            )}
+
+            {mensagem && (
+              <p
+                role="status"
+                className="mb-4 rounded-lg border border-verde-claro p-3 text-sm text-verde-claro"
+              >
+                {mensagem}
               </p>
             )}
 
