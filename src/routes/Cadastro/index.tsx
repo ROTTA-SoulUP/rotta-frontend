@@ -9,9 +9,48 @@ export default function Cadastro() {
   const [senha, setSenha] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const [mostrarSenha, setMostrarSenha] = useState(false);
+  const [erro, setErro] = useState("");
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setErro("");
+
+    if (
+      !nome.trim() ||
+      !email.trim() ||
+      !cpf.trim() ||
+      !telefone.trim() ||
+      !senha ||
+      !confirmarSenha
+    ) {
+      setErro("Preencha todos os campos.");
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setErro("Digite um e-mail válido.");
+      return;
+    }
+
+    if (cpf.replace(/\D/g, "").length !== 11) {
+      setErro("Digite um CPF com 11 números.");
+      return;
+    }
+
+    if (telefone.replace(/\D/g, "").length < 10) {
+      setErro("Digite um telefone válido com DDD.");
+      return;
+    }
+
+    if (senha.length < 8) {
+      setErro("A senha deve ter pelo menos 8 caracteres.");
+      return;
+    }
+
+    if (senha !== confirmarSenha) {
+      setErro("As senhas não coincidem.");
+      return;
+    }
   }
 
   return (
@@ -148,6 +187,12 @@ export default function Cadastro() {
               />
               Mostrar senhas
             </label>
+
+            {erro && (
+              <p role="alert" className="mb-4 text-sm text-red-400">
+                {erro}
+              </p>
+            )}
 
             <button
               type="submit"
