@@ -1,5 +1,6 @@
 
 import { useState, type FormEvent } from "react";
+import { Link } from "react-router-dom";
 
 export default function RecuperarSenha() {
   const [email, setEmail] = useState("");
@@ -95,6 +96,16 @@ export default function RecuperarSenha() {
               Recuperar senha
             </button>
           </form>
+
+          <p className="mt-6 text-center text-sm text-creme/80">
+            Lembrou sua senha?{" "}
+            <Link
+              to="/"
+              className="font-semibold text-verde-claro hover:underline"
+            >
+              Voltar ao login
+            </Link>
+          </p>
         </div>
       </main>
     </div>
