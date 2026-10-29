@@ -217,6 +217,16 @@ export default function Cadastro() {
               Criar conta
             </button>
           </form>
+
+          <p className="mt-6 text-center text-sm text-creme/80">
+            Já tem uma conta?{" "}
+            <Link
+              to="/"
+              className="font-semibold text-verde-claro hover:underline"
+            >
+              Fazer login
+            </Link>
+          </p>
         </div>
       </main>
     </div>
