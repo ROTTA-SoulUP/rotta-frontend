@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL || "https://rotta-java.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL || "https://rotta-java-1.onrender.com";
 
 export interface LoginResponse {
     id: number;
