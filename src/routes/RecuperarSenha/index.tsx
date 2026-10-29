@@ -4,10 +4,12 @@ import { useState, type FormEvent } from "react";
 export default function RecuperarSenha() {
   const [email, setEmail] = useState("");
   const [erro, setErro] = useState("");
+  const [mensagem, setMensagem] = useState("");
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setErro("");
+    setMensagem("");
 
     if (!email.trim()) {
       setErro("Digite seu e-mail.");
@@ -18,6 +20,10 @@ export default function RecuperarSenha() {
       setErro("Digite um e-mail válido.");
       return;
     }
+
+    setMensagem(
+      "E-mail validado! O envio do link de recuperação estará disponível quando a API estiver integrada."
+    );
   }
 
   return (
@@ -70,6 +76,15 @@ export default function RecuperarSenha() {
             {erro && (
               <p role="alert" className="mb-4 text-sm text-red-400">
                 {erro}
+              </p>
+            )}
+
+            {mensagem && (
+              <p
+                role="status"
+                className="mb-4 rounded-lg border border-verde-claro p-3 text-sm text-verde-claro"
+              >
+                {mensagem}
               </p>
             )}
 
