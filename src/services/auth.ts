@@ -41,4 +41,45 @@ export async function fazerLogin(
     }
 
     return (await resposta.json()) as LoginResponse;
+    
+}
+
+
+export async function criarConta(dados: {
+    nome: string;
+    email: string;
+    cpf: string;
+    telefone: string;
+    senha: string;
+}): Promise<void> {
+    const resposta = await fetch(`${API_URL}/usuarios`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            nome: dados.nome.trim(),
+            email: dados.email.trim(),
+            cpf: dados.cpf.replace(/\D/g, ""),
+            telefone: dados.telefone.replace(/\D/g, ""),
+            senha: dados.senha,
+        }),
+    });
+
+    if (!resposta.ok) {
+        const texto = await resposta.text();
+
+        let mensagem = "Não foi possível criar sua conta. Tente novamente.";
+
+        if (texto) {
+            try {
+                const erro = JSON.parse(texto);
+                mensagem = erro.erro || erro.message || texto;
+            } catch {
+                mensagem = texto;
+            }
+        }
+
+        throw new Error(mensagem);
+    }
 }
