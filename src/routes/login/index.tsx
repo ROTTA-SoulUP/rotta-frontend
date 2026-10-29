@@ -1,24 +1,32 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { fazerLogin } from "../../services/auth";
 
 export default function Login() {
   const navigate = useNavigate();
+
   const [mostrarSenha, setMostrarSenha] = useState(false);
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erroEmail, setErroEmail] = useState("");
   const [erroSenha, setErroSenha] = useState("");
+  const [erroLogin, setErroLogin] = useState("");
+  const [carregando, setCarregando] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (carregando) {
+      return;
+    }
 
     setErroEmail("");
     setErroSenha("");
+    setErroLogin("");
 
     let temErro = false;
 
-    if (!email) {
+    if (!email.trim()) {
       setErroEmail("Digite um e-mail.");
       temErro = true;
     } else if (!email.includes("@")) {
@@ -34,122 +42,158 @@ export default function Login() {
       temErro = true;
     }
 
-    if (!temErro) {
+    if (temErro) {
+      return;
+    }
+
+    try {
+      setCarregando(true);
+      await fazerLogin(email, senha);
       navigate("/home");
+    } catch (erro) {
+      setErroLogin(
+        erro instanceof Error
+          ? erro.message
+          : "Não foi possível realizar o login."
+      );
+    } finally {
+      setCarregando(false);
     }
   };
 
   return (
-    <div className="flex h-dvh w-full flex-col overflow-x-hidden md:flex-row">
-      <aside className="h-64 w-full shrink-0 overflow-hidden bg-verde md:h-full md:w-1/2">
-        <img
-          src="../../images/img01-login.jpeg"
-          alt="Imagem ilustrativa Rotta"
-          className="block h-full w-full object-cover"
-        />
-      </aside>
+    <div className="h-screen overflow-hidden flex flex-col">
+      <div className="flex flex-1 flex-col md:flex-row">
+        <aside className="md:w-1/2 h-64 md:h-full overflow-hidden flex items-center justify-center bg-verde">
+          <img
+            src="../../images/img01-login.jpeg"
+            alt="Imagem ilustrativa Rotta"
+            className="full h-full object-cover"
+          />
+        </aside>
 
-      <main className="flex min-h-0 w-full flex-1 items-center justify-center overflow-y-auto bg-fundo px-6 py-8 md:h-full md:w-1/2 md:flex-none md:px-10 md:py-12">
-        <div className="w-full max-w-md">
-          <h1 className="mb-8 text-3xl font-bold text-creme">
-            Bem-Vindo a ROTTA
-          </h1>
+        <main className="md:w-1/2 flex items-center justify-center px-6 py-12 bg-fundo">
+          <div className="w-full max-w-md">
+            <h1 className="text-creme text-3xl items-start font-bold mb-8">
+              Bem-Vindo a ROTTA
+            </h1>
 
-          <h2 className="mb-8 text-3xl font-bold text-creme">Login</h2>
+            <h2 className="text-creme text-3xl font-bold mb-8">
+              Login
+            </h2>
 
-          <form onSubmit={handleSubmit} noValidate>
-            <div className="mb-5">
-              <label htmlFor="email" className="mb-2 block text-sm text-creme">
-                Email ou Username
-              </label>
-
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="alexandre@gmail.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-lg border border-borda bg-fundo-card py-3 pl-5 pr-4 text-creme transition-colors focus:border-verde-claro focus:outline-none"
-              />
-
-              {erroEmail && (
-                <span className="mt-1 block text-xs text-red-400">
-                  {erroEmail}
-                </span>
-              )}
-            </div>
-
-            <div className="mb-5">
-              <label htmlFor="senha" className="mb-2 block text-sm text-creme">
-                Senha
-              </label>
-
-              <div className="relative">
-                <input
-                  type={mostrarSenha ? "text" : "password"}
-                  id="senha"
-                  name="senha"
-                  placeholder="Ex: SantaRosa"
-                  value={senha}
-                  onChange={(e) => setSenha(e.target.value)}
-                  className="w-full rounded-lg border border-borda bg-fundo-card py-3 pl-5 pr-12 text-creme transition-colors focus:border-verde-claro focus:outline-none"
-                />
-
-                <button
-                  type="button"
-                  onClick={() => setMostrarSenha(!mostrarSenha)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-creme/50 transition-colors hover:text-creme"
-                  aria-label={mostrarSenha ? "Ocultar senha" : "Mostrar senha"}
+            <form onSubmit={handleSubmit} noValidate>
+              <div className="mb-5">
+                <label
+                  htmlFor="email"
+                  className="block text-creme text-sm mb-2"
                 >
-                  {mostrarSenha ? "Ocultar" : "Mostrar"}
-                </button>
+                  Email ou Username
+                </label>
+
+                <div className="relative">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="teste123@gmail.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    autoComplete="username"
+                    disabled={carregando}
+                    className="w-full bg-fundo-card border border-borda text-creme rounded-lg pl-5 pr-4 py-3 focus:outline-none focus:border-verde-claro transition-colors"
+                  />
+                </div>
+
+                {erroEmail && (
+                  <span className="text-red-400 text-xs mt-1 block">
+                    {erroEmail}
+                  </span>
+                )}
               </div>
 
-              {erroSenha && (
-                <span className="mt-1 block text-xs text-red-400">
-                  {erroSenha}
-                </span>
+              <div className="mb-5">
+                <label
+                  htmlFor="senha"
+                  className="block text-creme text-sm mb-2"
+                >
+                  Senha
+                </label>
+
+                <div className="relative">
+                  <input
+                    type={mostrarSenha ? "text" : "password"}
+                    id="senha"
+                    name="senha"
+                    placeholder="Ex: Teste123"
+                    value={senha}
+                    onChange={(e) => setSenha(e.target.value)}
+                    autoComplete="current-password"
+                    disabled={carregando}
+                    className="w-full bg-fundo-card border border-borda text-creme rounded-lg pl-5 pr-12 py-3 focus:outline-none focus:border-verde-claro transition-colors"
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => setMostrarSenha(!mostrarSenha)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-creme/50 hover:text-creme transition-colors"
+                    aria-label={
+                      mostrarSenha ? "Ocultar senha" : "Mostrar senha"
+                    }
+                    disabled={carregando}
+                  >
+                    {mostrarSenha ? "Ocultar" : "Mostrar"}
+                  </button>
+                </div>
+
+                {erroSenha && (
+                  <span className="text-red-400 text-xs mt-1 block">
+                    {erroSenha}
+                  </span>
+                )}
+              </div>
+
+              {erroLogin && (
+                <p
+                  role="alert"
+                  aria-live="polite"
+                  className="text-red-400 text-sm mb-4"
+                >
+                  {erroLogin}
+                </p>
               )}
-            </div>
 
-            <div className="mb-6 flex items-center justify-between gap-3">
-              <label className="flex cursor-pointer items-center gap-2 text-sm text-creme">
-                <input
-                  type="checkbox"
-                  id="lembrar"
-                  name="lembrar"
-                  className="accent-verde-claro"
-                />
-                <span>Remember me</span>
-              </label>
+              <div className="flex items-center justify-between mb-6">
+                <label className="flex items-center gap-2 text-creme text-sm cursor-pointer">
+                  <input
+                    type="checkbox"
+                    id="lembrar"
+                    name="lembrar"
+                    className="accent-verde-claro"
+                  />
+                  <span>Remember me</span>
+                </label>
 
-              <Link
-                to="/recuperar-senha"
-                className="text-verde-claro text-sm hover:underline"
+                <a
+                  href="#"
+                  onClick={(e) => e.preventDefault()}
+                  className="text-verde-claro text-sm hover:underline"
+                >
+                  Esqueceu a Senha?
+                </a>
+              </div>
+
+              <button
+                type="submit"
+                disabled={carregando}
+                className="w-full bg-verde text-fundo font-semibold rounded-lg py-3 hover:bg-verde-claro transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Esqueceu a Senha?
-              </Link>
-            </div>
-
-            <button
-              type="submit"
-              className="w-full rounded-lg bg-verde py-3 font-semibold text-fundo transition-colors hover:bg-verde-claro"
-            >
-              Entrar
-            </button>
-          </form>
-          <p className="mt-6 text-center text-sm text-creme/80">
-            Ainda não tem uma conta?{" "}
-            <Link
-              to="/cadastro"
-              className="font-semibold text-verde-claro hover:underline"
-            >
-              Criar conta
-            </Link>
-          </p>
-        </div>
-      </main>
+                {carregando ? "Entrando..." : "Entrar"}
+              </button>
+            </form>
+          </div>
+        </main>
+      </div>
     </div>
   );
 }

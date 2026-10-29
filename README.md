@@ -45,49 +45,95 @@ O projeto foi desenvolvido utilizando:
 ## 📁 Estrutura de pastas
 
 ```text
-rot ta/
-│
-├── public/
-│   └── images/
-│       ├── Logo.svg
-│       ├── Beatriz.jpeg
-│       ├── Geovanna.jpeg
-│       ├── Guilherme.jpeg
-│       ├── Leonardo.jpeg
-│       └── Thiago.jpeg
-│
-├── src/
-│   │
-│   ├── components/
-│   │   ├── CardIntegrante.tsx
-│   │   ├── Footer.tsx
-│   │   └── Header.tsx
-│   │
-│   ├── layouts/
-│   │   └── Layout.tsx
-│   │
-│   ├── routes/
-│   │   ├── Home.tsx
-│   │   ├── Integrantes.tsx
-│   │   ├── Sobre.tsx
-│   │   ├── Faq.tsx
-│   │   ├── Contato.tsx
-│   │   ├── Solucao.tsx
-│   │   └── Carteira.tsx
-│   │
-│   ├── App.tsx
-│   ├── main.tsx
-│   └── index.css
+rotta/
 │
 ├── .gitignore
+├── README.md
+├── eslint.config.js
 ├── index.html
 ├── package.json
 ├── package-lock.json
+├── tailwind.config.js
 ├── tsconfig.json
 ├── tsconfig.app.json
 ├── tsconfig.node.json
 ├── vite.config.ts
-└── README.md
+│
+├── public/
+│   ├── images/
+│   │   ├── img01-login.jpeg
+│   │   ├── img02-logo.jpeg
+│   │   ├── img03-mascote.png
+│   │   ├── img04-rotta-card.png
+│   │   ├── img05-leonardo.jpeg
+│   │   ├── img06-guilherme.jpeg
+│   │   ├── img07-thiago.jpeg
+│   │   ├── img08-beatriz.jpeg
+│   │   ├── img09-geovanna.jpeg
+│   │   ├── img10-ecobag.png
+│   │   ├── img11-login.png
+│   │   ├── img12-home.png
+│   │   ├── img13-sobre.png
+│   │   ├── img14-solucao.png
+│   │   ├── img15-carteira.png
+│   │   ├── img16-faq.png
+│   │   ├── img17-contato.png
+│   │   └── img18-integrantes.png
+│   │
+│   └── videos/
+│       └── vid01-capi.mp4
+│
+└── src/
+    │
+    ├── App.tsx
+    ├── index.css
+    └── main.tsx
+    │
+    ├── components/
+    │   │
+    │   ├── CardIntegrante/
+    │   │   └── index.tsx
+    │   │
+    │   ├── Footer/
+    │   │   └── index.tsx
+    │   │
+    │   ├── Header/
+    │   │   └── index.tsx
+    │   │
+    │   ├── MascoteCapivara.tsx/
+    │   │   └── index.tsx
+    │   │
+    │   └── ValidacaoFoto/
+    │       └── index.tsx
+    │
+    ├── layouts/
+    │   └── Layout.tsx
+    │
+    └── routes/
+        │
+        ├── Carteira/
+        │   └── index.tsx
+        │
+        ├── Contato/
+        │   └── index.tsx
+        │
+        ├── Faq/
+        │   └── index.tsx
+        │
+        ├── Home/
+        │   └── index.tsx
+        │
+        ├── Integrantes/
+        │   └── index.tsx
+        │
+        ├── Sobre/
+        │   └── index.tsx
+        │
+        ├── Solucao/
+        │   └── index.tsx
+        │
+        └── login/
+            └── index.tsx
 ```
 
 ---
@@ -251,7 +297,7 @@ https://github.com/ROTTA-SoulUP/rotta-frontend
 
 **Apresentação do projeto no YouTube:**
 
-[COLOCAR LINK DO YOUTUBE AQUI]
+[https://www.youtube.com/watch?v=Ja8B9hhbAPE]
 
 ---
 
@@ -267,7 +313,7 @@ https://github.com/ROTTA-SoulUP/rotta-frontend
 
 **GitHub:** https://github.com/LeonardoSilva1203
 
-<img src="/images/Leonardo.jpeg" width="150">
+<img src="./public/images/img05-leonardo.jpeg">
 
 ---
 
@@ -281,7 +327,7 @@ https://github.com/ROTTA-SoulUP/rotta-frontend
 
 **GitHub:** https://github.com/BeaUrbano
 
-<img src="/images/Beatriz.jpeg" width="150">
+<img src="./public/images/img08-beatriz.jpeg">
 
 ---
 
@@ -295,7 +341,7 @@ https://github.com/ROTTA-SoulUP/rotta-frontend
 
 **GitHub:** https://github.com/geovannasecchi
 
-<img src="/images/Geovanna.jpeg" width="150">
+<img src="./public/images/img09-geovanna.jpeg">
 
 ---
 
@@ -309,7 +355,7 @@ https://github.com/ROTTA-SoulUP/rotta-frontend
 
 **GitHub:** https://github.com/GuilhermeAlmeida0207"
 
-<img src="/images/Guilherme.jpeg" width="150">
+<img src="./public/images/img06-guilherme.jpeg">
 
 ---
 
@@ -323,7 +369,7 @@ https://github.com/ROTTA-SoulUP/rotta-frontend
 
 **GitHub:** https://github.com/Thiagordsr
 
-<img src="/images/Thiago.jpeg" width="150">
+<img src="./public/images/img07-thiago.jpeg">
 
 ---
 
@@ -368,14 +414,6 @@ Para informações sobre o projeto, entre em contato com a equipe:
 
 **GitHub:** https://github.com/ROTTA-SoulUP/rotta-frontend
 
-**YouTube:** [COLOCAR LINK DO VÍDEO]
-
----
-
-## 📚 Contexto acadêmico
-
-Projeto desenvolvido para a disciplina de **Front-End Design Engineering — Sprint 03**, utilizando React, Vite, TypeScript, Tailwind CSS e React Router DOM.
-
-**FIAP — Análise e Desenvolvimento de Sistemas**
+**YouTube:** [https://www.youtube.com/watch?v=Ja8B9hhbAPE]
 
 ---
