@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fazerLogin } from "../../services/auth";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -174,13 +175,12 @@ export default function Login() {
                   <span>Remember me</span>
                 </label>
 
-                <a
-                  href="#"
-                  onClick={(e) => e.preventDefault()}
-                  className="text-verde-claro text-sm hover:underline"
-                >
-                  Esqueceu a Senha?
-                </a>
+                <Link
+  to="/recuperar-senha"
+  className="text-verde-claro text-sm hover:underline"
+>
+  Esqueceu a Senha?
+</Link>
               </div>
 
               <button
@@ -191,6 +191,17 @@ export default function Login() {
                 {carregando ? "Entrando..." : "Entrar"}
               </button>
             </form>
+
+            <p className="mt-6 text-center text-sm text-creme/80">
+  Ainda não tem uma conta?{" "}
+  <Link
+    to="/cadastro"
+    className="font-semibold text-verde-claro hover:underline"
+  >
+    Criar conta
+  </Link>
+</p>
+
           </div>
         </main>
       </div>
