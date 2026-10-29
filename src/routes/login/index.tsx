@@ -97,7 +97,7 @@ export default function Login() {
                     type="email"
                     id="email"
                     name="email"
-                    placeholder="teste123@gmail.com"
+                    placeholder="alexandre@gmail.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     autoComplete="username"
@@ -126,7 +126,7 @@ export default function Login() {
                     type={mostrarSenha ? "text" : "password"}
                     id="senha"
                     name="senha"
-                    placeholder="Ex: Teste123"
+                    placeholder="Ex: SantaRosa"
                     value={senha}
                     onChange={(e) => setSenha(e.target.value)}
                     autoComplete="current-password"
