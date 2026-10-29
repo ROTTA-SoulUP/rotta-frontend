@@ -47,19 +47,28 @@ export default function Login() {
       return;
     }
 
-    try {
-      setCarregando(true);
-      await fazerLogin(email, senha);
-      navigate("/home");
-    } catch (erro) {
-      setErroLogin(
-        erro instanceof Error
-          ? erro.message
-          : "Não foi possível realizar o login."
-      );
-    } finally {
-      setCarregando(false);
-    }
+    
+try {
+  setCarregando(true);
+
+  const usuario = await fazerLogin(email, senha);
+
+  localStorage.setItem(
+    "rotta_usuario",
+    JSON.stringify(usuario)
+  );
+
+  navigate("/home");
+} catch (erro) {
+  setErroLogin(
+    erro instanceof Error
+      ? erro.message
+      : "Não foi possível realizar o login."
+  );
+} finally {
+  setCarregando(false);
+}
+
   };
 
   return (
