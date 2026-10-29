@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import MascoteCapivara from "../MascoteCapivara.tsx/index";
+import MascoteCapivara from "../MascoteCapivara/index";
 
 export default function Header() {
   const [menuAberto, setMenuAberto] = useState(false);
