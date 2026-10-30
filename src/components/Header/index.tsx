@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import MascoteCapivara from "../MascoteCapivara/index";
+import Logout from "../Logout";
 
 export default function Header() {
   const [menuAberto, setMenuAberto] = useState(false);
@@ -106,12 +107,14 @@ export default function Header() {
           <li>
             <MascoteCapivara />
           </li>
+          <li>
+            <Logout />
+          </li>
         </ul>
       </nav>
 
       {menuAberto && (
         <div className="md:hidden fixed inset-0 bg-fundo z-40 flex flex-col">
-          
           <ul className="flex flex-col gap-6 items-start justify-center flex-1 pl-8">
             <li>
               <Link
@@ -176,7 +179,13 @@ export default function Header() {
                 Contato
               </Link>
             </li>
+            <li>
+              <div className="text-creme hover:text-verde-claro transition-colors text-2xl font-medium">
+                <Logout />
+              </div>
+            </li>
           </ul>
+
           <div className="absolute bottom-8 right-8">
             <MascoteCapivara direcao="cima" />
           </div>

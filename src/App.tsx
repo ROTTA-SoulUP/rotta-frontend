@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import Home from "./routes/Home";
@@ -10,6 +11,7 @@ import Carteira from "./routes/Carteira";
 import Login from "./routes/login";
 import Cadastro from "./routes/Cadastro";
 import RecuperarSenha from "./routes/RecuperarSenha";
+import RotaPrivada from "./components/RotaPrivada";
 
 function App() {
   return (
@@ -18,15 +20,17 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/recuperar-senha" element={<RecuperarSenha />} />
-        <Route element={<Layout />}>
-        <Route path="/home" element={<Home />} />
-        <Route path="/integrantes" element={<Integrantes />} />
-        <Route path="integrantes/:id" element={<Integrantes />} />
-        <Route path="/sobre" element={<Sobre />} />
-        <Route path="/faq" element={<Faq />} />
-        <Route path="/contato" element={<Contato />} />
-        <Route path="/solucao" element={<Solucao />} />
-        <Route path="/carteira" element={<Carteira />} />
+        <Route element={<RotaPrivada />}>
+          <Route element={<Layout />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/integrantes" element={<Integrantes />} />
+            <Route path="/integrantes/:id" element={<Integrantes />} />
+            <Route path="/sobre" element={<Sobre />} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="/contato" element={<Contato />} />
+            <Route path="/solucao" element={<Solucao />} />
+            <Route path="/carteira" element={<Carteira />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
