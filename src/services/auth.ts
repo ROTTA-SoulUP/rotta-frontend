@@ -83,3 +83,59 @@ export async function criarConta(dados: {
         throw new Error(mensagem);
     }
 }
+
+export async function verificarEmailRecuperacao(
+    email: string
+): Promise<void> {
+    const resposta = await fetch(
+        `${API_URL}/usuarios/recuperar-senha/verificar-email`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email: email.trim(),
+            }),
+        }
+    );
+
+    if (resposta.status === 404) {
+        throw new Error("E-mail não encontrado.");
+    }
+
+    if (!resposta.ok) {
+        throw new Error(
+            "Não foi possível verificar o e-mail. Tente novamente."
+        );
+    }
+}
+
+export async function redefinirSenha(
+    email: string,
+    novaSenha: string
+): Promise<void> {
+    const resposta = await fetch(
+        `${API_URL}/usuarios/recuperar-senha`,
+        {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email: email.trim(),
+                novaSenha: novaSenha,
+            }),
+        }
+    );
+
+    if (resposta.status === 404) {
+        throw new Error("E-mail não encontrado.");
+    }
+
+    if (!resposta.ok) {
+        throw new Error(
+            "Não foi possível redefinir a senha. Tente novamente."
+        );
+    }
+}

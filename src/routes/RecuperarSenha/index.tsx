@@ -1,6 +1,10 @@
 
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import {
+  verificarEmailRecuperacao,
+  redefinirSenha,
+} from "../../services/auth";
 
 export default function RecuperarSenha() {
   const navigate = useNavigate();
@@ -10,6 +14,73 @@ export default function RecuperarSenha() {
   const [senha, setSenha] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const [mostrarSenha, setMostrarSenha] = useState(false);
+  const [erro, setErro] = useState("");
+  const [carregando, setCarregando] = useState(false);
+
+  async function handleVerificarEmail() {
+    setErro("");
+
+    if (!email.trim()) {
+      setErro("Digite seu e-mail.");
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setErro("Digite um e-mail válido.");
+      return;
+    }
+
+    try {
+      setCarregando(true);
+
+      await verificarEmailRecuperacao(email);
+
+      setEtapa(2);
+    } catch (erro) {
+      setErro(
+        erro instanceof Error
+          ? erro.message
+          : "Não foi possível verificar o e-mail."
+      );
+    } finally {
+      setCarregando(false);
+    }
+  }
+
+  async function handleRedefinirSenha() {
+    setErro("");
+
+    if (!senha || !confirmarSenha) {
+      setErro("Preencha os dois campos de senha.");
+      return;
+    }
+
+    if (senha.length < 4) {
+      setErro("A senha deve ter pelo menos 4 caracteres.");
+      return;
+    }
+
+    if (senha !== confirmarSenha) {
+      setErro("As senhas não coincidem.");
+      return;
+    }
+
+    try {
+      setCarregando(true);
+
+      await redefinirSenha(email, senha);
+
+      setEtapa(3);
+    } catch (erro) {
+      setErro(
+        erro instanceof Error
+          ? erro.message
+          : "Não foi possível redefinir a senha."
+      );
+    } finally {
+      setCarregando(false);
+    }
+  }
 
   return (
     <div className="flex min-h-dvh w-full flex-col bg-fundo md:flex-row">
@@ -52,20 +123,30 @@ export default function RecuperarSenha() {
 
                 <input
                   id="email-recuperacao"
+                  name="email"
                   type="email"
+                  autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="seuemail@exemplo.com"
+                  disabled={carregando}
                   className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
                 />
               </div>
 
+              {erro && (
+                <p role="alert" className="mb-4 text-sm text-red-400">
+                  {erro}
+                </p>
+              )}
+
               <button
                 type="button"
-                onClick={() => setEtapa(2)}
-                className="w-full rounded-lg bg-verde py-3 font-semibold text-fundo transition-colors hover:bg-verde-claro"
+                onClick={handleVerificarEmail}
+                disabled={carregando}
+                className="w-full rounded-lg bg-verde py-3 font-semibold text-fundo transition-colors hover:bg-verde-claro disabled:cursor-not-allowed disabled:opacity-60"
               >
-                Continuar
+                {carregando ? "Verificando..." : "Continuar"}
               </button>
             </>
           )}
@@ -77,29 +158,43 @@ export default function RecuperarSenha() {
               </p>
 
               <div className="mb-5">
-                <label className="mb-2 block text-sm text-creme">
+                <label
+                  htmlFor="nova-senha"
+                  className="mb-2 block text-sm text-creme"
+                >
                   Nova senha
                 </label>
 
                 <input
+                  id="nova-senha"
+                  name="novaSenha"
                   type={mostrarSenha ? "text" : "password"}
+                  autoComplete="new-password"
                   value={senha}
                   onChange={(e) => setSenha(e.target.value)}
                   placeholder="Digite sua nova senha"
+                  disabled={carregando}
                   className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
                 />
               </div>
 
               <div className="mb-5">
-                <label className="mb-2 block text-sm text-creme">
+                <label
+                  htmlFor="confirmar-senha"
+                  className="mb-2 block text-sm text-creme"
+                >
                   Confirmar nova senha
                 </label>
 
                 <input
+                  id="confirmar-senha"
+                  name="confirmarSenha"
                   type={mostrarSenha ? "text" : "password"}
+                  autoComplete="new-password"
                   value={confirmarSenha}
                   onChange={(e) => setConfirmarSenha(e.target.value)}
                   placeholder="Digite novamente sua senha"
+                  disabled={carregando}
                   className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
                 />
               </div>
@@ -109,26 +204,38 @@ export default function RecuperarSenha() {
                   type="checkbox"
                   checked={mostrarSenha}
                   onChange={(e) => setMostrarSenha(e.target.checked)}
+                  disabled={carregando}
                   className="accent-verde-claro"
                 />
                 Mostrar senhas
               </label>
 
+              {erro && (
+                <p role="alert" className="mb-4 text-sm text-red-400">
+                  {erro}
+                </p>
+              )}
+
               <div className="flex flex-col gap-3">
                 <button
                   type="button"
-                  onClick={() => setEtapa(1)}
-                  className="w-full rounded-lg border border-borda py-3 font-semibold text-creme transition-colors hover:bg-fundo-card"
+                  onClick={() => {
+                    setErro("");
+                    setEtapa(1);
+                  }}
+                  disabled={carregando}
+                  className="w-full rounded-lg border border-borda py-3 font-semibold text-creme transition-colors hover:bg-fundo-card disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   Voltar
                 </button>
 
                 <button
                   type="button"
-                  onClick={() => setEtapa(3)}
-                  className="w-full rounded-lg bg-verde py-3 font-semibold text-fundo transition-colors hover:bg-verde-claro"
+                  onClick={handleRedefinirSenha}
+                  disabled={carregando}
+                  className="w-full rounded-lg bg-verde py-3 font-semibold text-fundo transition-colors hover:bg-verde-claro disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  Redefinir senha
+                  {carregando ? "Redefinindo..." : "Redefinir senha"}
                 </button>
               </div>
             </>
@@ -147,7 +254,8 @@ export default function RecuperarSenha() {
               </h2>
 
               <p className="mb-8 leading-relaxed text-creme/75">
-                Sua senha foi atualizada. Agora você pode voltar à tela de login.
+                Sua senha foi atualizada. Agora você pode voltar à tela de
+                login.
               </p>
 
               <button
