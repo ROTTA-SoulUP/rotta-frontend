@@ -79,7 +79,7 @@ export default function Cadastro() {
 
       setTimeout(() => {
         navigate("/");
-      }, 1500);
+      }, 5000);
     } catch (erro) {
       setErro(
         erro instanceof Error
