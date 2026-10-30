@@ -9,7 +9,25 @@ function formatarCpf(valor: string) {
   return numeros
     .replace(/(\d{3})(\d)/, "$1.$2")
     .replace(/(\d{3})(\d)/, "$1.$2")
-    .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+    .replace(/(\d{3})(\d{1,2})$/, "$1-$2"); 
+}
+
+function formatarTelefone(valor: string) {
+  const numeros = valor.replace(/\D/g, "").slice(0, 11);
+
+  if (numeros.length <= 2) {
+    return numeros.length ? `(${numeros}` : "";
+  }
+
+  const ddd = numeros.slice(0, 2);
+  const numero = numeros.slice(2);
+  const limite = numeros.length > 10 ? 5 : 4;
+
+  if (numero.length <= limite) {
+    return `(${ddd}) ${numero}`;
+  }
+
+  return `(${ddd}) ${numero.slice(0, limite)}-${numero.slice(limite)}`;
 }
 
 export default function Cadastro() {
@@ -80,7 +98,7 @@ export default function Cadastro() {
         nome,
         email,
         cpf: cpf.replace(/\D/g, ""),
-        telefone,
+        telefone: telefone.replace(/\D/g, ""),
         senha,
       });
 
@@ -198,7 +216,7 @@ export default function Cadastro() {
                   autoComplete="tel"
                   inputMode="tel"
                   value={telefone}
-                  onChange={(e) => setTelefone(e.target.value)}
+                  onChange={(e) => setTelefone(formatarTelefone(e.target.value))}
                   placeholder="DDD + número"
                   maxLength={16}
                   disabled={carregando}
