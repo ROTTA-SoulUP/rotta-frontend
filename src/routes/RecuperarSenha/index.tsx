@@ -4,6 +4,9 @@ import { useState } from "react";
 export default function RecuperarSenha() {
   const [email, setEmail] = useState("");
   const [etapa, setEtapa] = useState(1);
+  const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
+  const [mostrarSenha, setMostrarSenha] = useState(false);
 
   return (
     <div className="flex min-h-dvh w-full flex-col bg-fundo md:flex-row">
@@ -25,36 +28,86 @@ export default function RecuperarSenha() {
             Redefinir senha
           </h1>
 
-          <p className="mb-8 leading-relaxed text-creme/75">
-            Informe o e-mail utilizado na sua conta para continuar com a
-            redefinição da sua senha.
-          </p>
+          {etapa === 1 && (
+            <>
+              <p className="mb-8 leading-relaxed text-creme/75">
+                Informe o e-mail utilizado na sua conta para continuar com a
+                redefinição da sua senha.
+              </p>
 
-          <div className="mb-5">
-            <label
-              htmlFor="email-recuperacao"
-              className="mb-2 block text-sm text-creme"
-            >
-              E-mail cadastrado
-            </label>
+              <div className="mb-5">
+                <label
+                  htmlFor="email-recuperacao"
+                  className="mb-2 block text-sm text-creme"
+                >
+                  E-mail cadastrado
+                </label>
 
-            <input
-              id="email-recuperacao"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="seuemail@exemplo.com"
-              className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
-            />
-          </div>
+                <input
+                  id="email-recuperacao"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="seuemail@exemplo.com"
+                  className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
+                />
+              </div>
 
-          <button
-            type="button"
-            onClick={() => setEtapa(2)}
-            className="w-full rounded-lg bg-verde py-3 font-semibold text-fundo transition-colors hover:bg-verde-claro"
-          >
-            Continuar
-          </button>
+              <button
+                type="button"
+                onClick={() => setEtapa(2)}
+                className="w-full rounded-lg bg-verde py-3 font-semibold text-fundo transition-colors hover:bg-verde-claro"
+              >
+                Continuar
+              </button>
+            </>
+          )}
+
+          {etapa === 2 && (
+            <>
+              <p className="mb-8 leading-relaxed text-creme/75">
+                Crie uma nova senha para acessar sua conta.
+              </p>
+
+              <div className="mb-5">
+                <label className="mb-2 block text-sm text-creme">
+                  Nova senha
+                </label>
+
+                <input
+                  type={mostrarSenha ? "text" : "password"}
+                  value={senha}
+                  onChange={(e) => setSenha(e.target.value)}
+                  placeholder="Digite sua nova senha"
+                  className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
+                />
+              </div>
+
+              <div className="mb-5">
+                <label className="mb-2 block text-sm text-creme">
+                  Confirmar nova senha
+                </label>
+
+                <input
+                  type={mostrarSenha ? "text" : "password"}
+                  value={confirmarSenha}
+                  onChange={(e) => setConfirmarSenha(e.target.value)}
+                  placeholder="Digite novamente sua senha"
+                  className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
+                />
+              </div>
+
+              <label className="mb-5 flex items-center gap-2 text-sm text-creme/80">
+                <input
+                  type="checkbox"
+                  checked={mostrarSenha}
+                  onChange={(e) => setMostrarSenha(e.target.checked)}
+                  className="accent-verde-claro"
+                />
+                Mostrar senhas
+              </label>
+            </>
+          )}
         </div>
       </main>
     </div>
