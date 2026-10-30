@@ -1,7 +1,10 @@
 
 import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function RecuperarSenha() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [etapa, setEtapa] = useState(1);
   const [senha, setSenha] = useState("");
@@ -20,13 +23,17 @@ export default function RecuperarSenha() {
 
       <main className="flex flex-1 items-center justify-center px-5 py-10 sm:px-8 md:min-h-dvh md:w-1/2 md:px-10">
         <div className="w-full max-w-md">
-          <p className="mb-2 text-sm font-medium text-verde-claro">
-            Recuperação de acesso
-          </p>
+          {etapa !== 3 && (
+            <>
+              <p className="mb-2 text-sm font-medium text-verde-claro">
+                Recuperação de acesso
+              </p>
 
-          <h1 className="mb-4 text-3xl font-bold text-creme">
-            Redefinir senha
-          </h1>
+              <h1 className="mb-4 text-3xl font-bold text-creme">
+                Redefinir senha
+              </h1>
+            </>
+          )}
 
           {etapa === 1 && (
             <>
@@ -127,12 +134,41 @@ export default function RecuperarSenha() {
             </>
           )}
 
+          {etapa === 3 && (
+            <div className="text-center">
+              <div className="mb-6 flex justify-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-verde">
+                  <span className="text-3xl text-creme">✓</span>
+                </div>
+              </div>
+
+              <h2 className="mb-4 text-2xl font-bold text-creme">
+                Senha redefinida!
+              </h2>
+
+              <p className="mb-8 leading-relaxed text-creme/75">
+                Sua senha foi atualizada. Agora você pode voltar à tela de login.
+              </p>
+
+              <button
+                type="button"
+                onClick={() => navigate("/")}
+                className="w-full rounded-lg bg-verde py-3 font-semibold text-fundo transition-colors hover:bg-verde-claro"
+              >
+                Ir para o login
+              </button>
+            </div>
+          )}
+
           {etapa !== 3 && (
             <p className="mt-6 text-center text-sm text-creme/80">
               Lembrou sua senha?{" "}
-              <a href="/" className="font-semibold text-verde-claro hover:underline">
+              <Link
+                to="/"
+                className="font-semibold text-verde-claro hover:underline"
+              >
                 Voltar ao login
-              </a>
+              </Link>
             </p>
           )}
         </div>
