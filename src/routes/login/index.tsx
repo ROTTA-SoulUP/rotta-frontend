@@ -47,28 +47,23 @@ export default function Login() {
       return;
     }
 
-    
-try {
-  setCarregando(true);
+    try {
+      setCarregando(true);
 
-  const usuario = await fazerLogin(email, senha);
+      const usuario = await fazerLogin(email, senha);
 
-  localStorage.setItem(
-    "rotta_usuario",
-    JSON.stringify(usuario)
-  );
+      localStorage.setItem("rotta_usuario", JSON.stringify(usuario));
 
-  navigate("/home");
-} catch (erro) {
-  setErroLogin(
-    erro instanceof Error
-      ? erro.message
-      : "Não foi possível realizar o login."
-  );
-} finally {
-  setCarregando(false);
-}
-
+      navigate("/home");
+    } catch (erro) {
+      setErroLogin(
+        erro instanceof Error
+          ? erro.message
+          : "Não foi possível realizar o login.",
+      );
+    } finally {
+      setCarregando(false);
+    }
   };
 
   return (
@@ -88,9 +83,7 @@ try {
               Bem-Vindo a ROTTA
             </h1>
 
-            <h2 className="text-creme text-3xl font-bold mb-8">
-              Login
-            </h2>
+            <h2 className="text-creme text-3xl font-bold mb-8">Login</h2>
 
             <form onSubmit={handleSubmit} noValidate>
               <div className="mb-5">
@@ -185,11 +178,11 @@ try {
                 </label>
 
                 <Link
-  to="/recuperar-senha"
-  className="text-verde-claro text-sm hover:underline"
->
-  Esqueceu a Senha?
-</Link>
+                  to="/recuperar-senha"
+                  className="text-verde-claro text-sm hover:underline"
+                >
+                  Redefinir senha
+                </Link>
               </div>
 
               <button
@@ -202,15 +195,14 @@ try {
             </form>
 
             <p className="mt-6 text-center text-sm text-creme/80">
-  Ainda não tem uma conta?{" "}
-  <Link
-    to="/cadastro"
-    className="font-semibold text-verde-claro hover:underline"
-  >
-    Criar conta
-  </Link>
-</p>
-
+              Ainda não tem uma conta?{" "}
+              <Link
+                to="/cadastro"
+                className="font-semibold text-verde-claro hover:underline"
+              >
+                Criar conta
+              </Link>
+            </p>
           </div>
         </main>
       </div>
