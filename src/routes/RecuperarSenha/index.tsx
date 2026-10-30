@@ -106,7 +106,34 @@ export default function RecuperarSenha() {
                 />
                 Mostrar senhas
               </label>
+
+              <div className="flex flex-col gap-3">
+                <button
+                  type="button"
+                  onClick={() => setEtapa(1)}
+                  className="w-full rounded-lg border border-borda py-3 font-semibold text-creme transition-colors hover:bg-fundo-card"
+                >
+                  Voltar
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setEtapa(3)}
+                  className="w-full rounded-lg bg-verde py-3 font-semibold text-fundo transition-colors hover:bg-verde-claro"
+                >
+                  Redefinir senha
+                </button>
+              </div>
             </>
+          )}
+
+          {etapa !== 3 && (
+            <p className="mt-6 text-center text-sm text-creme/80">
+              Lembrou sua senha?{" "}
+              <a href="/" className="font-semibold text-verde-claro hover:underline">
+                Voltar ao login
+              </a>
+            </p>
           )}
         </div>
       </main>
