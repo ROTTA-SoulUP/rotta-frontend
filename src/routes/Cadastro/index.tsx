@@ -3,6 +3,15 @@ import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { criarConta } from "../../services/auth";
 
+function formatarCpf(valor: string) {
+  const numeros = valor.replace(/\D/g, "").slice(0, 11);
+
+  return numeros
+    .replace(/(\d{3})(\d)/, "$1.$2")
+    .replace(/(\d{3})(\d)/, "$1.$2")
+    .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+}
+
 export default function Cadastro() {
   const navigate = useNavigate();
 
@@ -70,7 +79,7 @@ export default function Cadastro() {
       await criarConta({
         nome,
         email,
-        cpf,
+        cpf: cpf.replace(/\D/g, ""),
         telefone,
         senha,
       });
@@ -166,8 +175,8 @@ export default function Cadastro() {
                   inputMode="numeric"
                   autoComplete="off"
                   value={cpf}
-                  onChange={(e) => setCpf(e.target.value)}
-                  placeholder="Somente números"
+                  onChange={(e) => setCpf(formatarCpf(e.target.value))}
+                  placeholder="Digite seu CPF"
                   maxLength={14}
                   disabled={carregando}
                   className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
