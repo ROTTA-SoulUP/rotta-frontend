@@ -1,4 +1,23 @@
+
 const API_URL = import.meta.env.VITE_API_URL || "https://rotta-java-1.onrender.com";
+
+async function obterMensagemErro(
+    resposta: Response,
+    mensagemPadrao: string
+): Promise<string> {
+    const texto = await resposta.text();
+
+    if (!texto) {
+        return mensagemPadrao;
+    }
+
+    try {
+        const erro = JSON.parse(texto);
+        return erro.erro || erro.message || mensagemPadrao;
+    } catch {
+        return texto;
+    }
+}
 
 export interface LoginResponse {
     id: number;
@@ -13,25 +32,19 @@ export async function fazerLogin(
     email: string,
     senha: string
 ): Promise<LoginResponse> {
-    const resposta = await fetch(
-        `${API_URL}/usuarios/login`,
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                email: email.trim(),
-                senha: senha,
-            }),
-        }
-    );
+    const resposta = await fetch(`${API_URL}/usuarios/login`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            email: email.trim(),
+            senha: senha,
+        }),
+    });
 
     if (!resposta.ok) {
-        if (
-            resposta.status === 401 ||
-            resposta.status === 403
-        ) {
+        if (resposta.status === 401 || resposta.status === 403) {
             throw new Error("E-mail ou senha inválidos.");
         }
 
@@ -41,9 +54,7 @@ export async function fazerLogin(
     }
 
     return (await resposta.json()) as LoginResponse;
-    
 }
-
 
 export async function criarConta(dados: {
     nome: string;
@@ -67,18 +78,10 @@ export async function criarConta(dados: {
     });
 
     if (!resposta.ok) {
-        const texto = await resposta.text();
-
-        let mensagem = "Não foi possível criar sua conta. Tente novamente.";
-
-        if (texto) {
-            try {
-                const erro = JSON.parse(texto);
-                mensagem = erro.erro || erro.message || texto;
-            } catch {
-                mensagem = texto;
-            }
-        }
+        const mensagem = await obterMensagemErro(
+            resposta,
+            "Não foi possível criar sua conta. Tente novamente."
+        );
 
         throw new Error(mensagem);
     }
@@ -100,14 +103,15 @@ export async function verificarEmailRecuperacao(
         }
     );
 
-    if (resposta.status === 404) {
-        throw new Error("E-mail não encontrado.");
-    }
-
     if (!resposta.ok) {
-        throw new Error(
-            "Não foi possível verificar o e-mail. Tente novamente."
-        );
+        const mensagem = resposta.status === 404
+            ? "E-mail não encontrado."
+            : await obterMensagemErro(
+                resposta,
+                "Não foi possível verificar o e-mail. Tente novamente."
+            );
+
+        throw new Error(mensagem);
     }
 }
 
@@ -129,13 +133,14 @@ export async function redefinirSenha(
         }
     );
 
-    if (resposta.status === 404) {
-        throw new Error("E-mail não encontrado.");
-    }
-
     if (!resposta.ok) {
-        throw new Error(
-            "Não foi possível redefinir a senha. Tente novamente."
-        );
+        const mensagem = resposta.status === 404
+            ? "E-mail não encontrado."
+            : await obterMensagemErro(
+                resposta,
+                "Não foi possível redefinir a senha. Tente novamente."
+            );
+
+        throw new Error(mensagem);
     }
 }
