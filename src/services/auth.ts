@@ -88,7 +88,7 @@ export async function criarConta(dados: {
 
 async function executarRequisicaoRecuperacao(
     url: string,
-    metodo: "POST" | "PATCH",
+    metodo: "POST" | "PUT",
     dados: { email: string; novaSenha?: string },
     mensagemPadrao: string
 ): Promise<void> {
@@ -137,7 +137,7 @@ export async function redefinirSenha(
 ): Promise<void> {
     await executarRequisicaoRecuperacao(
         "/usuarios/recuperar-senha",
-        "PATCH",
+        "PUT",
         {
             email: email.trim(),
             novaSenha: novaSenha,
