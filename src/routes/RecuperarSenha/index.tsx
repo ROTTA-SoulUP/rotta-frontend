@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
   verificarEmailRecuperacao,
@@ -17,6 +16,8 @@ export default function RecuperarSenha() {
   const [erro, setErro] = useState("");
   const [carregando, setCarregando] = useState(false);
 
+  const requisicaoEmAndamento = useRef(false);
+
   async function handleVerificarEmail() {
     setErro("");
 
@@ -29,6 +30,12 @@ export default function RecuperarSenha() {
       setErro("Digite um e-mail válido.");
       return;
     }
+
+    if (requisicaoEmAndamento.current) {
+      return;
+    }
+
+    requisicaoEmAndamento.current = true;
 
     try {
       setCarregando(true);
@@ -43,6 +50,7 @@ export default function RecuperarSenha() {
           : "Não foi possível verificar o e-mail."
       );
     } finally {
+      requisicaoEmAndamento.current = false;
       setCarregando(false);
     }
   }
@@ -65,6 +73,12 @@ export default function RecuperarSenha() {
       return;
     }
 
+    if (requisicaoEmAndamento.current) {
+      return;
+    }
+
+    requisicaoEmAndamento.current = true;
+
     try {
       setCarregando(true);
 
@@ -78,6 +92,7 @@ export default function RecuperarSenha() {
           : "Não foi possível redefinir a senha."
       );
     } finally {
+      requisicaoEmAndamento.current = false;
       setCarregando(false);
     }
   }
@@ -127,7 +142,10 @@ export default function RecuperarSenha() {
                   type="email"
                   autoComplete="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    setErro("");
+                  }}
                   placeholder="seuemail@exemplo.com"
                   disabled={carregando}
                   className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
@@ -171,7 +189,10 @@ export default function RecuperarSenha() {
                   type={mostrarSenha ? "text" : "password"}
                   autoComplete="new-password"
                   value={senha}
-                  onChange={(e) => setSenha(e.target.value)}
+                  onChange={(e) => {
+                    setSenha(e.target.value);
+                    setErro("");
+                  }}
                   placeholder="Digite sua nova senha"
                   disabled={carregando}
                   className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
@@ -192,7 +213,10 @@ export default function RecuperarSenha() {
                   type={mostrarSenha ? "text" : "password"}
                   autoComplete="new-password"
                   value={confirmarSenha}
-                  onChange={(e) => setConfirmarSenha(e.target.value)}
+                  onChange={(e) => {
+                    setConfirmarSenha(e.target.value);
+                    setErro("");
+                  }}
                   placeholder="Digite novamente sua senha"
                   disabled={carregando}
                   className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
