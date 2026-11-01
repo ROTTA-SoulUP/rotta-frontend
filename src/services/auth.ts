@@ -1,4 +1,3 @@
-
 const API_URL = import.meta.env.VITE_API_URL || "https://rotta-java-1.onrender.com";
 
 async function obterMensagemErro(
@@ -87,60 +86,62 @@ export async function criarConta(dados: {
     }
 }
 
-export async function verificarEmailRecuperacao(
-    email: string
+async function executarRequisicaoRecuperacao(
+    url: string,
+    metodo: "POST" | "PATCH",
+    dados: { email: string; novaSenha?: string },
+    mensagemPadrao: string
 ): Promise<void> {
-    const resposta = await fetch(
-        `${API_URL}/usuarios/recuperar-senha/verificar-email`,
-        {
-            method: "POST",
+    let resposta: Response;
+
+    try {
+        resposta = await fetch(`${API_URL}${url}`, {
+            method: metodo,
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-                email: email.trim(),
-            }),
-        }
-    );
+            body: JSON.stringify(dados),
+        });
+    } catch {
+        throw new Error(
+            "Não foi possível conectar ao servidor. Verifique sua conexão e tente novamente."
+        );
+    }
 
     if (!resposta.ok) {
-        const mensagem = resposta.status === 404
-            ? "E-mail não encontrado."
-            : await obterMensagemErro(
-                resposta,
-                "Não foi possível verificar o e-mail. Tente novamente."
-            );
+        const mensagem =
+            resposta.status === 404
+                ? "E-mail não encontrado."
+                : await obterMensagemErro(resposta, mensagemPadrao);
 
         throw new Error(mensagem);
     }
+}
+
+export async function verificarEmailRecuperacao(
+    email: string
+): Promise<void> {
+    await executarRequisicaoRecuperacao(
+        "/usuarios/recuperar-senha/verificar-email",
+        "POST",
+        {
+            email: email.trim(),
+        },
+        "Não foi possível verificar o e-mail. Tente novamente."
+    );
 }
 
 export async function redefinirSenha(
     email: string,
     novaSenha: string
 ): Promise<void> {
-    const resposta = await fetch(
-        `${API_URL}/usuarios/recuperar-senha`,
+    await executarRequisicaoRecuperacao(
+        "/usuarios/recuperar-senha",
+        "PATCH",
         {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                email: email.trim(),
-                novaSenha: novaSenha,
-            }),
-        }
+            email: email.trim(),
+            novaSenha: novaSenha,
+        },
+        "Não foi possível redefinir a senha. Tente novamente."
     );
-
-    if (!resposta.ok) {
-        const mensagem = resposta.status === 404
-            ? "E-mail não encontrado."
-            : await obterMensagemErro(
-                resposta,
-                "Não foi possível redefinir a senha. Tente novamente."
-            );
-
-        throw new Error(mensagem);
-    }
 }
