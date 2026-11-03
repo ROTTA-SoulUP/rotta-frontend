@@ -8,7 +8,7 @@ import Faq from "./routes/Faq";
 import Contato from "./routes/Contato";
 import Solucao from "./routes/Solucao";
 import Carteira from "./routes/Carteira";
-import Login from "./routes/login";
+import Login from "./routes/Login";
 import Cadastro from "./routes/Cadastro";
 import RecuperarSenha from "./routes/RecuperarSenha";
 import RotaPrivada from "./components/RotaPrivada";
