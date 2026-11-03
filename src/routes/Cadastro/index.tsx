@@ -123,8 +123,7 @@ export default function Cadastro() {
   return (
     <div className="flex min-h-dvh w-full flex-col bg-fundo md:flex-row">
 
-      {/* Imagem lateral */}
-      <aside className="relative h-48 w-full shrink-0 overflow-hidden bg-verde sm:h-64 md:sticky md:top-0 md:h-dvh md:w-1/2">
+      <aside className="relative hidden shrink-0 overflow-hidden bg-verde md:sticky md:top-0 md:flex md:h-dvh md:w-1/2">
         <img
           src="/images/img01-login.jpeg"
           alt="Imagem ilustrativa Rotta"
@@ -132,8 +131,7 @@ export default function Cadastro() {
         />
       </aside>
 
-      {/* Formulário */}
-      <main className="flex w-full flex-1 items-center justify-center px-5 py-8 sm:px-8 sm:py-10 md:min-h-dvh md:w-1/2 md:px-8 lg:px-12">
+      <main className="flex min-h-dvh w-full flex-1 items-center justify-center px-5 py-8 sm:px-8 sm:py-10 md:w-1/2 md:px-8 lg:px-12">
         <div className="w-full max-w-md">
 
           <p className="mb-2 text-sm font-medium text-verde-claro">
@@ -150,7 +148,6 @@ export default function Cadastro() {
 
           <form onSubmit={handleSubmit} noValidate>
 
-            {/* Nome */}
             <div className="mb-4">
               <label
                 htmlFor="nome"
@@ -172,7 +169,6 @@ export default function Cadastro() {
               />
             </div>
 
-            {/* E-mail */}
             <div className="mb-4">
               <label
                 htmlFor="email-cadastro"
@@ -194,10 +190,8 @@ export default function Cadastro() {
               />
             </div>
 
-            {/* CPF e telefone */}
             <div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
 
-              {/* CPF */}
               <div className="min-w-0">
                 <label
                   htmlFor="cpf"
@@ -221,7 +215,6 @@ export default function Cadastro() {
                 />
               </div>
 
-              {/* Telefone */}
               <div className="min-w-0">
                 <label
                   htmlFor="telefone"
@@ -249,7 +242,6 @@ export default function Cadastro() {
 
             </div>
 
-            {/* Senha */}
             <div className="mb-4">
               <label
                 htmlFor="senha-cadastro"
@@ -271,7 +263,6 @@ export default function Cadastro() {
               />
             </div>
 
-            {/* Confirmar senha */}
             <div className="mb-5">
               <label
                 htmlFor="confirmar-senha"
@@ -293,7 +284,6 @@ export default function Cadastro() {
               />
             </div>
 
-            {/* Mostrar senhas */}
             <label className="mb-5 flex cursor-pointer items-center gap-2 text-sm text-creme">
               <input
                 type="checkbox"
@@ -305,7 +295,6 @@ export default function Cadastro() {
               Mostrar senhas
             </label>
 
-            {/* Mensagens */}
             {erro && (
               <p role="alert" className="mb-4 text-sm text-red-400">
                 {erro}
@@ -321,7 +310,6 @@ export default function Cadastro() {
               </p>
             )}
 
-            {/* Botão */}
             <button
               type="submit"
               disabled={carregando}
@@ -332,7 +320,6 @@ export default function Cadastro() {
 
           </form>
 
-          {/* Link para login */}
           <p className="mt-6 text-center text-sm text-creme/80">
             Já tem uma conta?{" "}
             <Link
@@ -341,6 +328,10 @@ export default function Cadastro() {
             >
               Fazer login
             </Link>
+          </p>
+
+          <p className="mt-8 text-center text-xs text-creme/40 md:hidden">
+            ROTTA · Seu caminho, nossa rotta.
           </p>
 
         </div>
