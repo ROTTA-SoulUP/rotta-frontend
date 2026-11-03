@@ -25,3 +25,9 @@
   /* ---------- Bordas ---------- */
   --color-borda:        rgba(42, 140, 110, 0.2);
 }
+
+
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}

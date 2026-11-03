@@ -1,7 +1,7 @@
+
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { fazerLogin } from "../../services/auth";
-import { Link } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -17,9 +17,7 @@ export default function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (carregando) {
-      return;
-    }
+    if (carregando) return;
 
     setErroEmail("");
     setErroSenha("");
@@ -43,9 +41,7 @@ export default function Login() {
       temErro = true;
     }
 
-    if (temErro) {
-      return;
-    }
+    if (temErro) return;
 
     try {
       setCarregando(true);
@@ -59,7 +55,7 @@ export default function Login() {
       setErroLogin(
         erro instanceof Error
           ? erro.message
-          : "Não foi possível realizar o login.",
+          : "Não foi possível realizar o login."
       );
     } finally {
       setCarregando(false);
@@ -67,49 +63,65 @@ export default function Login() {
   };
 
   return (
-    <div className="h-screen overflow-hidden flex flex-col">
-      <div className="flex flex-1 flex-col md:flex-row">
-        <aside className="md:w-1/2 h-64 md:h-full overflow-hidden flex items-center justify-center bg-verde">
+    <div className="min-h-dvh w-full bg-fundo">
+
+      <div className="flex min-h-dvh flex-col md:flex-row">
+
+        <aside className="hidden overflow-hidden bg-verde md:flex md:h-dvh md:w-1/2 md:items-center md:justify-center">
           <img
             src="../../images/img01-login.jpeg"
             alt="Imagem ilustrativa Rotta"
-            className="full h-full object-cover"
+            className="h-full w-full object-cover"
           />
         </aside>
 
-        <main className="md:w-1/2 flex items-center justify-center px-6 py-12 bg-fundo">
-          <div className="w-full max-w-md">
-            <h1 className="text-creme text-3xl items-start font-bold mb-8">
-              Bem-Vindo a ROTTA
-            </h1>
+        <main className="flex min-h-dvh w-full flex-1 items-center justify-center bg-fundo px-6 py-10 sm:px-10 md:min-h-dvh md:w-1/2 md:px-8 lg:px-12">
 
-            <h2 className="text-creme text-3xl font-bold mb-8">Login</h2>
+          <div className="w-full max-w-md">
+
+            <div className="mb-10">
+              <p className="mb-3 text-sm font-medium tracking-widest text-verde-claro">
+                SUA JORNADA COMEÇA AQUI
+              </p>
+
+              <h1 className="mb-3 text-3xl font-bold text-creme sm:text-4xl">
+                Bem-vindo à ROTTA
+              </h1>
+
+              <p className="text-sm leading-relaxed text-creme/60">
+                Acesse sua conta e continue sua jornada por uma mobilidade
+                mais sustentável.
+              </p>
+            </div>
+
+            <h2 className="mb-6 text-2xl font-bold text-creme">
+              Login
+            </h2>
 
             <form onSubmit={handleSubmit} noValidate>
+
               <div className="mb-5">
                 <label
                   htmlFor="email"
-                  className="block text-creme text-sm mb-2"
+                  className="mb-2 block text-sm text-creme"
                 >
                   Email ou Username
                 </label>
 
-                <div className="relative">
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="alexandre@gmail.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    autoComplete="username"
-                    disabled={carregando}
-                    className="w-full bg-fundo-card border border-borda text-creme rounded-lg pl-5 pr-4 py-3 focus:outline-none focus:border-verde-claro transition-colors"
-                  />
-                </div>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="alexandre@gmail.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  autoComplete="username"
+                  disabled={carregando}
+                  className="w-full rounded-lg border border-borda bg-fundo-card px-5 py-3 text-creme transition-colors placeholder:text-creme/40 focus:border-verde-claro focus:outline-none"
+                />
 
                 {erroEmail && (
-                  <span className="text-red-400 text-xs mt-1 block">
+                  <span className="mt-1 block text-xs text-red-400">
                     {erroEmail}
                   </span>
                 )}
@@ -118,7 +130,7 @@ export default function Login() {
               <div className="mb-5">
                 <label
                   htmlFor="senha"
-                  className="block text-creme text-sm mb-2"
+                  className="mb-2 block text-sm text-creme"
                 >
                   Senha
                 </label>
@@ -133,13 +145,13 @@ export default function Login() {
                     onChange={(e) => setSenha(e.target.value)}
                     autoComplete="current-password"
                     disabled={carregando}
-                    className="w-full bg-fundo-card border border-borda text-creme rounded-lg pl-5 pr-12 py-3 focus:outline-none focus:border-verde-claro transition-colors"
+                    className="w-full rounded-lg border border-borda bg-fundo-card py-3 pl-5 pr-20 text-creme transition-colors placeholder:text-creme/40 focus:border-verde-claro focus:outline-none"
                   />
 
                   <button
                     type="button"
                     onClick={() => setMostrarSenha(!mostrarSenha)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-creme/50 hover:text-creme transition-colors"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-creme/50 transition-colors hover:text-creme"
                     aria-label={
                       mostrarSenha ? "Ocultar senha" : "Mostrar senha"
                     }
@@ -150,7 +162,7 @@ export default function Login() {
                 </div>
 
                 {erroSenha && (
-                  <span className="text-red-400 text-xs mt-1 block">
+                  <span className="mt-1 block text-xs text-red-400">
                     {erroSenha}
                   </span>
                 )}
@@ -160,14 +172,15 @@ export default function Login() {
                 <p
                   role="alert"
                   aria-live="polite"
-                  className="text-red-400 text-sm mb-4"
+                  className="mb-4 text-sm text-red-400"
                 >
                   {erroLogin}
                 </p>
               )}
 
-              <div className="flex items-center justify-between mb-6">
-                <label className="flex items-center gap-2 text-creme text-sm cursor-pointer">
+              <div className="mb-7 flex items-center justify-between gap-3">
+
+                <label className="flex cursor-pointer items-center gap-2 text-sm text-creme">
                   <input
                     type="checkbox"
                     id="lembrar"
@@ -179,22 +192,24 @@ export default function Login() {
 
                 <Link
                   to="/recuperar-senha"
-                  className="text-verde-claro text-sm hover:underline"
+                  className="text-sm text-verde-claro hover:underline"
                 >
                   Redefinir senha
                 </Link>
+
               </div>
 
               <button
                 type="submit"
                 disabled={carregando}
-                className="w-full bg-verde text-fundo font-semibold rounded-lg py-3 hover:bg-verde-claro transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                className="w-full rounded-lg bg-verde py-3 font-semibold text-fundo transition-colors hover:bg-verde-claro disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {carregando ? "Entrando..." : "Entrar"}
               </button>
+
             </form>
 
-            <p className="mt-6 text-center text-sm text-creme/80">
+            <p className="mt-8 text-center text-sm text-creme/80">
               Ainda não tem uma conta?{" "}
               <Link
                 to="/cadastro"
@@ -203,6 +218,11 @@ export default function Login() {
                 Criar conta
               </Link>
             </p>
+
+            <p className="mt-12 text-center text-xs text-creme/30 md:hidden">
+              ROTTA · Seu caminho, nossa rotta.
+            </p>
+
           </div>
         </main>
       </div>

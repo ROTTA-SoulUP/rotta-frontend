@@ -1,3 +1,4 @@
+
 import { useRef, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import {
@@ -98,213 +99,235 @@ export default function RecuperarSenha() {
   }
 
   return (
-    <div className="flex min-h-dvh w-full flex-col bg-fundo md:flex-row">
-      <aside className="relative h-44 shrink-0 overflow-hidden bg-verde sm:h-56 md:h-dvh md:w-1/2">
-        <img
-          src="/images/img01-login.jpeg"
-          alt="Mobilidade sustentável com a Rotta"
-          className="h-full w-full object-cover object-center"
-        />
-      </aside>
+    <div className="min-h-dvh w-full bg-fundo">
+      <div className="flex min-h-dvh flex-col md:flex-row">
 
-      <main className="flex flex-1 items-center justify-center px-5 py-10 sm:px-8 md:min-h-dvh md:w-1/2 md:px-10">
-        <div className="w-full max-w-md">
-          {etapa !== 3 && (
-            <>
-              <p className="mb-2 text-sm font-medium text-verde-claro">
-                Recuperação de acesso
-              </p>
+        <aside className="hidden overflow-hidden bg-verde md:flex md:h-dvh md:w-1/2 md:items-center md:justify-center">
+          <img
+            src="../../images/img01-login.jpeg"
+            alt="Imagem ilustrativa Rotta"
+            className="h-full w-full object-cover"
+          />
+        </aside>
 
-              <h1 className="mb-4 text-3xl font-bold text-creme">
-                Redefinir senha
-              </h1>
-            </>
-          )}
+        <main className="flex min-h-dvh w-full flex-1 items-center justify-center bg-fundo px-6 py-10 sm:px-10 md:min-h-dvh md:w-1/2 md:px-8 lg:px-12">
+          <div className="w-full max-w-md">
 
-          {etapa === 1 && (
-            <>
-              <p className="mb-8 leading-relaxed text-creme/75">
-                Informe o e-mail utilizado na sua conta para continuar com a
-                redefinição da sua senha.
-              </p>
-
-              <div className="mb-5">
-                <label
-                  htmlFor="email-recuperacao"
-                  className="mb-2 block text-sm text-creme"
-                >
-                  E-mail cadastrado
-                </label>
-
-                <input
-                  id="email-recuperacao"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                    setErro("");
-                  }}
-                  placeholder="seuemail@exemplo.com"
-                  disabled={carregando}
-                  className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
-                />
-              </div>
-
-              {erro && (
-                <p role="alert" className="mb-4 text-sm text-red-400">
-                  {erro}
+            {etapa !== 3 && (
+              <div className="mb-10">
+                <p className="mb-3 text-sm font-medium tracking-widest text-verde-claro">
+                  RECUPERAÇÃO DE ACESSO
                 </p>
-              )}
 
-              <button
-                type="button"
-                onClick={handleVerificarEmail}
-                disabled={carregando}
-                className="w-full rounded-lg bg-verde py-3 font-semibold text-fundo transition-colors hover:bg-verde-claro disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                {carregando ? "Verificando..." : "Continuar"}
-              </button>
-            </>
-          )}
+                <h1 className="mb-3 text-3xl font-bold text-creme sm:text-4xl">
+                  Redefinir senha
+                </h1>
 
-          {etapa === 2 && (
-            <>
-              <p className="mb-8 leading-relaxed text-creme/75">
-                Crie uma nova senha para acessar sua conta.
-              </p>
-
-              <div className="mb-5">
-                <label
-                  htmlFor="nova-senha"
-                  className="mb-2 block text-sm text-creme"
-                >
-                  Nova senha
-                </label>
-
-                <input
-                  id="nova-senha"
-                  name="novaSenha"
-                  type={mostrarSenha ? "text" : "password"}
-                  autoComplete="new-password"
-                  value={senha}
-                  onChange={(e) => {
-                    setSenha(e.target.value);
-                    setErro("");
-                  }}
-                  placeholder="Digite sua nova senha"
-                  disabled={carregando}
-                  className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
-                />
               </div>
+            )}
 
-              <div className="mb-5">
-                <label
-                  htmlFor="confirmar-senha"
-                  className="mb-2 block text-sm text-creme"
-                >
-                  Confirmar nova senha
-                </label>
+            {etapa === 1 && (
+              <>
+                <h2 className="mb-4 text-2xl font-bold text-creme">
+                  Informe seu e-mail
+                </h2>
 
-                <input
-                  id="confirmar-senha"
-                  name="confirmarSenha"
-                  type={mostrarSenha ? "text" : "password"}
-                  autoComplete="new-password"
-                  value={confirmarSenha}
-                  onChange={(e) => {
-                    setConfirmarSenha(e.target.value);
-                    setErro("");
-                  }}
-                  placeholder="Digite novamente sua senha"
-                  disabled={carregando}
-                  className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
-                />
-              </div>
-
-              <label className="mb-5 flex items-center gap-2 text-sm text-creme/80">
-                <input
-                  type="checkbox"
-                  checked={mostrarSenha}
-                  onChange={(e) => setMostrarSenha(e.target.checked)}
-                  disabled={carregando}
-                  className="accent-verde-claro"
-                />
-                Mostrar senhas
-              </label>
-
-              {erro && (
-                <p role="alert" className="mb-4 text-sm text-red-400">
-                  {erro}
+                <p className="mb-8 leading-relaxed text-creme/75">
+                  Informe o e-mail utilizado na sua conta para continuar
+                  com a redefinição da sua senha.
                 </p>
-              )}
 
-              <div className="flex flex-col gap-3">
-                <button
-                  type="button"
-                  onClick={() => {
-                    setErro("");
-                    setEtapa(1);
-                  }}
-                  disabled={carregando}
-                  className="w-full rounded-lg border border-borda py-3 font-semibold text-creme transition-colors hover:bg-fundo-card disabled:cursor-not-allowed disabled:opacity-60"
-                >
-                  Voltar
-                </button>
+                <div className="mb-5">
+                  <label
+                    htmlFor="email-recuperacao"
+                    className="mb-2 block text-sm text-creme"
+                  >
+                    E-mail cadastrado
+                  </label>
+
+                  <input
+                    id="email-recuperacao"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      setErro("");
+                    }}
+                    placeholder="seuemail@exemplo.com"
+                    disabled={carregando}
+                    className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
+                  />
+                </div>
+
+                {erro && (
+                  <p role="alert" className="mb-4 text-sm text-red-400">
+                    {erro}
+                  </p>
+                )}
 
                 <button
                   type="button"
-                  onClick={handleRedefinirSenha}
+                  onClick={handleVerificarEmail}
                   disabled={carregando}
                   className="w-full rounded-lg bg-verde py-3 font-semibold text-fundo transition-colors hover:bg-verde-claro disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  {carregando ? "Redefinindo..." : "Redefinir senha"}
+                  {carregando ? "Verificando..." : "Continuar"}
+                </button>
+              </>
+            )}
+
+            {etapa === 2 && (
+              <>
+                <h2 className="mb-4 text-2xl font-bold text-creme">
+                  Crie uma nova senha
+                </h2>
+
+                <p className="mb-8 leading-relaxed text-creme/75">
+                  Crie uma nova senha para acessar sua conta.
+                </p>
+
+                <div className="mb-5">
+                  <label
+                    htmlFor="nova-senha"
+                    className="mb-2 block text-sm text-creme"
+                  >
+                    Nova senha
+                  </label>
+
+                  <input
+                    id="nova-senha"
+                    name="novaSenha"
+                    type={mostrarSenha ? "text" : "password"}
+                    autoComplete="new-password"
+                    value={senha}
+                    onChange={(e) => {
+                      setSenha(e.target.value);
+                      setErro("");
+                    }}
+                    placeholder="Digite sua nova senha"
+                    disabled={carregando}
+                    className="w-full appearance-none rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
+                  />
+                </div>
+
+                <div className="mb-5">
+                  <label
+                    htmlFor="confirmar-senha"
+                    className="mb-2 block text-sm text-creme"
+                  >
+                    Confirmar nova senha
+                  </label>
+
+                  <input
+                    id="confirmar-senha"
+                    name="confirmarSenha"
+                    type={mostrarSenha ? "text" : "password"}
+                    autoComplete="new-password"
+                    value={confirmarSenha}
+                    onChange={(e) => {
+                      setConfirmarSenha(e.target.value);
+                      setErro("");
+                    }}
+                    placeholder="Digite novamente sua senha"
+                    disabled={carregando}
+                    className="w-full appearance-none rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
+                  />
+                </div>
+
+                <label className="mb-5 flex cursor-pointer items-center gap-2 text-sm text-creme/80">
+                  <input
+                    type="checkbox"
+                    checked={mostrarSenha}
+                    onChange={(e) => setMostrarSenha(e.target.checked)}
+                    disabled={carregando}
+                    className="accent-verde-claro"
+                  />
+                  Mostrar senhas
+                </label>
+
+                {erro && (
+                  <p role="alert" className="mb-4 text-sm text-red-400">
+                    {erro}
+                  </p>
+                )}
+
+                <div className="flex flex-col gap-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setErro("");
+                      setEtapa(1);
+                    }}
+                    disabled={carregando}
+                    className="w-full rounded-lg border border-borda py-3 font-semibold text-creme transition-colors hover:bg-fundo-card disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    Voltar
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleRedefinirSenha}
+                    disabled={carregando}
+                    className="w-full rounded-lg bg-verde py-3 font-semibold text-fundo transition-colors hover:bg-verde-claro disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    {carregando ? "Redefinindo..." : "Redefinir senha"}
+                  </button>
+                </div>
+              </>
+            )}
+
+            {etapa === 3 && (
+              <div className="text-center">
+                <div className="mb-6 flex justify-center">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-verde">
+                    <span className="text-3xl text-creme">✓</span>
+                  </div>
+                </div>
+
+                <p className="mb-3 text-sm font-medium tracking-widest text-verde-claro">
+                  TUDO CERTO!
+                </p>
+
+                <h2 className="mb-4 text-2xl font-bold text-creme">
+                  Senha redefinida!
+                </h2>
+
+                <p className="mb-8 leading-relaxed text-creme/75">
+                  Sua senha foi atualizada. Agora você pode voltar à tela
+                  de login.
+                </p>
+
+                <button
+                  type="button"
+                  onClick={() => navigate("/")}
+                  className="w-full rounded-lg bg-verde py-3 font-semibold text-fundo transition-colors hover:bg-verde-claro"
+                >
+                  Ir para o login
                 </button>
               </div>
-            </>
-          )}
+            )}
 
-          {etapa === 3 && (
-            <div className="text-center">
-              <div className="mb-6 flex justify-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-verde">
-                  <span className="text-3xl text-creme">✓</span>
-                </div>
-              </div>
-
-              <h2 className="mb-4 text-2xl font-bold text-creme">
-                Senha redefinida!
-              </h2>
-
-              <p className="mb-8 leading-relaxed text-creme/75">
-                Sua senha foi atualizada. Agora você pode voltar à tela de
-                login.
+            {etapa !== 3 && (
+              <p className="mt-8 text-center text-sm text-creme/80">
+                Lembrou sua senha?{" "}
+                <Link
+                  to="/"
+                  className="font-semibold text-verde-claro hover:underline"
+                >
+                  Voltar ao login
+                </Link>
               </p>
+            )}
 
-              <button
-                type="button"
-                onClick={() => navigate("/")}
-                className="w-full rounded-lg bg-verde py-3 font-semibold text-fundo transition-colors hover:bg-verde-claro"
-              >
-                Ir para o login
-              </button>
-            </div>
-          )}
-
-          {etapa !== 3 && (
-            <p className="mt-6 text-center text-sm text-creme/80">
-              Lembrou sua senha?{" "}
-              <Link
-                to="/"
-                className="font-semibold text-verde-claro hover:underline"
-              >
-                Voltar ao login
-              </Link>
+            <p className="mt-12 text-center text-xs text-creme/30 md:hidden">
+              ROTTA · Seu caminho, nossa rotta.
             </p>
-          )}
-        </div>
-      </main>
+
+          </div>
+        </main>
+      </div>
     </div>
   );
 }

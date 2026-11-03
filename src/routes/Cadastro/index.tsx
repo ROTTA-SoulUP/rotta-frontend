@@ -3,15 +3,17 @@ import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { criarConta } from "../../services/auth";
 
-function formatarCpf(valor: string) {
+// Formatação automática do CPF
+function formatarCPF(valor: string) {
   const numeros = valor.replace(/\D/g, "").slice(0, 11);
 
   return numeros
     .replace(/(\d{3})(\d)/, "$1.$2")
     .replace(/(\d{3})(\d)/, "$1.$2")
-    .replace(/(\d{3})(\d{1,2})$/, "$1-$2"); 
+    .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
 }
 
+// Formatação automática do telefone
 function formatarTelefone(valor: string) {
   const numeros = valor.replace(/\D/g, "").slice(0, 11);
 
@@ -47,9 +49,7 @@ export default function Cadastro() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (carregando) {
-      return;
-    }
+    if (carregando) return;
 
     setErro("");
     setMensagem("");
@@ -95,14 +95,16 @@ export default function Cadastro() {
       setCarregando(true);
 
       await criarConta({
-        nome,
-        email,
-        cpf: cpf.replace(/\D/g, ""),
-        telefone: telefone.replace(/\D/g, ""),
+        nome: nome.trim(),
+        email: email.trim(),
+        cpf,
+        telefone,
         senha,
       });
 
-      setMensagem("Conta criada com sucesso! Redirecionando para o login...");
+      setMensagem(
+        "Conta criada com sucesso! Redirecionando para o login..."
+      );
 
       setTimeout(() => {
         navigate("/");
@@ -120,37 +122,44 @@ export default function Cadastro() {
 
   return (
     <div className="flex min-h-dvh w-full flex-col bg-fundo md:flex-row">
-      <aside className="relative h-44 shrink-0 overflow-hidden bg-verde sm:h-56 md:h-dvh md:w-1/2">
+
+      <aside className="relative hidden shrink-0 overflow-hidden bg-verde md:sticky md:top-0 md:flex md:h-dvh md:w-1/2">
         <img
           src="/images/img01-login.jpeg"
-          alt="Mobilidade sustentável com a Rotta"
-          className="h-full w-full object-cover"
+          alt="Imagem ilustrativa Rotta"
+          className="h-full w-full object-cover object-center"
         />
       </aside>
 
-      <main className="flex flex-1 items-center justify-center px-5 py-8 sm:px-8 md:min-h-dvh md:w-1/2 md:px-10 md:py-10">
+      <main className="flex min-h-dvh w-full flex-1 items-center justify-center px-5 py-8 sm:px-8 sm:py-10 md:w-1/2 md:px-8 lg:px-12">
         <div className="w-full max-w-md">
+
           <p className="mb-2 text-sm font-medium text-verde-claro">
             Faça parte da mudança
           </p>
 
-          <h1 className="mb-2 text-3xl font-bold text-creme">
+          <h1 className="mb-2 text-3xl font-bold text-creme sm:text-4xl">
             Crie sua conta
           </h1>
 
-          <p className="mb-7 text-sm text-creme/70">
+          <p className="mb-7 text-sm leading-relaxed text-creme/70">
             Comece sua jornada por uma mobilidade mais sustentável.
           </p>
 
           <form onSubmit={handleSubmit} noValidate>
+
             <div className="mb-4">
-              <label htmlFor="nome" className="mb-2 block text-sm text-creme">
+              <label
+                htmlFor="nome"
+                className="mb-2 block text-sm text-creme"
+              >
                 Nome completo
               </label>
 
               <input
                 id="nome"
                 name="nome"
+                type="text"
                 autoComplete="name"
                 value={nome}
                 onChange={(e) => setNome(e.target.value)}
@@ -182,26 +191,31 @@ export default function Cadastro() {
             </div>
 
             <div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div>
-                <label htmlFor="cpf" className="mb-2 block text-sm text-creme">
+
+              <div className="min-w-0">
+                <label
+                  htmlFor="cpf"
+                  className="mb-2 block text-sm text-creme"
+                >
                   CPF
                 </label>
 
                 <input
                   id="cpf"
                   name="cpf"
+                  type="text"
                   inputMode="numeric"
                   autoComplete="off"
                   value={cpf}
-                  onChange={(e) => setCpf(formatarCpf(e.target.value))}
-                  placeholder="Digite seu CPF"
+                  onChange={(e) => setCpf(formatarCPF(e.target.value))}
+                  placeholder="000.000.000-00"
                   maxLength={14}
                   disabled={carregando}
-                  className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
+                  className="w-full min-w-0 rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
                 />
               </div>
 
-              <div>
+              <div className="min-w-0">
                 <label
                   htmlFor="telefone"
                   className="mb-2 block text-sm text-creme"
@@ -213,16 +227,19 @@ export default function Cadastro() {
                   id="telefone"
                   name="telefone"
                   type="tel"
+                  inputMode="numeric"
                   autoComplete="tel"
-                  inputMode="tel"
                   value={telefone}
-                  onChange={(e) => setTelefone(formatarTelefone(e.target.value))}
-                  placeholder="DDD + número"
-                  maxLength={16}
+                  onChange={(e) =>
+                    setTelefone(formatarTelefone(e.target.value))
+                  }
+                  placeholder="(00) 00000-0000"
+                  maxLength={15}
                   disabled={carregando}
-                  className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
+                  className="w-full min-w-0 rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
                 />
               </div>
+
             </div>
 
             <div className="mb-4">
@@ -242,7 +259,7 @@ export default function Cadastro() {
                 onChange={(e) => setSenha(e.target.value)}
                 placeholder="Mínimo de 8 caracteres"
                 disabled={carregando}
-                className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
+                className="w-full appearance-none rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
               />
             </div>
 
@@ -263,7 +280,7 @@ export default function Cadastro() {
                 onChange={(e) => setConfirmarSenha(e.target.value)}
                 placeholder="Digite a senha novamente"
                 disabled={carregando}
-                className="w-full rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
+                className="w-full appearance-none rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
               />
             </div>
 
@@ -300,6 +317,7 @@ export default function Cadastro() {
             >
               {carregando ? "Criando conta..." : "Criar conta"}
             </button>
+
           </form>
 
           <p className="mt-6 text-center text-sm text-creme/80">
@@ -311,6 +329,11 @@ export default function Cadastro() {
               Fazer login
             </Link>
           </p>
+
+          <p className="mt-8 text-center text-xs text-creme/40 md:hidden">
+            ROTTA · Seu caminho, nossa rotta.
+          </p>
+
         </div>
       </main>
     </div>
