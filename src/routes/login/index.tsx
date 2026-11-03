@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { fazerLogin } from "../../services/auth";
@@ -55,7 +54,7 @@ export default function Login() {
       setErroLogin(
         erro instanceof Error
           ? erro.message
-          : "Não foi possível realizar o login."
+          : "Não foi possível realizar o login.",
       );
     } finally {
       setCarregando(false);
@@ -64,9 +63,7 @@ export default function Login() {
 
   return (
     <div className="min-h-dvh w-full bg-fundo">
-
       <div className="flex min-h-dvh flex-col md:flex-row">
-
         <aside className="hidden overflow-hidden bg-verde md:flex md:h-dvh md:w-1/2 md:items-center md:justify-center">
           <img
             src="../../images/img01-login.jpeg"
@@ -76,9 +73,7 @@ export default function Login() {
         </aside>
 
         <main className="flex min-h-dvh w-full flex-1 items-center justify-center bg-fundo px-6 py-10 sm:px-10 md:min-h-dvh md:w-1/2 md:px-8 lg:px-12">
-
           <div className="w-full max-w-md">
-
             <div className="mb-10">
               <p className="mb-3 text-sm font-medium tracking-widest text-verde-claro">
                 SUA JORNADA COMEÇA AQUI
@@ -89,17 +84,14 @@ export default function Login() {
               </h1>
 
               <p className="text-sm leading-relaxed text-creme/60">
-                Acesse sua conta e continue sua jornada por uma mobilidade
-                mais sustentável.
+                Acesse sua conta e continue sua jornada por uma mobilidade mais
+                sustentável.
               </p>
             </div>
 
-            <h2 className="mb-6 text-2xl font-bold text-creme">
-              Login
-            </h2>
+            <h2 className="mb-6 text-2xl font-bold text-creme">Login</h2>
 
             <form onSubmit={handleSubmit} noValidate>
-
               <div className="mb-5">
                 <label
                   htmlFor="email"
@@ -179,24 +171,12 @@ export default function Login() {
               )}
 
               <div className="mb-7 flex items-center justify-between gap-3">
-
-                <label className="flex cursor-pointer items-center gap-2 text-sm text-creme">
-                  <input
-                    type="checkbox"
-                    id="lembrar"
-                    name="lembrar"
-                    className="accent-verde-claro"
-                  />
-                  <span>Remember me</span>
-                </label>
-
                 <Link
                   to="/recuperar-senha"
                   className="text-sm text-verde-claro hover:underline"
                 >
                   Redefinir senha
                 </Link>
-
               </div>
 
               <button
@@ -206,7 +186,6 @@ export default function Login() {
               >
                 {carregando ? "Entrando..." : "Entrar"}
               </button>
-
             </form>
 
             <p className="mt-8 text-center text-sm text-creme/80">
@@ -222,7 +201,6 @@ export default function Login() {
             <p className="mt-12 text-center text-xs text-creme/30 md:hidden">
               ROTTA · Seu caminho, nossa rotta.
             </p>
-
           </div>
         </main>
       </div>
