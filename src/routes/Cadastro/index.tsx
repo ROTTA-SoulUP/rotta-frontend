@@ -3,6 +3,35 @@ import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { criarConta } from "../../services/auth";
 
+// Formatação automática do CPF
+function formatarCPF(valor: string) {
+  const numeros = valor.replace(/\D/g, "").slice(0, 11);
+
+  return numeros
+    .replace(/(\d{3})(\d)/, "$1.$2")
+    .replace(/(\d{3})(\d)/, "$1.$2")
+    .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+}
+
+// Formatação automática do telefone
+function formatarTelefone(valor: string) {
+  const numeros = valor.replace(/\D/g, "").slice(0, 11);
+
+  if (numeros.length <= 2) {
+    return numeros.length ? `(${numeros}` : "";
+  }
+
+  const ddd = numeros.slice(0, 2);
+  const numero = numeros.slice(2);
+  const limite = numeros.length > 10 ? 5 : 4;
+
+  if (numero.length <= limite) {
+    return `(${ddd}) ${numero}`;
+  }
+
+  return `(${ddd}) ${numero.slice(0, limite)}-${numero.slice(limite)}`;
+}
+
 export default function Cadastro() {
   const navigate = useNavigate();
 
@@ -17,39 +46,10 @@ export default function Cadastro() {
   const [mensagem, setMensagem] = useState("");
   const [carregando, setCarregando] = useState(false);
 
-  function formatarCPF(valor: string) {
-    return valor
-      .replace(/\D/g, "")
-      .slice(0, 11)
-      .replace(/(\d{3})(\d)/, "$1.$2")
-      .replace(/(\d{3})(\d)/, "$1.$2")
-      .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
-  }
-
-  function formatarTelefone(valor: string) {
-    const numeros = valor.replace(/\D/g, "").slice(0, 11);
-
-    if (numeros.length <= 2) {
-      return numeros.replace(/^(\d{0,2})/, "($1");
-    }
-
-    if (numeros.length <= 6) {
-      return numeros.replace(/^(\d{2})(\d+)/, "($1) $2");
-    }
-
-    if (numeros.length <= 10) {
-      return numeros.replace(/^(\d{2})(\d{4})(\d+)/, "($1) $2-$3");
-    }
-
-    return numeros.replace(/^(\d{2})(\d{5})(\d+)/, "($1) $2-$3");
-  }
-
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    if (carregando) {
-      return;
-    }
+    if (carregando) return;
 
     setErro("");
     setMensagem("");
@@ -95,14 +95,16 @@ export default function Cadastro() {
       setCarregando(true);
 
       await criarConta({
-        nome,
-        email,
+        nome: nome.trim(),
+        email: email.trim(),
         cpf,
         telefone,
         senha,
       });
 
-      setMensagem("Conta criada com sucesso! Redirecionando para o login...");
+      setMensagem(
+        "Conta criada com sucesso! Redirecionando para o login..."
+      );
 
       setTimeout(() => {
         navigate("/");
@@ -120,17 +122,20 @@ export default function Cadastro() {
 
   return (
     <div className="flex min-h-dvh w-full flex-col bg-fundo md:flex-row">
-       <aside className="md:w-1/2 h-64 md:h-full overflow-hidden flex items-center justify-center bg-verde">
-          <img
-            src="../../images/img01-login.jpeg"
-            alt="Mobilidade sustentável com a Rotta"
-            className="full h-full object-cover"
-          />
-        </aside>
 
-      
+      {/* Imagem lateral */}
+      <aside className="relative h-48 w-full shrink-0 overflow-hidden bg-verde sm:h-64 md:sticky md:top-0 md:h-dvh md:w-1/2">
+        <img
+          src="/images/img01-login.jpeg"
+          alt="Imagem ilustrativa Rotta"
+          className="h-full w-full object-cover object-center"
+        />
+      </aside>
+
+      {/* Formulário */}
       <main className="flex w-full flex-1 items-center justify-center px-5 py-8 sm:px-8 sm:py-10 md:min-h-dvh md:w-1/2 md:px-8 lg:px-12">
         <div className="w-full max-w-md">
+
           <p className="mb-2 text-sm font-medium text-verde-claro">
             Faça parte da mudança
           </p>
@@ -144,14 +149,20 @@ export default function Cadastro() {
           </p>
 
           <form onSubmit={handleSubmit} noValidate>
+
+            {/* Nome */}
             <div className="mb-4">
-              <label htmlFor="nome" className="mb-2 block text-sm text-creme">
+              <label
+                htmlFor="nome"
+                className="mb-2 block text-sm text-creme"
+              >
                 Nome completo
               </label>
 
               <input
                 id="nome"
                 name="nome"
+                type="text"
                 autoComplete="name"
                 value={nome}
                 onChange={(e) => setNome(e.target.value)}
@@ -161,6 +172,7 @@ export default function Cadastro() {
               />
             </div>
 
+            {/* E-mail */}
             <div className="mb-4">
               <label
                 htmlFor="email-cadastro"
@@ -182,9 +194,15 @@ export default function Cadastro() {
               />
             </div>
 
+            {/* CPF e telefone */}
             <div className="mb-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+
+              {/* CPF */}
               <div className="min-w-0">
-                <label htmlFor="cpf" className="mb-2 block text-sm text-creme">
+                <label
+                  htmlFor="cpf"
+                  className="mb-2 block text-sm text-creme"
+                >
                   CPF
                 </label>
 
@@ -203,6 +221,7 @@ export default function Cadastro() {
                 />
               </div>
 
+              {/* Telefone */}
               <div className="min-w-0">
                 <label
                   htmlFor="telefone"
@@ -215,18 +234,22 @@ export default function Cadastro() {
                   id="telefone"
                   name="telefone"
                   type="tel"
-                  autoComplete="tel"
                   inputMode="numeric"
+                  autoComplete="tel"
                   value={telefone}
-                  onChange={(e) => setTelefone(formatarTelefone(e.target.value))}
+                  onChange={(e) =>
+                    setTelefone(formatarTelefone(e.target.value))
+                  }
                   placeholder="(00) 00000-0000"
                   maxLength={15}
                   disabled={carregando}
                   className="w-full min-w-0 rounded-lg border border-borda bg-fundo-card px-4 py-3 text-creme placeholder:text-creme/50 focus:border-verde-claro focus:outline-none"
                 />
               </div>
+
             </div>
 
+            {/* Senha */}
             <div className="mb-4">
               <label
                 htmlFor="senha-cadastro"
@@ -248,6 +271,7 @@ export default function Cadastro() {
               />
             </div>
 
+            {/* Confirmar senha */}
             <div className="mb-5">
               <label
                 htmlFor="confirmar-senha"
@@ -269,6 +293,7 @@ export default function Cadastro() {
               />
             </div>
 
+            {/* Mostrar senhas */}
             <label className="mb-5 flex cursor-pointer items-center gap-2 text-sm text-creme">
               <input
                 type="checkbox"
@@ -280,6 +305,7 @@ export default function Cadastro() {
               Mostrar senhas
             </label>
 
+            {/* Mensagens */}
             {erro && (
               <p role="alert" className="mb-4 text-sm text-red-400">
                 {erro}
@@ -295,6 +321,7 @@ export default function Cadastro() {
               </p>
             )}
 
+            {/* Botão */}
             <button
               type="submit"
               disabled={carregando}
@@ -302,8 +329,10 @@ export default function Cadastro() {
             >
               {carregando ? "Criando conta..." : "Criar conta"}
             </button>
+
           </form>
 
+          {/* Link para login */}
           <p className="mt-6 text-center text-sm text-creme/80">
             Já tem uma conta?{" "}
             <Link
@@ -313,6 +342,7 @@ export default function Cadastro() {
               Fazer login
             </Link>
           </p>
+
         </div>
       </main>
     </div>
